@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Picks — The Wax Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0b09; --bg2: #13100d; --bg3: #1a1510;
+    --card: #1e1812; --card-hover: #252018;
+    --gold: #c9a84c; --gold-light: #e8c97a; --gold-dim: #7a6330;
+    --cream: #f0e8d8; --cream-dim: #a89880;
+    --text: #ddd0bb; --text-dim: #7a6e60;
+    --border: rgba(201,168,76,0.18); --border-strong: rgba(201,168,76,0.35);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(13,11,9,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); letter-spacing: 0.08em; text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+
+  .page-hero { padding: 8rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(201,168,76,0.07) 0%, transparent 70%); }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; color: var(--cream); line-height: 1.1; }
+  .page-title em { font-style: italic; color: var(--gold-light); }
+  .page-sub { font-size: 0.9rem; color: var(--cream-dim); max-width: 500px; margin: 1.2rem auto 0; }
+  .section-divider { width: 60px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto 0; }
+
+  .main-wrap { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  .affiliate-notice { background: rgba(201,168,76,0.07); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1rem 1.5rem; margin-bottom: 3rem; font-size: 0.8rem; color: var(--cream-dim); display: flex; gap: 0.75rem; align-items: flex-start; line-height: 1.65; }
+  .affiliate-notice strong { color: var(--gold); }
+
+  /* Category tabs */
+  .cat-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .cat-tab { background: transparent; color: var(--cream-dim); border: 1px solid var(--border); padding: 0.5rem 1.4rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+  .cat-tab:hover, .cat-tab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+
+  /* Category section */
+  .cat-section { margin-bottom: 4rem; }
+  .cat-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .cat-icon { font-size: 1.4rem; }
+  .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--cream); }
+  .cat-title em { font-style: italic; color: var(--gold-light); }
+
+  .amazon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.4rem; }
+
+  .amazon-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s, transform 0.3s; text-decoration: none; display: block; position: relative; }
+  .amazon-card:hover { border-color: var(--border-strong); transform: translateY(-4px); }
+  .amazon-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.4s; }
+  .amazon-card:hover::before { opacity: 1; }
+
+  .amazon-img-wrap { background: var(--bg3); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .amazon-img-wrap .emoji { font-size: 2.8rem; opacity: 0.45; }
+
+  .amazon-card-body { padding: 1.4rem; }
+  .amazon-card-type { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .amazon-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: 0.5rem; font-weight: 400; line-height: 1.3; }
+  .amazon-card-desc { font-size: 0.78rem; color: var(--cream-dim); line-height: 1.65; margin-bottom: 1rem; }
+  .amazon-cta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; transition: gap 0.3s; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .amazon-card:hover .amazon-cta { gap: 0.8rem; }
+  .amazon-badge { position: absolute; top: 0.9rem; right: 0.9rem; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(201,168,76,0.15); color: var(--gold); padding: 0.2rem 0.5rem; border: 1px solid var(--gold-dim); }
+
+  /* hidden for filter */
+  .cat-section.hidden { display: none; }
+
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3rem 2rem; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); }
+  .footer-nav { display: flex; gap: 2rem; list-style: none; }
+  .footer-nav a { font-size: 0.75rem; color: var(--text-dim); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+  .footer-nav a:hover { color: var(--gold-light); }
+  .footer-copy { font-size: 0.7rem; color: var(--text-dim); width: 100%; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .page-hero > * { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+  .page-hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .page-hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .page-hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .page-hero > *:nth-child(4) { animation-delay: 0.5s; }
+
+  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Edit</a>
+  <ul class="nav-links">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="guide-choosing-wax.html">Guides</a></li>
+    <li><a href="amazon-picks.html" class="active">Amazon Picks</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <span class="section-label">✦ Curated Affiliate Picks ✦</span>
+  <h1 class="page-title">Amazon <em>Recommendations</em></h1>
+  <p class="page-sub">Hand-picked products for UK wax melt and candle makers — available on Amazon with fast delivery.</p>
+  <div class="section-divider"></div>
+</div>
+
+<div class="main-wrap">
+
+  <div class="affiliate-notice">
+    <span>⚠️</span>
+    <span><strong>Affiliate Disclosure:</strong> This page contains Amazon affiliate links. As an Amazon Associate we earn from qualifying purchases at no extra cost to you. This helps support The Wax Edit and keeps the directory free.</span>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="cat-tabs">
+    <button class="cat-tab active" data-cat="all">All Products</button>
+    <button class="cat-tab" data-cat="wax">Wax</button>
+    <button class="cat-tab" data-cat="fragrance">Fragrance</button>
+    <button class="cat-tab" data-cat="moulds">Moulds &amp; Tins</button>
+    <button class="cat-tab" data-cat="equipment">Equipment</button>
+    <button class="cat-tab" data-cat="colour">Colourants</button>
+    <button class="cat-tab" data-cat="packaging">Packaging</button>
+    <button class="cat-tab" data-cat="wicks">Wicks &amp; Accessories</button>
+  </div>
+
+  <!-- WAX -->
+  <div class="cat-section" data-cat="wax">
+    <div class="cat-heading">
+      <span class="cat-icon">🕯️</span>
+      <h2 class="cat-title">Wax <em>&amp; Base Materials</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=soy+wax+flakes+5kg&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Best Seller</div>
+        <div class="amazon-img-wrap"><span class="emoji">🌿</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Soy Wax</div>
+          <div class="amazon-card-name">Soy Wax Flakes 5kg</div>
+          <p class="amazon-card-desc">Natural soy wax flakes ideal for wax melts and container candles. Low melt point with excellent fragrance retention and a clean finish.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=coconut+soy+wax+blend+candle&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🥥</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Coconut Blend Wax</div>
+          <div class="amazon-card-name">Coconut Soy Blend Wax</div>
+          <p class="amazon-card-desc">A luxurious coconut and soy blend producing a creamy, glossy finish. Perfect for clamshells and snap bars with superior scent throw.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=paraffin+wax+pellets+candle+making&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🕯️</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Paraffin Wax</div>
+          <div class="amazon-card-name">Paraffin Wax Pellets 3kg</div>
+          <p class="amazon-card-desc">High-quality paraffin wax pellets with a strong scent throw. A classic choice for tarts and wax melt shapes with vibrant colour results.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=rapeseed+wax+candle+making+uk&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">UK Grown</div>
+        <div class="amazon-img-wrap"><span class="emoji">🌻</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Rapeseed Wax</div>
+          <div class="amazon-card-name">UK Rapeseed Wax 1kg</div>
+          <p class="amazon-card-desc">Sustainably sourced UK-grown rapeseed wax. A natural, vegan-friendly option with a good scent throw and smooth finish for eco-conscious makers.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- FRAGRANCE -->
+  <div class="cat-section" data-cat="fragrance">
+    <div class="cat-heading">
+      <span class="cat-icon">🌸</span>
+      <h2 class="cat-title">Fragrance <em>Oils &amp; Scents</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=fragrance+oil+set+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Top Rated</div>
+        <div class="amazon-img-wrap"><span class="emoji">🌺</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Fragrance Oils</div>
+          <div class="amazon-card-name">Fragrance Oil Set – 30 Scents</div>
+          <p class="amazon-card-desc">A brilliant starter set of 30 fragrance oils for wax melts. Covers florals, woods, citrus and gourmands — ideal for sampling before bulk buying.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=premium+candle+fragrance+oils+uk&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🫙</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Fragrance Oils</div>
+          <div class="amazon-card-name">Premium Candle Fragrance Oils 10ml</div>
+          <p class="amazon-card-desc">High-load fragrance oils specifically formulated for candle and wax melt making. Strong cold and hot throw with excellent stability in soy wax.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=essential+oils+candle+making+set&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🍃</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Essential Oils</div>
+          <div class="amazon-card-name">Pure Essential Oil Collection</div>
+          <p class="amazon-card-desc">100% pure essential oils for natural wax melt making. Lavender, eucalyptus, lemon and peppermint — great for therapeutic and wellness ranges.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=vanilla+fragrance+oil+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🍦</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Fragrance Oils</div>
+          <div class="amazon-card-name">Vanilla &amp; Gourmand Scent Bundle</div>
+          <p class="amazon-card-desc">A cosy bundle of warm vanilla, caramel and baked goods fragrance oils. Customer favourites for autumn and winter wax melt collections.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- MOULDS & TINS -->
+  <div class="cat-section" data-cat="moulds">
+    <div class="cat-heading">
+      <span class="cat-icon">🧱</span>
+      <h2 class="cat-title">Moulds <em>&amp; Tins</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=clamshell+mould+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Essential</div>
+        <div class="amazon-img-wrap"><span class="emoji">🫙</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Moulds</div>
+          <div class="amazon-card-name">Clamshell Mould Trays – Pack of 20</div>
+          <p class="amazon-card-desc">Food-safe, flexible clamshell moulds for snap bars and wax melts. Reusable, easy-release and ideal for retail presentation.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=heart+wax+melt+silicone+mould&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">💜</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Silicone Moulds</div>
+          <div class="amazon-card-name">Heart Shape Silicone Mould</div>
+          <p class="amazon-card-desc">A popular heart-shaped silicone mould for decorative wax melts. Non-stick, heat resistant and easy to demould for perfect results every time.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=candle+tins+lids+uk&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🥫</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Candle Tins</div>
+          <div class="amazon-card-name">Candle Tins with Lids – Pack of 12</div>
+          <p class="amazon-card-desc">Sleek metal tins with press-fit lids, perfect for container candles and wax melt gifts. Available in silver and black finishes.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=glass+candle+jars+lids&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🫙</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Glass Jars</div>
+          <div class="amazon-card-name">Glass Candle Jars with Lids</div>
+          <p class="amazon-card-desc">Clear glass jars with bamboo or metal lids for luxury candle making. Showcases wax colour beautifully and suits premium retail presentation.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="cat-section" data-cat="equipment">
+    <div class="cat-heading">
+      <span class="cat-icon">⚗️</span>
+      <h2 class="cat-title">Tools <em>&amp; Equipment</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=candle+making+pouring+jug+stainless+steel&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Must Have</div>
+        <div class="amazon-img-wrap"><span class="emoji">🏺</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Equipment</div>
+          <div class="amazon-card-name">Stainless Steel Pouring Jug 1L</div>
+          <p class="amazon-card-desc">A sturdy stainless steel pouring jug with a comfortable handle and measured markings. Essential for clean, precise pouring into moulds and tins.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=digital+thermometer+candle+making&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🌡️</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Equipment</div>
+          <div class="amazon-card-name">Digital Probe Thermometer</div>
+          <p class="amazon-card-desc">Instant-read digital thermometer for precise wax temperature monitoring. Critical for adding fragrance and pouring at the correct temperatures.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=wax+melter+electric+candle+making&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🔌</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Equipment</div>
+          <div class="amazon-card-name">Electric Wax Melter / Warmer</div>
+          <p class="amazon-card-desc">An electric wax melter for safely melting larger batches. Temperature controlled with a non-stick coating — a great upgrade from a double boiler.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=digital+kitchen+scales+0.1g&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">⚖️</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Equipment</div>
+          <div class="amazon-card-name">Precision Digital Scales 0.1g</div>
+          <p class="amazon-card-desc">High-precision digital scales accurate to 0.1g — essential for measuring fragrance oil percentages accurately when developing recipes.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=candle+making+kit+beginner&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Great Gift</div>
+        <div class="amazon-img-wrap"><span class="emoji">🎁</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Starter Kit</div>
+          <div class="amazon-card-name">Complete Candle Making Starter Kit</div>
+          <p class="amazon-card-desc">Everything a beginner needs in one box — wax, wicks, fragrance oils, thermometer, jug and instructions. Perfect as a gift or to start your hobby.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- COLOURANTS -->
+  <div class="cat-section" data-cat="colour">
+    <div class="cat-heading">
+      <span class="cat-icon">🎨</span>
+      <h2 class="cat-title">Dyes <em>&amp; Colourants</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=wax+dye+chips+candle+making&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Popular</div>
+        <div class="amazon-img-wrap"><span class="emoji">🎨</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Dye Chips</div>
+          <div class="amazon-card-name">Wax Dye Chip Set – 24 Colours</div>
+          <p class="amazon-card-desc">Highly pigmented dye chips for consistent, vivid wax colours. Easy to portion, compatible with most wax types and produces beautiful results.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=liquid+candle+dye+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">💧</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Liquid Dye</div>
+          <div class="amazon-card-name">Liquid Wax Dye Set – 10 Colours</div>
+          <p class="amazon-card-desc">Vibrant liquid dyes for precise colour mixing in wax melts and candles. A little goes a long way — ideal for achieving custom shades and pastel tones.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=mica+powder+candle+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">✨</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Mica Powder</div>
+          <div class="amazon-card-name">Mica Powder Set – Shimmer Colours</div>
+          <p class="amazon-card-desc">Pearlescent mica powders for eye-catching shimmer effects in wax melts. Check skin-safe ratings if using for bath products. Spectacular decorative results.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- PACKAGING -->
+  <div class="cat-section" data-cat="packaging">
+    <div class="cat-heading">
+      <span class="cat-icon">📦</span>
+      <h2 class="cat-title">Packaging <em>&amp; Labels</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=kraft+wax+melt+boxes+packaging&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">📦</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Packaging</div>
+          <div class="amazon-card-name">Kraft Wax Melt Boxes – Pack of 50</div>
+          <p class="amazon-card-desc">Eco-friendly kraft paper boxes sized perfectly for clamshell wax melts. Professional, natural look ideal for markets, craft fairs and online retail.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=candle+box+packaging+retail&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🎁</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Packaging</div>
+          <div class="amazon-card-name">Luxury Candle Gift Box Set</div>
+          <p class="amazon-card-desc">Rigid gift boxes with magnetic closures for premium candle presentation. Creates a luxury unboxing experience, perfect for gifting and high-end retail.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=round+labels+stickers+candle+packaging&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🏷️</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Labels</div>
+          <div class="amazon-card-name">Round Kraft Labels – Pack of 500</div>
+          <p class="amazon-card-desc">Self-adhesive round kraft labels for branding candles and wax melts. Printable, biodegradable and a great base for your logo and scent name.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=organza+bags+candle+gift&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">👜</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Packaging</div>
+          <div class="amazon-card-name">Organza Gift Bags – Pack of 50</div>
+          <p class="amazon-card-desc">Sheer organza bags for gift wrapping wax melts and candles. An affordable finishing touch that elevates presentation at markets and pop-ups.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- WICKS & ACCESSORIES -->
+  <div class="cat-section" data-cat="wicks">
+    <div class="cat-heading">
+      <span class="cat-icon">🔥</span>
+      <h2 class="cat-title">Wicks <em>&amp; Accessories</em></h2>
+    </div>
+    <div class="amazon-grid">
+
+      <a href="https://www.amazon.co.uk/s?k=cotton+wick+candle+making+pre+waxed&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Essential</div>
+        <div class="amazon-img-wrap"><span class="emoji">🕯️</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Wicks</div>
+          <div class="amazon-card-name">Pre-Waxed Cotton Wicks – Pack of 100</div>
+          <p class="amazon-card-desc">Natural cotton wicks pre-waxed and pre-tabbed, ready to use straight away. Available in multiple lengths to suit different container diameters.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=wooden+wick+candle+crackling&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🪵</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Wooden Wicks</div>
+          <div class="amazon-card-name">Crackling Wooden Wicks – Assorted Pack</div>
+          <p class="amazon-card-desc">Natural wooden wicks that produce a satisfying crackling sound when burning. A premium touch for luxury soy candles with a cosy, fireplace aesthetic.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=wick+centring+tool+candle+making&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-img-wrap"><span class="emoji">🔧</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Accessories</div>
+          <div class="amazon-card-name">Wick Centring Tools – Pack of 10</div>
+          <p class="amazon-card-desc">Metal wick centring bars that hold wicks perfectly in place while wax sets. A small investment that makes a big difference to professional-looking results.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+      <a href="https://www.amazon.co.uk/s?k=candle+making+beginner+supplies+kit&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-card">
+        <div class="amazon-badge">Great Value</div>
+        <div class="amazon-img-wrap"><span class="emoji">📋</span></div>
+        <div class="amazon-card-body">
+          <div class="amazon-card-type">Accessory Bundle</div>
+          <div class="amazon-card-name">Candle Making Accessory Set</div>
+          <p class="amazon-card-desc">A handy bundle including wick trimmers, centering tools, stir sticks and a wick dipper — everything to keep your workspace tidy and professional.</p>
+          <div class="amazon-cta">View on Amazon <span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Edit</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">Guides</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Edit · As an Amazon Associate we earn from qualifying purchases · All affiliate links are marked accordingly</p>
+  </div>
+</footer>
+
+<script>
+  // Category tab filter
+  const tabs = document.querySelectorAll('.cat-tab');
+  const sections = document.querySelectorAll('.cat-section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      sections.forEach(sec => {
+        if (cat === 'all' || sec.dataset.cat === cat) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.amazon-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease, border-color 0.3s, background 0.3s';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

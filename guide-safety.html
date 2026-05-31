@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing & Safety Standards — The Wax Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0b09;--bg2:#13100d;--bg3:#1a1510;
+    --card:#1e1812;--card-hover:#252018;
+    --gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6330;
+    --cream:#f0e8d8;--cream-dim:#a89880;
+    --text:#ddd0bb;--text-dim:#7a6e60;
+    --border:rgba(201,168,76,0.18);--border-strong:rgba(201,168,76,0.35);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(13,11,9,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  ul,ol{padding-left:1.5rem;margin-bottom:1.2rem}
+  li{font-size:0.9rem;color:var(--cream-dim);line-height:1.8;margin-bottom:0.3rem}
+  li strong{color:var(--cream)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .gov-links{list-style:none;padding:0;margin:1.5rem 0}
+  .gov-links li{margin-bottom:0.9rem;padding:0;font-size:0.9rem}
+  .gov-link{display:block;background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1rem 1.3rem;text-decoration:none;transition:border-color 0.3s,transform 0.3s}
+  .gov-link:hover{border-color:var(--border-strong);transform:translateX(4px)}
+  .gov-link strong{display:block;color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:0.25rem;font-weight:400}
+  .gov-link span{display:block;font-size:0.8rem;color:var(--cream-dim);line-height:1.6}
+  .gov-link .gov-url{color:var(--gold);font-size:0.72rem;letter-spacing:0.05em;margin-top:0.4rem}
+  .gov-badge{display:inline-block;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:rgba(201,168,76,0.15);color:var(--gold);padding:0.15rem 0.5rem;border:1px solid var(--gold-dim);margin-left:0.5rem;vertical-align:middle}
+  .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .tag-inline{display:inline-block;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:0.15rem 0.45rem;margin-left:0.4rem;vertical-align:middle}
+  .amazon-rec{background:var(--card);border:1px solid var(--border);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0;text-decoration:none;transition:border-color 0.3s,transform 0.3s}
+  .amazon-rec:hover{border-color:var(--border-strong);transform:translateX(4px)}
+  .amazon-rec-info strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.2rem}
+  .amazon-rec-info span{font-size:0.75rem;color:var(--cream-dim)}
+  .amazon-rec-cta{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .guide-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav a:last-child{text-align:right}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Edit</a>
+  <ul class="nav-links">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Buying Guide ✦</span>
+  <h1 class="page-title">Testing <em>&amp; Safety Standards</em></h1>
+  <p class="page-sub">Everything UK wax melt sellers need to know about CLP regulations, SDS sheets and legal compliance — plus direct links to the official UK regulatory guidelines.</p>
+  <div class="divider"></div>
+</div>
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="index.html#guides">Buying Guides</a>
+    <span>/</span>
+    <span>CLP & Compliance</span>
+  </div>
+  
+<p class="lead">Selling wax melts in the UK comes with legal responsibilities. Understanding CLP regulations, safety data sheets and proper labelling is not optional — it's the law. This guide explains what you need to know before you sell.</p>
+
+<h2>What is <em>CLP?</em></h2>
+<p>CLP stands for Classification, Labelling and Packaging — an EU regulation that was retained in UK law after Brexit (UK CLP). It applies to any product that contains hazardous substances, which includes most fragranced wax melts due to the chemical nature of fragrance oils.</p>
+<p>If you sell wax melts (even at craft fairs or on Etsy), you must comply with UK CLP regulations. Failure to do so could result in your products being removed from sale or legal action.</p>
+
+<div class="callout">
+  <p><strong>⚠️ Key Rule:</strong> You cannot sell wax melts without a compliant CLP label. This applies even if you give them as gifts in exchange for payment, sell at markets, or list them online. Homemade does not mean exempt.</p>
+</div>
+
+<h2>Safety Data Sheets <em>(SDS)</em></h2>
+<p>Every fragrance oil you use should come with a Safety Data Sheet from your supplier. The SDS contains crucial information including:</p>
+<ul>
+  <li>Hazardous ingredient classifications</li>
+  <li>Flash point and handling precautions</li>
+  <li>IFRA usage rates (maximum safe usage percentages)</li>
+  <li>First aid and storage guidance</li>
+</ul>
+<p>Always request SDS documents from your fragrance supplier and keep them on file. Reputable UK suppliers like Candle Shack, Craftovator and Fragrance Oil Studio provide these automatically.</p>
+
+<h2>Creating a <em>CLP Label</em></h2>
+<p>A compliant wax melt label must include:</p>
+<ul>
+  <li><strong>Product name and your business name/address</strong></li>
+  <li><strong>Net weight</strong></li>
+  <li><strong>Hazard pictograms</strong> — the correct GHS symbols based on your fragrance SDS</li>
+  <li><strong>Signal word</strong> — either "Warning" or "Danger"</li>
+  <li><strong>Hazard statements (H statements)</strong> — e.g. "H317: May cause an allergic skin reaction"</li>
+  <li><strong>Precautionary statements (P statements)</strong> — e.g. "Keep out of reach of children"</li>
+  <li><strong>Ingredient disclosure</strong> — allergens present above threshold levels must be listed</li>
+</ul>
+
+<h3>CLP Label Tools</h3>
+<p>Several UK-based CLP label services exist to help small makers generate compliant labels. These include Soapbox (soapbox.co.uk), Create Cosmetics and various fragrance suppliers who offer CLP label generation as part of their service.</p>
+
+<h2>IFRA Compliance</h2>
+<p>The International Fragrance Association (IFRA) sets maximum usage rates for fragrance ingredients based on the product category. For wax melts (Category 12 — air fresheners), these limits define the maximum percentage of fragrance oil you can safely use. Always check IFRA compliance certificates from your fragrance supplier.</p>
+
+<h2>Insurance</h2>
+<p>Before selling any wax product, take out appropriate product liability insurance. This protects you if a customer makes a claim related to your products. Several UK insurers offer specific craft maker policies at reasonable annual premiums.</p>
+
+<div class="callout">
+  <p><strong>📋 Checklist before selling:</strong> ✓ SDS on file for every fragrance ✓ CLP label on every product ✓ IFRA compliance checked ✓ Product liability insurance in place ✓ Allergen disclosure up to date</p>
+</div>
+
+<h2 id="regulations">Official UK <em>Regulatory Guidelines</em></h2>
+<p>Always go to the original source for compliance information rather than relying on advice from social media groups. The following are the official UK government and authoritative industry resources for candle, wax melt and home fragrance regulations. Bookmark these — they are the definitive references.</p>
+
+<ul class="gov-links">
+  <li>
+    <a href="https://www.hse.gov.uk/chemical-classification/index.htm" target="_blank" rel="noopener" class="gov-link">
+      <strong>HSE — Chemical Classification, Labelling & Packaging (GB CLP) <span class="gov-badge">Official</span></strong>
+      <span>The Health and Safety Executive is the GB CLP Agency. This is the primary government authority on classifying and labelling hazardous mixtures, which includes scented candles and wax melts.</span>
+      <span class="gov-url">hse.gov.uk/chemical-classification →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.hse.gov.uk/chemical-classification/brexit.htm" target="_blank" rel="noopener" class="gov-link">
+      <strong>HSE — Supplying Chemicals to the GB Market <span class="gov-badge">Official</span></strong>
+      <span>Explains your legal duties under GB CLP since 1 January 2021 as a GB-based manufacturer, importer, downstream user or distributor. Essential reading if you sell in England, Scotland or Wales.</span>
+      <span class="gov-url">hse.gov.uk/chemical-classification/brexit.htm →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.hse.gov.uk/chemical-classification/legal/clp-regulation.htm" target="_blank" rel="noopener" class="gov-link">
+      <strong>HSE — The GB CLP Regulation Explained <span class="gov-badge">Official</span></strong>
+      <span>A full breakdown of the retained EU CLP Regulation (EC No 1272/2008) as it applies in Great Britain, including recent changes to notification requirements.</span>
+      <span class="gov-url">hse.gov.uk/chemical-classification/legal/clp-regulation.htm →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.hse.gov.uk/chemical-classification/what-to-do/overview.htm" target="_blank" rel="noopener" class="gov-link">
+      <strong>HSE — How to Comply with GB CLP <span class="gov-badge">Official</span></strong>
+      <span>Step-by-step practical guidance for duty-holders in the GB chemical supply chain — helping you identify your role and understand exactly what you must do to comply.</span>
+      <span class="gov-url">hse.gov.uk/chemical-classification/what-to-do →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.gov.uk/government/organisations/office-for-product-safety-and-standards" target="_blank" rel="noopener" class="gov-link">
+      <strong>Office for Product Safety & Standards (OPSS) <span class="gov-badge">Official</span></strong>
+      <span>The UK government regulator for consumer product safety, part of the Department for Business and Trade. The authority overseeing the General Product Safety Regulations that apply to candles and wax melts.</span>
+      <span class="gov-url">gov.uk — Office for Product Safety & Standards →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.businesscompanion.info/en/quick-guides/product-safety" target="_blank" rel="noopener" class="gov-link">
+      <strong>Business Companion — Product Safety Quick Guides <span class="gov-badge">Trading Standards</span></strong>
+      <span>Official Trading Standards-backed guidance written in plain English. Covers product safety obligations for small businesses and home-based makers.</span>
+      <span class="gov-url">businesscompanion.info →</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.britishcandles.org" target="_blank" rel="noopener" class="gov-link">
+      <strong>The British Candlemakers Federation <span class="gov-badge">Industry Body</span></strong>
+      <span>The UK trade association for candle makers. Publishes joint advice with Trading Standards and the HSE, plus guidance on the relevant BS EN safety standards (BS EN 15493, 15494 and 15426).</span>
+      <span class="gov-url">britishcandles.org →</span>
+    </a>
+  </li>
+</ul>
+
+<div class="callout">
+  <p><strong>⚠️ Disclaimer:</strong> This page is a general introduction and signposting resource, not legal advice. Regulations change — always verify current requirements directly with the official sources above, and consider consulting a qualified CLP assessor or your local Trading Standards office before selling.</p>
+</div>
+
+  <div class="guide-nav">
+    <a href="guide-colouring.html"><div class="guide-nav-label">← Previous Guide</div><div class="guide-nav-title">Colouring Your Wax Melts</div></a>
+    <a href="guide-packaging.html"><div class="guide-nav-label">Next Guide →</div><div class="guide-nav-title">Packaging & Clamshells</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Edit</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Edit · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+</body>
+</html>

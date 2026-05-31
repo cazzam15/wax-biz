@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buying Wholesale vs Retail — The Wax Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0b09;--bg2:#13100d;--bg3:#1a1510;
+    --card:#1e1812;--card-hover:#252018;
+    --gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6330;
+    --cream:#f0e8d8;--cream-dim:#a89880;
+    --text:#ddd0bb;--text-dim:#7a6e60;
+    --border:rgba(201,168,76,0.18);--border-strong:rgba(201,168,76,0.35);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(13,11,9,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  ul,ol{padding-left:1.5rem;margin-bottom:1.2rem}
+  li{font-size:0.9rem;color:var(--cream-dim);line-height:1.8;margin-bottom:0.3rem}
+  li strong{color:var(--cream)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .tag-inline{display:inline-block;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:0.15rem 0.45rem;margin-left:0.4rem;vertical-align:middle}
+  .amazon-rec{background:var(--card);border:1px solid var(--border);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0;text-decoration:none;transition:border-color 0.3s,transform 0.3s}
+  .amazon-rec:hover{border-color:var(--border-strong);transform:translateX(4px)}
+  .amazon-rec-info strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.2rem}
+  .amazon-rec-info span{font-size:0.75rem;color:var(--cream-dim)}
+  .amazon-rec-cta{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .guide-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav a:last-child{text-align:right}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Edit</a>
+  <ul class="nav-links">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Buying Guide ✦</span>
+  <h1 class="page-title">Buying Wholesale <em>vs Retail</em></h1>
+  <p class="page-sub">How to reduce your cost per melt by understanding wholesale pricing and UK supplier tiers.</p>
+  <div class="divider"></div>
+</div>
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="index.html#guides">Buying Guides</a>
+    <span>/</span>
+    <span>Pricing & Sourcing</span>
+  </div>
+  
+<p class="lead">Buying your supplies at the right price is essential to building a profitable wax melt business. This guide explains when to buy retail, when to go wholesale, and how to get the best value from UK suppliers.</p>
+
+<h2>Understanding <em>Pricing Tiers</em></h2>
+<p>Most UK wax melt suppliers operate on a tiered pricing structure. The more you buy, the lower your cost per unit. Understanding these tiers — and planning your orders around them — can dramatically improve your margins.</p>
+
+<div class="callout">
+  <p><strong>Example:</strong> Soy wax might cost £4.50/kg at 1kg, £3.80/kg at 5kg, and £3.20/kg at 25kg. If you're using 5kg per week, buying a 25kg bag every month saves you ~£30 per month — or £360 per year — on wax alone.</p>
+</div>
+
+<h2>When to <em>Buy Retail</em></h2>
+<p>Buying retail (small quantities, standard prices) makes sense when:</p>
+<ul>
+  <li>You're a hobbyist making occasional batches</li>
+  <li>You're testing a new wax, fragrance or supplier for the first time</li>
+  <li>You need a specific item quickly without minimum order requirements</li>
+  <li>Storage space is limited</li>
+</ul>
+
+<h2>When to <em>Go Wholesale</em></h2>
+<p>Moving to wholesale purchasing is the right decision when:</p>
+<ul>
+  <li>You're making consistent batches (at least weekly)</li>
+  <li>You have storage space for 5–25kg bags of wax and bulk fragrance</li>
+  <li>You've settled on a recipe and no longer need to test extensively</li>
+  <li>You're selling products and need to maximise your profit margins</li>
+</ul>
+
+<h2>UK Suppliers with <em>Wholesale Accounts</em></h2>
+<p>Several retailers in our directory offer dedicated wholesale pricing or accounts for small businesses:</p>
+<ul>
+  <li><strong>Candle Shack</strong> — industry-renowned for wholesale wax and fragrance with tiered pricing</li>
+  <li><strong>Craftovator</strong> — excellent bulk pricing on wax, fragrance and dyes</li>
+  <li><strong>Livemoor</strong> — particularly competitive on soy wax at bulk quantities</li>
+  <li><strong>The Soap Kitchen</strong> — great for makers who also produce soap and cosmetics</li>
+</ul>
+
+<h2>Calculating Your <em>Cost Per Melt</em></h2>
+<p>Before deciding on your wholesale volume, calculate your true cost per melt. Include:</p>
+<ul>
+  <li>Wax cost per gram (weight per melt × cost per kg ÷ 1000)</li>
+  <li>Fragrance oil cost per gram (at your chosen % load)</li>
+  <li>Colourant cost per melt</li>
+  <li>Packaging cost per unit</li>
+  <li>Labels, delivery, time</li>
+</ul>
+<p>Most makers target a material cost of 20–30% of the retail selling price, leaving margin for time, overheads and profit.</p>
+
+<h2>Buying Fragrance Oils <em>in Bulk</em></h2>
+<p>Fragrance oils are often the most expensive ingredient by weight. At retail, 100ml might cost £3–5. At 500ml, the cost per ml typically drops by 30–40%. At 1 litre or kilogram quantities from a specialist supplier, savings can be even greater — but always test at small scale before committing to a litre of an untested scent.</p>
+
+<table class="comparison-table">
+  <tr><th>Quantity</th><th>Typical Price/100ml</th><th>Best For</th></tr>
+  <tr><td>10–30ml sample</td><td>£1.50–3.00</td><td>Testing new scents</td></tr>
+  <tr><td>100ml retail</td><td>£3.00–5.00</td><td>Hobbyist use</td></tr>
+  <tr><td>500ml</td><td>£2.00–3.50</td><td>Regular makers</td></tr>
+  <tr><td>1kg+</td><td>£1.50–2.50</td><td>Business production</td></tr>
+</table>
+
+<h2>Recommended on <em>Amazon</em></h2>
+<a href="https://www.amazon.co.uk/s?k=soy+wax+flakes+5kg&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-rec">
+  <div class="amazon-rec-info"><strong>Soy Wax Flakes 5kg</strong><span>A cost-effective mid-size bag — great for stepping up from 1kg</span></div>
+  <span class="amazon-rec-cta">Amazon →</span>
+</a>
+<a href="https://www.amazon.co.uk/s?k=digital+kitchen+scales+0.1g&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-rec">
+  <div class="amazon-rec-info"><strong>Precision Digital Scales</strong><span>Essential for calculating and controlling your cost per melt</span></div>
+  <span class="amazon-rec-cta">Amazon →</span>
+</a>
+
+  
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Edit</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Edit · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+</body>
+</html>

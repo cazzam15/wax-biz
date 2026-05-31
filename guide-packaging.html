@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packaging & Clamshells — The Wax Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0b09;--bg2:#13100d;--bg3:#1a1510;
+    --card:#1e1812;--card-hover:#252018;
+    --gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6330;
+    --cream:#f0e8d8;--cream-dim:#a89880;
+    --text:#ddd0bb;--text-dim:#7a6e60;
+    --border:rgba(201,168,76,0.18);--border-strong:rgba(201,168,76,0.35);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(13,11,9,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  ul,ol{padding-left:1.5rem;margin-bottom:1.2rem}
+  li{font-size:0.9rem;color:var(--cream-dim);line-height:1.8;margin-bottom:0.3rem}
+  li strong{color:var(--cream)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .tag-inline{display:inline-block;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:0.15rem 0.45rem;margin-left:0.4rem;vertical-align:middle}
+  .amazon-rec{background:var(--card);border:1px solid var(--border);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0;text-decoration:none;transition:border-color 0.3s,transform 0.3s}
+  .amazon-rec:hover{border-color:var(--border-strong);transform:translateX(4px)}
+  .amazon-rec-info strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.2rem}
+  .amazon-rec-info span{font-size:0.75rem;color:var(--cream-dim)}
+  .amazon-rec-cta{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .guide-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav a:last-child{text-align:right}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Edit</a>
+  <ul class="nav-links">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Buying Guide ✦</span>
+  <h1 class="page-title">Packaging <em>&amp; Clamshells</em></h1>
+  <p class="page-sub">From clamshells to snap bars and kraft boxes — choosing the right packaging for your wax melt business.</p>
+  <div class="divider"></div>
+</div>
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="index.html#guides">Buying Guides</a>
+    <span>/</span>
+    <span>Packaging</span>
+  </div>
+  
+<p class="lead">Your packaging is the first thing a customer sees — it communicates your brand values, protects your product and influences purchasing decisions. This guide covers all the main wax melt packaging formats used by UK makers.</p>
+
+<h2>Clamshells <em>(The Industry Standard)</em></h2>
+<p>Clamshells are hinged plastic trays that snap shut, typically divided into 6 or 8 sections. They're the most recognisable wax melt packaging format and a great choice for beginners and professionals alike.</p>
+<ul>
+  <li><strong>Pros:</strong> Widely recognised, protects the melt, easy to use for customers, good for scent retention</li>
+  <li><strong>Cons:</strong> Plastic (less eco-friendly), limited customisation without printing</li>
+  <li><strong>Best practice:</strong> Use a custom box sleeve or wrap with a branded label for a premium look</li>
+</ul>
+
+<h2>Snap Bars <em>(Popular &amp; Versatile)</em></h2>
+<p>Snap bars are bar-shaped wax melts scored into sections, similar to a chocolate bar. Poured in rectangular silicone moulds, they're satisfying to snap and easy to portion. They're increasingly popular on Etsy and at craft fairs because they look impressive and are easy to brand.</p>
+
+<h2>Shaped Melts <em>(Eye-Catching &amp; Giftable)</em></h2>
+<p>Using decorative silicone moulds, you can create melts in any shape — hearts, flowers, shells, animals, letters and more. Shaped melts are particularly popular for seasonal ranges (Christmas, Valentine's Day) and gift sets. They photograph beautifully for social media.</p>
+
+<div class="callout">
+  <p><strong>💡 Tip:</strong> Harder waxes (paraffin blends) hold fine mould detail better than soft soy wax. If you want crisp shaped melts, consider a paraffin or coconut-paraffin blend.</p>
+</div>
+
+<h2>Wax Melt Cups &amp; Pots</h2>
+<p>Pre-portioned wax melt cups in small aluminium or clear plastic pots are growing in popularity as a hygienic, easy-to-use alternative to clamshells. They're particularly good for selling premium single-use melts or trial-size products.</p>
+
+<h2>Boxes &amp; <em>Outer Packaging</em></h2>
+<p>Whatever format you choose, outer packaging elevates your product from homemade to professional. Options include:</p>
+<ul>
+  <li><strong>Kraft boxes</strong> — eco-friendly, printable, suit a natural brand aesthetic</li>
+  <li><strong>Printed folding cartons</strong> — fully branded, minimum order quantities apply (usually 100+)</li>
+  <li><strong>Organza bags</strong> — affordable for gifts and market stalls</li>
+  <li><strong>Tissue paper &amp; stickers</strong> — a low-cost way to brand postal orders</li>
+</ul>
+
+<h2>Packaging <em>Compliance</em></h2>
+<p>Remember that your outer packaging must include your CLP label information. If using a box sleeve, ensure hazard symbols and statements are visible and legible at a minimum size of 1cm² per symbol.</p>
+
+<h2>Recommended on <em>Amazon</em></h2>
+<a href="https://www.amazon.co.uk/s?k=clamshell+mould+wax+melts&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-rec">
+  <div class="amazon-rec-info"><strong>Clamshell Mould Trays – Pack of 20</strong><span>The industry-standard wax melt presentation format</span></div>
+  <span class="amazon-rec-cta">Amazon →</span>
+</a>
+<a href="https://www.amazon.co.uk/s?k=heart+wax+melt+silicone+mould&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-rec">
+  <div class="amazon-rec-info"><strong>Heart Shape Silicone Mould</strong><span>Create eye-catching shaped melts for gifts and seasonal ranges</span></div>
+  <span class="amazon-rec-cta">Amazon →</span>
+</a>
+<a href="https://www.amazon.co.uk/s?k=kraft+wax+melt+boxes+packaging&tag=cazza09-21" target="_blank" rel="noopener sponsored" class="amazon-rec">
+  <div class="amazon-rec-info"><strong>Kraft Wax Melt Boxes – Pack of 50</strong><span>Eco-friendly outer packaging to elevate your brand</span></div>
+  <span class="amazon-rec-cta">Amazon →</span>
+</a>
+
+  <div class="guide-nav">
+    <a href="guide-safety.html"><div class="guide-nav-label">← Previous Guide</div><div class="guide-nav-title">Safety Standards</div></a>
+    <a href="guide-wholesale.html"><div class="guide-nav-label">Next Guide →</div><div class="guide-nav-title">Buying Wholesale vs Retail</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Edit</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Edit · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+</body>
+</html>
