@@ -299,6 +299,7 @@
     <li class="nav-sub-wrap">
       <button type="button" class="nav-sub-toggle active" aria-expanded="false" aria-controls="tools-menu">Tools</button>
       <div class="nav-sub" id="tools-menu"><ul>
+        <li><a href="wax-melts-per-kg-calculator.html">Melts Per Kg Calculator</a></li>
         <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
         <li><a href="wax-melt-pricing-calculator.html" aria-current="page">Pricing Calculator</a></li>
       </ul></div>
@@ -373,7 +374,8 @@
       </div>
       <div class="field span-2">
         <label for="pc-units">Melts or pots per batch</label>
-        <input type="number" id="pc-units" inputmode="numeric" min="1" step="1" value="6" aria-describedby="pc-units-error">
+        <input type="number" id="pc-units" inputmode="numeric" min="1" step="1" value="6" aria-describedby="pc-units-error pc-units-hint">
+        <p class="field-hint" id="pc-units-hint">Not sure? Use the <a href="wax-melts-per-kg-calculator.html">melts per kg calculator</a>.</p>
         <p class="field-error" id="pc-units-error"></p>
       </div>
     </div>
@@ -866,6 +868,18 @@
     $('pc-reset').addEventListener('click', reset);
 
     restore();
+
+    // Figures sent from the melts per kg calculator override the saved ones once.
+    var params = new URLSearchParams(location.search);
+    var incoming = { wax: 'pc-wax-used', load: 'pc-load', units: 'pc-units' };
+    Object.keys(incoming).forEach(function (key) {
+      var val = params.get(key);
+      if (val !== null && val !== '' && isFinite(Number(val))) $(incoming[key]).value = val;
+    });
+    if (params.has('wax') || params.has('units')) {
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+    }
+
     update();
   })();
 </script>

@@ -8,13 +8,13 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="any">
-<title>Wax Melt Fragrance Load Calculator — The Wax Biz</title>
-<meta name="description" content="Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.">
-<link rel="canonical" href="https://www.thewaxbiz.co.uk/fragrance-load-calculator.html">
+<title>How Many Wax Melts From 1kg? Calculator — The Wax Biz</title>
+<meta name="description" content="Work out how many wax melts, clamshells or snap bars you get from 1kg of wax, or how much wax to buy for an order. Includes fragrance oil and wastage.">
+<link rel="canonical" href="https://www.thewaxbiz.co.uk/wax-melts-per-kg-calculator.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Wax Melt Fragrance Load Calculator — The Wax Biz">
-<meta property="og:description" content="Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.">
-<meta property="og:url" content="https://www.thewaxbiz.co.uk/fragrance-load-calculator.html">
+<meta property="og:title" content="How Many Wax Melts From 1kg? Calculator — The Wax Biz">
+<meta property="og:description" content="Work out how many wax melts, clamshells or snap bars you get from 1kg of wax, or how much wax to buy for an order. Includes fragrance oil and wastage.">
+<meta property="og:url" content="https://www.thewaxbiz.co.uk/wax-melts-per-kg-calculator.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:site_name" content="The Wax Biz">
 <meta property="og:locale" content="en_GB">
@@ -167,14 +167,29 @@
     nav .nav-links li:last-child a{border-bottom:none}
   }
 </style>
+<style>
+  .mode-switch{display:flex;border:1px solid var(--border-strong);margin-bottom:1.6rem}
+  .mode-switch input{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0,0,0,0);pointer-events:none}
+  .mode-switch label{flex:1;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:0.5rem 0.8rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream-dim);cursor:pointer;line-height:1.3}
+  .mode-switch input:checked+label{background:var(--gold);color:#fff}
+  .mode-switch input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+  .mode-switch{position:relative;padding:0;min-width:0}
+  .suffix-row{display:flex;gap:0.6rem;align-items:center}
+  .suffix-row input{flex:1;min-width:0}
+  .suffix-row span{color:var(--cream-dim)}
+  .send-link{display:inline-block;margin-top:1.2rem;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-light);border:1px solid var(--border-strong);padding:0.75rem 1.2rem;text-decoration:none;min-height:44px}
+  .send-link:hover{background:var(--card)}
+  .send-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  [data-mode][hidden]{display:none}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "@id": "https://www.thewaxbiz.co.uk/fragrance-load-calculator.html#app",
-  "name": "Wax Melt Fragrance Load Calculator",
-  "description": "Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.",
-  "url": "https://www.thewaxbiz.co.uk/fragrance-load-calculator.html",
+  "@id": "https://www.thewaxbiz.co.uk/wax-melts-per-kg-calculator.html#app",
+  "name": "Wax Melts Per Kg Calculator",
+  "description": "Work out how many wax melts, clamshells or snap bars you get from 1kg of wax, or how much wax to buy for an order. Includes fragrance oil and wastage.",
+  "url": "https://www.thewaxbiz.co.uk/wax-melts-per-kg-calculator.html",
   "image": "https://www.thewaxbiz.co.uk/og-image.png",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
@@ -200,34 +215,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What fragrance load should I use for wax melts?",
+      "name": "How many wax melts do you get from 1kg of wax?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most UK makers start at 8% and test from there. Soy and coconut blends usually sit between 6% and 10%, paraffin up to 12% and palm up to 8%. Never go above the maximum on your fragrance oil's IFRA certificate, even if your wax will hold more."
+        "text": "About 13 clamshells at 75 g each, once you add 8% fragrance oil and allow 5% for spills and top-ups. Smaller single shapes at around 15 g give about 68 melts. The exact number depends on your moulds, so weigh one filled mould and use that figure."
       }
     },
     {
       "@type": "Question",
-      "name": "Is fragrance load a percentage of the wax or the total batch?",
+      "name": "Does fragrance oil add to the number of melts?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This calculator uses the most common UK method: a percentage of the wax weight. 500 g of wax at 8% needs 40 g of fragrance oil, giving a 540 g batch. Some suppliers quote load as a percentage of the total batch instead, which works out slightly lower, so check which method your supplier means."
+        "text": "Yes. Fragrance oil is added on top of the wax, so 1kg of wax at 8% load gives 1,080 g of melted wax to pour. That is roughly one extra clamshell per kilo."
       }
     },
     {
       "@type": "Question",
-      "name": "Why are my wax melts sweating oil?",
+      "name": "How do I find the fill weight of my mould?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Beads of oil on the surface usually mean the load is higher than the wax can hold, or the oil was added at the wrong temperature and did not bind. Drop the load by 1 to 2%, add the oil at the temperature your wax supplier recommends and stir for a full two minutes."
+        "text": "Put the empty clamshell or mould on digital scales, zero them, fill it to your usual level with water or wax and read the weight. Water is slightly heavier than wax, so if you use water, take off about 10% to get the wax weight."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I convert grams of fragrance oil to ml?",
+      "name": "How much wastage should I allow?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Divide the grams by the oil's density. This calculator assumes 0.95 g/ml, which is typical, so 40 g is about 42 ml. Densities vary between oils, so weighing on digital scales is always more accurate than measuring by volume. Your oil's Safety Data Sheet lists its exact density."
+        "text": "Around 5% covers wax left in the jug, spills and topping up sinkholes. Use more for your first few batches or for moulds with lots of small cavities, and less once your process is consistent."
       }
     }
   ]
@@ -238,18 +253,8 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.thewaxbiz.co.uk/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Fragrance Load Calculator",
-      "item": "https://www.thewaxbiz.co.uk/fragrance-load-calculator.html"
-    }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thewaxbiz.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Melts Per Kg Calculator", "item": "https://www.thewaxbiz.co.uk/wax-melts-per-kg-calculator.html" }
   ]
 }
 </script>
@@ -264,8 +269,8 @@
     <li class="nav-sub-wrap">
       <button type="button" class="nav-sub-toggle active" aria-expanded="false" aria-controls="tools-menu">Tools</button>
       <div class="nav-sub" id="tools-menu"><ul>
-        <li><a href="wax-melts-per-kg-calculator.html">Melts Per Kg Calculator</a></li>
-        <li><a href="fragrance-load-calculator.html" aria-current="page">Fragrance Load Calculator</a></li>
+        <li><a href="wax-melts-per-kg-calculator.html" aria-current="page">Melts Per Kg Calculator</a></li>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
         <li><a href="wax-melt-pricing-calculator.html">Pricing Calculator</a></li>
       </ul></div>
     </li>
@@ -274,8 +279,8 @@
 </nav>
 <div class="page-hero">
   <span class="section-label">✦ Free Tool ✦</span>
-  <h1 class="page-title">Wax Melt <em>Fragrance Load Calculator</em></h1>
-  <p class="page-sub">Work out exactly how much fragrance oil to add to your wax, in grams and ml.</p>
+  <h1 class="page-title">How Many Wax Melts <em>From 1kg?</em></h1>
+  <p class="page-sub">Work out how many melts a batch makes, or how much wax to buy for an order.</p>
   <div class="divider"></div>
 </div>
 <main class="article-wrap">
@@ -284,125 +289,121 @@
     <span>/</span>
     <span>Tools</span>
     <span>/</span>
-    <span>Fragrance Load Calculator</span>
+    <span>Melts Per Kg Calculator</span>
   </div>
 
-<p class="lead">Enter your wax weight and fragrance load, and this calculator tells you how much fragrance oil to weigh out, in grams and ml. Add a pot count to get the amount per melt or candle. Results update as you type.</p>
+<p class="lead">Enter your wax, fragrance load and mould size to see how many melts you'll get, including the fragrance oil and a little for wastage. Switch modes to work backwards from an order and see how much wax to buy.</p>
 
-<form class="calc" id="fl-calc" novalidate aria-labelledby="calc-heading" onsubmit="return false">
-  <h2 id="calc-heading" class="sr-only">Calculator</h2>
+<form class="calc" id="mk-calc" novalidate aria-labelledby="mk-heading" onsubmit="return false">
+  <h2 id="mk-heading" class="sr-only">Melts per kg calculator</h2>
+
+  <fieldset class="mode-switch">
+    <legend class="sr-only">What do you want to work out?</legend>
+    <input type="radio" name="mk-mode" id="mk-mode-yield" value="yield" checked><label for="mk-mode-yield">How many melts?</label>
+    <input type="radio" name="mk-mode" id="mk-mode-order" value="order"><label for="mk-mode-order">How much wax?</label>
+  </fieldset>
+
   <div class="calc-grid">
-
-    <div class="field span-2">
-      <label for="fl-weight">Wax weight</label>
+    <div class="field span-2" data-mode="yield">
+      <label for="mk-wax">Wax weight</label>
       <div class="input-row">
-        <input type="number" id="fl-weight" inputmode="decimal" min="0" step="any" value="500" aria-describedby="fl-weight-error" required>
+        <input type="number" id="mk-wax" inputmode="decimal" min="0" step="any" value="1000" aria-describedby="mk-wax-error">
         <fieldset class="unit-toggle">
-          <legend class="sr-only">Weight unit</legend>
-          <input type="radio" name="fl-unit" id="fl-unit-g" value="g" checked><label for="fl-unit-g">g</label>
-          <input type="radio" name="fl-unit" id="fl-unit-oz" value="oz"><label for="fl-unit-oz">oz</label>
+          <legend class="sr-only">Wax weight unit</legend>
+          <input type="radio" name="mk-unit" id="mk-unit-g" value="g" checked><label for="mk-unit-g">g</label>
+          <input type="radio" name="mk-unit" id="mk-unit-kg" value="kg"><label for="mk-unit-kg">kg</label>
         </fieldset>
       </div>
-      <p class="field-error" id="fl-weight-error"></p>
+      <p class="field-error" id="mk-wax-error"></p>
     </div>
 
-    <div class="field span-2">
-      <label for="fl-load-num" id="fl-load-label">Fragrance load (%)</label>
-      <div class="load-row">
-        <input type="range" id="fl-load-range" min="1" max="12" step="0.5" value="8" aria-labelledby="fl-load-label" aria-valuetext="8%">
-        <div class="load-num">
-          <input type="number" id="fl-load-num" inputmode="decimal" min="1" max="12" step="0.1" value="8" aria-describedby="fl-load-num-error fl-load-hint" required>
-          <span aria-hidden="true">%</span>
-        </div>
-      </div>
-      <p class="field-hint" id="fl-load-hint">Between 1% and 12%. Calculated as a percentage of wax weight.</p>
-      <p class="field-error" id="fl-load-num-error"></p>
+    <div class="field span-2" data-mode="order" hidden>
+      <label for="mk-target">Number of melts or pots you need</label>
+      <input type="number" id="mk-target" inputmode="numeric" min="1" step="1" value="50" aria-describedby="mk-target-error">
+      <p class="field-error" id="mk-target-error"></p>
     </div>
 
     <div class="field">
-      <label for="fl-wax">Wax type</label>
-      <select id="fl-wax">
-        <option value="soy">Soy (up to 10%)</option>
-        <option value="coconut">Coconut blend (up to 10%)</option>
-        <option value="paraffin">Paraffin (up to 12%)</option>
-        <option value="palm">Palm (up to 8%)</option>
+      <label for="mk-mould">Mould or pack type</label>
+      <select id="mk-mould">
+        <option value="75" selected>Clamshell, 6 cavity (approx. 75 g)</option>
+        <option value="80">Snap bar (approx. 80 g)</option>
+        <option value="15">Single shape melt (approx. 15 g)</option>
+        <option value="custom">Custom weight</option>
       </select>
     </div>
 
     <div class="field">
-      <label for="fl-pots">Number of melts or pots <span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-dim)">(optional)</span></label>
-      <input type="number" id="fl-pots" inputmode="numeric" min="1" step="1" placeholder="e.g. 20" aria-describedby="fl-pots-error">
-      <p class="field-error" id="fl-pots-error"></p>
+      <label for="mk-fill">Fill weight per unit (g)</label>
+      <input type="number" id="mk-fill" inputmode="decimal" min="0" step="any" value="75" aria-describedby="mk-fill-error mk-fill-hint">
+      <p class="field-hint" id="mk-fill-hint">Moulds vary, so weigh one of yours filled for the best result.</p>
+      <p class="field-error" id="mk-fill-error"></p>
     </div>
 
+    <div class="field">
+      <label for="mk-load">Fragrance load (%)</label>
+      <div class="suffix-row"><input type="number" id="mk-load" inputmode="decimal" min="0" max="12" step="0.1" value="8" aria-describedby="mk-load-error"><span aria-hidden="true">%</span></div>
+      <p class="field-error" id="mk-load-error"></p>
+    </div>
+
+    <div class="field">
+      <label for="mk-waste">Wastage allowance (%)</label>
+      <div class="suffix-row"><input type="number" id="mk-waste" inputmode="decimal" min="0" max="50" step="1" value="5" aria-describedby="mk-waste-error mk-waste-hint"><span aria-hidden="true">%</span></div>
+      <p class="field-hint" id="mk-waste-hint">Wax left in the jug, spills and top-ups.</p>
+      <p class="field-error" id="mk-waste-error"></p>
+    </div>
   </div>
 
-  <div class="results" id="fl-results">
-    <span class="results-label">Fragrance oil needed</span>
-    <p class="results-main"><span id="fl-out-oil">40.0</span><small id="fl-out-oil-unit"> g</small></p>
-    <p class="results-sub" id="fl-out-oil-ml">about 42.1 ml</p>
+  <div class="results" id="mk-results">
+    <span class="results-label" id="mk-main-label">You can make</span>
+    <p class="results-main"><span id="mk-out-main">13</span><small id="mk-out-main-unit"> melts</small></p>
+    <p class="results-sub" id="mk-out-sub">—</p>
     <dl class="results-grid">
-      <div>
-        <dt>Total batch weight</dt>
-        <dd id="fl-out-total">540.0 g<small>wax + fragrance oil</small></dd>
-      </div>
-      <div>
-        <dt>Fragrance per pot</dt>
-        <dd id="fl-out-perpot">—<small>enter a pot count</small></dd>
-      </div>
-      <div>
-        <dt>Wax used</dt>
-        <dd id="fl-out-wax">500.0 g<small>at 8% load</small></dd>
-      </div>
+      <div><dt id="mk-dt-1">Total to pour</dt><dd id="mk-out-1">—</dd></div>
+      <div><dt id="mk-dt-2">Fragrance oil</dt><dd id="mk-out-2">—</dd></div>
+      <div><dt id="mk-dt-3">Left over</dt><dd id="mk-out-3">—</dd></div>
     </dl>
-    <p class="warning" id="fl-warning" role="alert" hidden></p>
-    <p class="sr-only" id="fl-summary" aria-live="polite"></p>
+    <a class="send-link" id="mk-send" href="wax-melt-pricing-calculator.html">Price this batch →</a>
+    <p class="sr-only" id="mk-summary" aria-live="polite"></p>
   </div>
-  <noscript><p class="field-hint">This calculator needs JavaScript. To work it out by hand: wax weight × load ÷ 100 = fragrance oil in grams.</p></noscript>
+  <noscript><p class="field-hint">This calculator needs JavaScript. By hand: wax × (1 + load ÷ 100) × (1 − wastage ÷ 100) ÷ fill weight = number of melts.</p></noscript>
 </form>
 
-<h2>How fragrance load <em>works</em></h2>
-<p>Fragrance load is the weight of fragrance oil as a percentage of the weight of your wax. At 8%, every 100 g of wax takes 8 g of oil, so 500 g of wax needs 40 g. Always weigh fragrance oil on digital scales rather than measuring by volume, as oils vary in density.</p>
-<p>Each wax can only hold so much oil. Paraffin has a tighter, more uniform structure that binds fragrance well, so it tolerates loads up to around 12% and gives a strong hot throw. Soy is softer and more crystalline, so it usually tops out at about 10% and can take longer to cure before the scent peaks. Coconut blends sit close to soy, and palm holds less again.</p>
-<p>More oil does not mean more scent. Past the wax's limit, oil the wax cannot hold seeps out as beads on the surface, known as sweating. You may also see a soft or greasy set, poor release from clamshells, frosting and a weaker throw. Overloaded wax is a safety risk too: loose oil can raise the risk of fire on a warmer and may take you over the safe limit on your fragrance's IFRA certificate, which also changes the CLP label you need. Your oil's maximum usage rate always takes priority over the wax's.</p>
-<p>For more on oils and scent throw, read our <a href="guide-fragrance-load.html">fragrance oil load guide</a>.</p>
+<h2>How the <em>count works</em></h2>
+<p>Fragrance oil is added on top of the wax, so it adds to what you pour. 1kg of wax at 8% load gives 1,080 g of melted wax. Some of that never reaches a mould: it stays in the jug, drips off the spout or goes into topping up sinkholes, so the calculator takes off a wastage allowance, 5% by default. What's left is divided by the weight of one filled mould, and anything that doesn't fill a whole mould is shown as left over.</p>
+<p>The mould presets are typical figures, but clamshells and snap bars vary between suppliers, so weigh one of yours. Put the empty mould on digital scales, zero them, fill it to your usual level and read the weight. If you fill it with water, take off about 10%, because wax is lighter than water.</p>
 
-<h2>Typical loads <em>by wax</em></h2>
+<h2>Typical yields <em>from 1kg</em></h2>
+<p>1kg of wax at 8% fragrance load with 5% wastage:</p>
 <div class="table-wrap">
 <table class="comparison-table">
-  <caption class="sr-only">Typical and maximum fragrance loads by wax type</caption>
-  <thead>
-    <tr><th scope="col">Wax</th><th scope="col">Typical load</th><th scope="col">Usual maximum</th><th scope="col">Notes</th></tr>
-  </thead>
+  <caption class="sr-only">Typical number of wax melts from 1kg of wax</caption>
+  <thead><tr><th scope="col">Mould</th><th scope="col">Fill weight</th><th scope="col">Units from 1kg</th></tr></thead>
   <tbody>
-    <tr><td>Soy</td><td>6–10%</td><td>10%</td><td>Cure for 1–2 weeks for best throw</td></tr>
-    <tr><td>Coconut blend</td><td>6–10%</td><td>10%</td><td>Creamy finish, good for clamshells</td></tr>
-    <tr><td>Paraffin</td><td>8–12%</td><td>12%</td><td>Strongest hot throw, fast cure</td></tr>
-    <tr><td>Palm</td><td>5–8%</td><td>8%</td><td>Prone to sweating when overloaded</td></tr>
+    <tr><td>Clamshell, 6 cavity</td><td>75 g</td><td>13</td></tr>
+    <tr><td>Snap bar</td><td>80 g</td><td>12</td></tr>
+    <tr><td>Single shape melt</td><td>15 g</td><td>68</td></tr>
   </tbody>
 </table>
-</div>
-<div class="callout">
-  <p><strong>Check your supplier's figures:</strong> blends vary, so the maximum on your wax's spec sheet and on your fragrance oil's IFRA certificate both override this table. Use whichever is lower.</p>
 </div>
 
 <h2>Frequently asked <em>questions</em></h2>
 <dl class="faq">
-  <dt>What fragrance load should I use for wax melts?</dt>
-  <dd><p>Most UK makers start at 8% and test from there. Soy and coconut blends usually sit between 6% and 10%, paraffin up to 12% and palm up to 8%. Never go above the maximum on your fragrance oil's IFRA certificate, even if your wax will hold more.</p></dd>
-  <dt>Is fragrance load a percentage of the wax or the total batch?</dt>
-  <dd><p>This calculator uses the most common UK method: a percentage of the wax weight. 500 g of wax at 8% needs 40 g of fragrance oil, giving a 540 g batch. Some suppliers quote load as a percentage of the total batch instead, which works out slightly lower, so check which method your supplier means.</p></dd>
-  <dt>Why are my wax melts sweating oil?</dt>
-  <dd><p>Beads of oil on the surface usually mean the load is higher than the wax can hold, or the oil was added at the wrong temperature and did not bind. Drop the load by 1 to 2%, add the oil at the temperature your wax supplier recommends and stir for a full two minutes.</p></dd>
-  <dt>How do I convert grams of fragrance oil to ml?</dt>
-  <dd><p>Divide the grams by the oil's density. This calculator assumes 0.95 g/ml, which is typical, so 40 g is about 42 ml. Densities vary between oils, so weighing on digital scales is always more accurate than measuring by volume. Your oil's Safety Data Sheet lists its exact density.</p></dd>
+  <dt>How many wax melts do you get from 1kg of wax?</dt>
+  <dd><p>About 13 clamshells at 75 g each, once you add 8% fragrance oil and allow 5% for spills and top-ups. Smaller single shapes at around 15 g give about 68 melts. The exact number depends on your moulds, so weigh one filled mould and use that figure.</p></dd>
+  <dt>Does fragrance oil add to the number of melts?</dt>
+  <dd><p>Yes. Fragrance oil is added on top of the wax, so 1kg of wax at 8% load gives 1,080 g of melted wax to pour. That is roughly one extra clamshell per kilo.</p></dd>
+  <dt>How do I find the fill weight of my mould?</dt>
+  <dd><p>Put the empty clamshell or mould on digital scales, zero them, fill it to your usual level with water or wax and read the weight. Water is slightly heavier than wax, so if you use water, take off about 10% to get the wax weight.</p></dd>
+  <dt>How much wastage should I allow?</dt>
+  <dd><p>Around 5% covers wax left in the jug, spills and topping up sinkholes. Use more for your first few batches or for moulds with lots of small cavities, and less once your process is consistent.</p></dd>
 </dl>
 
 <h2>Next <em>steps</em></h2>
 <div class="guide-nav">
-  <a href="guide-packaging.html"><div class="guide-nav-label">Guide →</div><div class="guide-nav-title">Packaging &amp; Clamshells</div><p class="guide-nav-text">Choose clamshells, snap bars and labels for your finished melts.</p></a>
-  <a href="wax-melt-pricing-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Wax Melt Pricing Calculator</div><p class="guide-nav-text">Turn your batch costs into a profitable selling price.</p></a>
-  <a href="amazon-picks.html"><div class="guide-nav-label">Kit →</div><div class="guide-nav-title">Amazon Picks</div><p class="guide-nav-text">Scales, jugs, wax and oils we recommend for accurate batches.</p></a>
+  <a href="wax-melt-pricing-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Wax Melt Pricing Calculator</div><p class="guide-nav-text">Turn your batch into a cost per melt and a selling price.</p></a>
+  <a href="fragrance-load-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Fragrance Load Calculator</div><p class="guide-nav-text">Get the exact grams of fragrance oil for your batch.</p></a>
+  <a href="guide-packaging.html"><div class="guide-nav-label">Guide →</div><div class="guide-nav-title">Packaging &amp; Clamshells</div><p class="guide-nav-text">Choose the clamshells and snap bars you'll be filling.</p></a>
 </div>
 </main>
 
@@ -421,192 +422,152 @@
 </footer>
 
 <script>
-  // ── Fragrance load maths (pure, no DOM) ──
-  var GRAMS_PER_OZ = 28.349523125;
-  var OIL_DENSITY = 0.95; // g/ml
-  var WAX_TYPES = {
-    soy:      { name: 'soy wax', max: 10 },
-    coconut:  { name: 'coconut blend', max: 10 },
-    paraffin: { name: 'paraffin', max: 12 },
-    palm:     { name: 'palm wax', max: 8 }
-  };
+  // ── Melts per kg maths (pure, no DOM) ──
+  var OIL_DENSITY = 0.95; // g/ml, matches the other calculators
 
-  function calculateFragrance(waxGrams, loadPct, pots) {
-    var oilG = waxGrams * loadPct / 100;
-    var result = {
-      oilG: oilG,
-      oilMl: oilG / OIL_DENSITY,
-      totalG: waxGrams + oilG,
-      perPotOilG: null,
-      perPotTotalG: null
-    };
-    if (pots) {
-      result.perPotOilG = oilG / pots;
-      result.perPotTotalG = (waxGrams + oilG) / pots;
-    }
-    return result;
+  // How many units a given amount of wax makes.
+  function meltsFromWax(waxG, loadPct, wastePct, fillG) {
+    var oilG = waxG * loadPct / 100;
+    var poured = waxG + oilG;
+    var usable = poured * (1 - wastePct / 100);
+    // Round before flooring so 975.0000001 / 75 does not lose a unit to float error.
+    var units = Math.floor(Math.round(usable / fillG * 1e6) / 1e6);
+    return { units: units, oilG: oilG, oilMl: oilG / OIL_DENSITY, poured: poured, usable: usable, leftover: usable - units * fillG };
+  }
+
+  // How much wax (and oil) is needed to fill a number of units.
+  function waxForMelts(units, loadPct, wastePct, fillG) {
+    var poured = units * fillG / (1 - wastePct / 100);
+    var waxG = poured / (1 + loadPct / 100);
+    var oilG = waxG * loadPct / 100;
+    return { waxG: waxG, oilG: oilG, oilMl: oilG / OIL_DENSITY, poured: poured };
   }
 
   // ── Calculator UI ──
   (function () {
     if (typeof document === 'undefined') return;
-    var form = document.getElementById('fl-calc');
+    var form = document.getElementById('mk-calc');
     if (!form) return;
+    var $ = function (id) { return document.getElementById(id); };
+    var GRAMS = function (n) { return n.toLocaleString('en-GB', { maximumFractionDigits: 0 }) + ' g'; };
+    var KG = function (g) { return g >= 1000 ? (g / 1000).toLocaleString('en-GB', { maximumFractionDigits: 2 }) + ' kg' : GRAMS(g); };
 
-    var weightEl = document.getElementById('fl-weight');
-    var rangeEl = document.getElementById('fl-load-range');
-    var loadEl = document.getElementById('fl-load-num');
-    var waxEl = document.getElementById('fl-wax');
-    var potsEl = document.getElementById('fl-pots');
-    var unitEls = form.querySelectorAll('input[name="fl-unit"]');
-    var out = {
-      oil: document.getElementById('fl-out-oil'),
-      oilUnit: document.getElementById('fl-out-oil-unit'),
-      oilMl: document.getElementById('fl-out-oil-ml'),
-      total: document.getElementById('fl-out-total'),
-      perPot: document.getElementById('fl-out-perpot'),
-      wax: document.getElementById('fl-out-wax'),
-      warning: document.getElementById('fl-warning'),
-      summary: document.getElementById('fl-summary')
+    var RULES = {
+      'mk-wax':    { name: 'your wax weight', gt0: true, mode: 'yield' },
+      'mk-target': { name: 'how many you need', gt0: true, integer: true, mode: 'order' },
+      'mk-fill':   { name: 'the fill weight', gt0: true },
+      'mk-load':   { name: 'the fragrance load', max: 12 },
+      'mk-waste':  { name: 'the wastage allowance', max: 50 }
     };
-    var unit = 'g';
 
-    function fmt(n) {
-      return n.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    function mode() { return form.querySelector('input[name="mk-mode"]:checked').value; }
+    function unit() { return form.querySelector('input[name="mk-unit"]:checked').value; }
+
+    function setError(el, msg) {
+      $(el.id + '-error').textContent = msg || '';
+      if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
     }
 
-    function setError(input, msg) {
-      var el = document.getElementById(input.id + '-error');
-      el.textContent = msg || '';
-      if (msg) input.setAttribute('aria-invalid', 'true');
-      else input.removeAttribute('aria-invalid');
-    }
-
-    function readNumber(input) {
-      if (input.validity && input.validity.badInput) return { bad: true };
-      var raw = input.value.trim();
-      if (raw === '') return { empty: true };
+    function check(id) {
+      var el = $(id), r = RULES[id], raw = el.value.trim();
+      if (el.validity && el.validity.badInput) return setError(el, 'Enter ' + r.name + ' as a number.');
+      if (raw === '') return setError(el, 'Enter ' + r.name + '.');
       var n = Number(raw);
-      return isFinite(n) ? { value: n } : { bad: true };
+      if (!isFinite(n)) return setError(el, 'Enter ' + r.name + ' as a number.');
+      if (n < 0) return setError(el, 'This can’t be negative.');
+      if (r.gt0 && n === 0) return setError(el, 'This must be more than zero.');
+      if (r.max !== undefined && n > r.max) return setError(el, 'Enter a value no higher than ' + r.max + '.');
+      if (r.integer && Math.floor(n) !== n) return setError(el, 'Use a whole number.');
+      setError(el, '');
+      return n;
     }
 
-    function validateWeight() {
-      var r = readNumber(weightEl);
-      if (r.empty) return setError(weightEl, 'Enter your wax weight.');
-      if (r.bad) return setError(weightEl, 'Enter the weight as a number.');
-      if (r.value <= 0) return setError(weightEl, 'Wax weight must be more than zero.');
-      setError(weightEl, '');
-      return unit === 'oz' ? r.value * GRAMS_PER_OZ : r.value;
-    }
-
-    function validateLoad() {
-      var r = readNumber(loadEl);
-      if (r.empty) return setError(loadEl, 'Enter a fragrance load.');
-      if (r.bad) return setError(loadEl, 'Enter the load as a number.');
-      if (r.value <= 0) return setError(loadEl, 'Fragrance load must be more than zero.');
-      if (r.value < 1 || r.value > 12) return setError(loadEl, 'Enter a load between 1% and 12%.');
-      setError(loadEl, '');
-      return r.value;
-    }
-
-    // Returns 0 when left blank (optional), undefined when invalid.
-    function validatePots() {
-      var r = readNumber(potsEl);
-      if (r.empty) { setError(potsEl, ''); return 0; }
-      if (r.bad) return setError(potsEl, 'Enter the number of pots as a number.');
-      if (r.value <= 0) return setError(potsEl, 'Number of pots must be at least 1.');
-      if (Math.floor(r.value) !== r.value) return setError(potsEl, 'Use a whole number of pots.');
-      setError(potsEl, '');
-      return r.value;
-    }
+    var out = {
+      label: $('mk-main-label'), main: $('mk-out-main'), unit: $('mk-out-main-unit'), sub: $('mk-out-sub'),
+      dt1: $('mk-dt-1'), dt2: $('mk-dt-2'), dt3: $('mk-dt-3'), o1: $('mk-out-1'), o2: $('mk-out-2'), o3: $('mk-out-3'),
+      send: $('mk-send'), summary: $('mk-summary')
+    };
 
     function clearResults() {
-      out.oil.textContent = '—';
-      out.oilUnit.hidden = true;
-      out.oilMl.textContent = 'Fix the highlighted fields to see your result.';
-      out.total.innerHTML = '—<small>wax + fragrance oil</small>';
-      out.perPot.innerHTML = '—<small>enter a pot count</small>';
-      out.wax.innerHTML = '—<small>&nbsp;</small>';
-      out.warning.hidden = true;
+      out.main.textContent = '—';
+      out.unit.hidden = true;
+      out.sub.textContent = 'Fix the highlighted fields to see your result.';
+      [out.o1, out.o2, out.o3].forEach(function (el) { el.textContent = '—'; });
+      out.send.hidden = true;
       out.summary.textContent = '';
     }
 
-    function update() {
-      var waxG = validateWeight();
-      var load = validateLoad();
-      var pots = validatePots();
-      if (waxG === undefined || load === undefined || pots === undefined) return clearResults();
-
-      var r = calculateFragrance(waxG, load, pots);
-      var wax = WAX_TYPES[waxEl.value];
-      var ozNote = unit === 'oz' ? ' (' + (r.oilG / GRAMS_PER_OZ).toFixed(2) + ' oz)' : '';
-
-      out.oil.textContent = fmt(r.oilG);
-      out.oilUnit.hidden = false;
-      out.oilMl.textContent = 'about ' + fmt(r.oilMl) + ' ml' + ozNote;
-      out.total.innerHTML = fmt(r.totalG) + ' g<small>wax + fragrance oil</small>';
-      out.wax.innerHTML = fmt(waxG) + ' g<small>at ' + load + '% load</small>';
-      out.perPot.innerHTML = pots
-        ? fmt(r.perPotOilG) + ' g<small>' + fmt(r.perPotTotalG) + ' g filled weight per pot</small>'
-        : '—<small>enter a pot count</small>';
-
-      if (load > wax.max) {
-        out.warning.textContent = load + '% is above the usual maximum of ' + wax.max + '% for ' + wax.name +
-          '. Expect sweating or a soft set, and check your fragrance oil’s IFRA certificate before using this load.';
-        out.warning.hidden = false;
-      } else {
-        out.warning.hidden = true;
-      }
-
-      out.summary.textContent = 'Add ' + fmt(r.oilG) + ' grams of fragrance oil, about ' + fmt(r.oilMl) +
-        ' ml. Total batch ' + fmt(r.totalG) + ' grams' +
-        (pots ? ', ' + fmt(r.perPotOilG) + ' grams of oil per pot.' : '.');
+    function sendLink(waxG, load, units) {
+      out.send.href = 'wax-melt-pricing-calculator.html?wax=' + Math.round(waxG * 10) / 10 + '&load=' + load + '&units=' + units;
+      out.send.hidden = units < 1;
     }
 
-    // Slider and number field stay in sync; the number field holds the exact value.
-    rangeEl.addEventListener('input', function () {
-      loadEl.value = rangeEl.value;
-      rangeEl.setAttribute('aria-valuetext', rangeEl.value + '%');
+    function update() {
+      var m = mode();
+      form.querySelectorAll('[data-mode]').forEach(function (el) { el.hidden = el.dataset.mode !== m; });
+      var v = {}, ok = true;
+      Object.keys(RULES).forEach(function (id) {
+        if (RULES[id].mode && RULES[id].mode !== m) { setError($(id), ''); return; }
+        v[id] = check(id);
+        if (v[id] === undefined) ok = false;
+      });
+      if (!ok) return clearResults();
+      var fill = v['mk-fill'], load = v['mk-load'], waste = v['mk-waste'];
+      out.unit.hidden = false;
+
+      if (m === 'yield') {
+        var waxG = unit() === 'kg' ? v['mk-wax'] * 1000 : v['mk-wax'];
+        var r = meltsFromWax(waxG, load, waste, fill);
+        out.label.textContent = 'You can make';
+        out.main.textContent = r.units.toLocaleString('en-GB');
+        out.unit.textContent = r.units === 1 ? ' melt' : ' melts';
+        out.sub.textContent = 'at ' + fill.toLocaleString('en-GB') + ' g each from ' + KG(waxG) + ' of wax';
+        out.dt1.textContent = 'Total to pour'; out.o1.textContent = GRAMS(r.poured);
+        out.dt2.textContent = 'Fragrance oil'; out.o2.innerHTML = GRAMS(r.oilG) + '<small>about ' + Math.round(r.oilMl) + ' ml</small>';
+        out.dt3.textContent = 'Left over'; out.o3.innerHTML = GRAMS(r.leftover) + '<small>after wastage</small>';
+        if (r.units < 1) out.sub.textContent = 'Not enough wax to fill one ' + fill + ' g mould.';
+        sendLink(waxG, load, r.units);
+        out.summary.textContent = r.units + ' melts from ' + KG(waxG) + ' of wax, using ' + GRAMS(r.oilG) + ' of fragrance oil.';
+      } else {
+        var n = v['mk-target'];
+        var w = waxForMelts(n, load, waste, fill);
+        out.label.textContent = 'Wax to use';
+        out.main.textContent = KG(w.waxG).replace(/ (k?g)$/, '');
+        out.unit.textContent = w.waxG >= 1000 ? ' kg' : ' g';
+        out.sub.textContent = 'for ' + n.toLocaleString('en-GB') + (n === 1 ? ' melt' : ' melts') + ' at ' + fill.toLocaleString('en-GB') + ' g each';
+        out.dt1.textContent = 'Total to pour'; out.o1.textContent = GRAMS(w.poured);
+        out.dt2.textContent = 'Fragrance oil'; out.o2.innerHTML = GRAMS(w.oilG) + '<small>about ' + Math.round(w.oilMl) + ' ml</small>';
+        out.dt3.textContent = 'Wax to buy'; out.o3.innerHTML = KG(Math.ceil(w.waxG / 500) * 500) + '<small>rounded up to the next 500 g</small>';
+        sendLink(w.waxG, load, n);
+        out.summary.textContent = 'Use ' + KG(w.waxG) + ' of wax and ' + GRAMS(w.oilG) + ' of fragrance oil for ' + n + ' melts.';
+      }
+    }
+
+    // Presets fill the weight field; typing a weight switches the preset to Custom.
+    $('mk-mould').addEventListener('change', function () {
+      if (this.value !== 'custom') $('mk-fill').value = this.value;
       update();
     });
-    loadEl.addEventListener('input', function () {
-      var n = Number(loadEl.value);
-      if (loadEl.value !== '' && isFinite(n)) {
-        rangeEl.value = Math.min(12, Math.max(1, n));
-        rangeEl.setAttribute('aria-valuetext', loadEl.value + '%');
-      }
-      update();
+    $('mk-fill').addEventListener('input', function () {
+      var sel = $('mk-mould');
+      sel.value = Array.prototype.some.call(sel.options, function (o) { return o.value === $('mk-fill').value; }) ? $('mk-fill').value : 'custom';
     });
 
-    // Converting the entered weight keeps the batch the same when switching units.
-    // If the value is untouched since the last switch, restore the exact original
-    // rather than compounding rounding (500 g -> 17.64 oz -> 500 g, not 500.08 g).
-    var lastSwitch = null;
-    Array.prototype.forEach.call(unitEls, function (el) {
+    // Converting the weight keeps the batch the same when switching units.
+    form.querySelectorAll('input[name="mk-unit"]').forEach(function (el) {
       el.addEventListener('change', function () {
-        var next = el.value;
-        var r = readNumber(weightEl);
-        if (r.value !== undefined && r.value > 0 && next !== unit) {
-          var shown;
-          if (lastSwitch && lastSwitch.shown === weightEl.value && lastSwitch.to === unit) {
-            shown = lastSwitch.from;
-          } else {
-            var converted = next === 'oz' ? r.value / GRAMS_PER_OZ : r.value * GRAMS_PER_OZ;
-            shown = String(next === 'oz' ? Number(converted.toFixed(2)) : Math.round(converted * 10) / 10);
-          }
-          lastSwitch = { from: weightEl.value, to: next, shown: shown };
-          weightEl.value = shown;
+        var n = Number($('mk-wax').value);
+        if ($('mk-wax').value !== '' && isFinite(n) && n > 0) {
+          $('mk-wax').value = el.value === 'kg' ? String(Math.round(n / 1000 * 1000) / 1000) : String(Math.round(n * 1000 * 10) / 10);
         }
-        unit = next;
         update();
       });
     });
 
-    [weightEl, waxEl, potsEl].forEach(function (el) {
+    form.querySelectorAll('input, select').forEach(function (el) {
       el.addEventListener('input', update);
       el.addEventListener('change', update);
     });
-
     update();
   })();
 </script>
