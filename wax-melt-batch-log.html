@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<title>Wax Melt Batch Log &amp; Recipe Tracker — The Wax Biz</title>
+<meta name="description" content="Free batch log for wax melt makers. Record each batch's wax, fragrance, load, temperatures and cure date, then search, reuse and export your recipes.">
+<link rel="canonical" href="https://www.thewaxbiz.co.uk/wax-melt-batch-log.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wax Melt Batch Log &amp; Recipe Tracker — The Wax Biz">
+<meta property="og:description" content="Free batch log for wax melt makers. Record each batch's wax, fragrance, load, temperatures and cure date, then search, reuse and export your recipes.">
+<meta property="og:url" content="https://www.thewaxbiz.co.uk/wax-melt-batch-log.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="The Wax Biz">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Wax Biz — UK candle &amp; wax melt supplies directory">
+<meta name="twitter:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<link rel="preload" href="assets/fonts/Jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/CormorantGaramond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --bg:#faf6ef;--bg2:#f4ede0;--bg3:#efe6d6;
+    --card:#ffffff;--card-hover:#fbf6ee;
+    --gold:#b8943a;--gold-light:#9a7a2c;--gold-dim:#c2a45a;
+    --cream:#2a2218;--cream-dim:#6b5f4d;
+    --text:#3a3027;--text-dim:#756954;
+    --border:rgba(184,148,58,0.4);--border-strong:rgba(184,148,58,0.6);
+    --warn:#9a4a1c;--warn-bg:#fbeee2;--error:#a3301f;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(250,246,239,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  p a,li a{color:var(--gold-light)}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .table-wrap{overflow-x:auto;margin:2rem 0}
+  .comparison-table{width:100%;border-collapse:collapse;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .guide-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover,.guide-nav a:focus-visible{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav-text{font-size:0.8rem;color:var(--cream-dim);line-height:1.6;margin-top:0.3rem}
+
+  /* ── Calculator ── */
+  .calc{background:var(--card);border:1px solid var(--border);padding:1.5rem;margin:0 0 3rem}
+  .calc-grid{display:grid;gap:1.4rem}
+  .field label,.field legend{display:block;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);font-weight:500;margin-bottom:0.5rem}
+  .field fieldset{border:none}
+  .field-hint{font-size:0.78rem;color:var(--text-dim);margin:0.4rem 0 0;line-height:1.5}
+  .field-error{font-size:0.8rem;color:var(--error);margin:0.4rem 0 0;line-height:1.5;font-weight:400}
+  .field-error:empty{display:none}
+  .calc input[type=number],.calc select{width:100%;font:inherit;font-size:1.1rem;font-weight:400;color:var(--cream);background:var(--bg);border:1px solid var(--border-strong);border-radius:0;padding:0.7rem 0.85rem;min-height:48px}
+  .calc select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 1.2rem) 55%,calc(100% - 0.85rem) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:2.5rem}
+  .calc input:focus-visible,.calc select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .calc input[aria-invalid=true]{border-color:var(--error)}
+  .input-row{display:flex;gap:0.6rem;align-items:stretch}
+  .input-row input[type=number]{flex:1;min-width:0}
+  .unit-toggle{display:flex;border:1px solid var(--border-strong);position:relative}
+  .unit-toggle input{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0,0,0,0);pointer-events:none}
+  .unit-toggle label{margin:0;display:flex;align-items:center;justify-content:center;min-width:3.2rem;padding:0 0.8rem;font-size:0.85rem;letter-spacing:0.08em;text-transform:none;color:var(--cream-dim);cursor:pointer;font-weight:400}
+  .unit-toggle input:checked+label{background:var(--gold);color:#fff}
+  .unit-toggle input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+  .load-row{display:flex;gap:0.8rem;align-items:center}
+  .load-row input[type=range]{flex:1;min-width:0;accent-color:var(--gold);height:48px}
+  .load-row .load-num{display:flex;align-items:center;gap:0.3rem;width:7rem;flex-shrink:0}
+  .load-row .load-num span{color:var(--cream-dim)}
+  .results{margin-top:1.8rem;background:var(--bg3);border:1px solid var(--border-strong);border-top:3px solid var(--gold);padding:1.5rem}
+  .results-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);display:block}
+  .results-main{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,12vw,4.5rem);font-weight:500;color:var(--cream);line-height:1.05;margin:0.3rem 0 0.2rem}
+  .results-main small{font-size:0.45em;color:var(--cream-dim);font-weight:400}
+  .results-sub{font-size:1rem;color:var(--cream-dim);margin:0}
+  .results-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--border)}
+  .results-grid dt{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim)}
+  .results-grid dd{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--cream);line-height:1.2}
+  .results-grid dd small{display:block;font-family:'Jost',sans-serif;font-size:0.8rem;color:var(--cream-dim);line-height:1.5}
+  .warning{margin-top:1.2rem;background:var(--warn-bg);border:1px solid var(--warn);border-left:3px solid var(--warn);padding:0.9rem 1.1rem;font-size:0.88rem;color:var(--warn);line-height:1.6;font-weight:400}
+  .warning[hidden]{display:none}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .faq dt{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--cream);margin:1.6rem 0 0.4rem;line-height:1.3}
+  .faq dd p{margin-bottom:0}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(prefers-reduced-motion:reduce){.page-hero>*{animation:none;opacity:1}html{scroll-behavior:auto}}
+  @media(min-width:600px){.calc{padding:2.2rem}.calc-grid{grid-template-columns:1fr 1fr}.calc-grid .span-2{grid-column:1/-1}.results{padding:2rem}.results-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}.page-hero{padding:7rem 1rem 3rem}.article-wrap{padding:2rem 1rem 4rem}}
+  /* ── Tools dropdown ── */
+  .nav-sub-wrap{position:relative}
+  .nav-sub-toggle{font:inherit;background:none;border:none;padding:0;cursor:pointer;color:var(--cream-dim);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.5rem;line-height:inherit}
+  .nav-sub-toggle::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 0.3s}
+  .nav-sub-wrap.open .nav-sub-toggle::after{transform:translateY(1px) rotate(-135deg)}
+  .nav-sub-toggle:hover,.nav-sub-toggle.active,.nav-sub-wrap.open .nav-sub-toggle{color:var(--gold-light)}
+  .nav-sub-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+  .nav-sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:1.4rem;z-index:101}
+  .nav-sub ul{list-style:none;background:var(--bg);border:1px solid var(--border);box-shadow:0 12px 24px rgba(42,34,24,0.08);min-width:240px;padding:0.4rem 0}
+  .nav-sub a{display:block;padding:0.6rem 1.2rem;white-space:nowrap}
+  .nav-sub a[aria-current=page]{color:var(--gold-light)}
+  .nav-sub-wrap.open .nav-sub{display:block}
+  @media(hover:hover) and (min-width:769px){.nav-sub-wrap:hover .nav-sub{display:block}}
+  @media(max-width:768px){
+    .nav-sub-toggle{display:flex;width:100%;justify-content:space-between;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    .nav-sub{position:static;transform:none;padding:0}
+    .nav-sub ul{border:none;box-shadow:none;min-width:0;padding:0 0 0 1rem;background:none}
+    nav .nav-links .nav-sub a,nav .nav-links .nav-sub li:last-child a{padding:0.75rem 0;border-bottom:1px solid var(--border)}
+  }
+  /* ── Mobile menu ── */
+  .nav-toggle{display:none}
+  @media(max-width:768px){
+    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
+    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
+    nav.nav-open .nav-links{display:flex}
+    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    nav .nav-links li:last-child a{border-bottom:none}
+  }
+</style>
+<style>
+  /* ── Batch log ── */
+  .article-wrap.wide{max-width:960px}
+  .calc textarea,.calc input[type=text],.calc input[type=date],.calc input[type=search]{width:100%;font:inherit;font-size:1.05rem;font-weight:400;color:var(--cream);background:var(--bg);border:1px solid var(--border-strong);border-radius:0;padding:0.7rem 0.85rem;min-height:48px}
+  .calc textarea{min-height:96px;resize:vertical;line-height:1.5}
+  .calc textarea:focus-visible,.calc input[type=text]:focus-visible,.calc input[type=date]:focus-visible,.calc input[type=search]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .calc fieldset.group{border:none;border-top:1px solid var(--border);padding-top:1.4rem;margin-top:1.6rem;min-width:0}
+  .calc fieldset.group:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  .calc fieldset.group>legend{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;color:var(--cream);padding:0;margin-bottom:1rem;float:left;width:100%}
+  .calc fieldset.group>legend+*{clear:both}
+  .opt{text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-dim)}
+  .suffix-row{display:flex;gap:0.6rem;align-items:center}
+  .suffix-row input{flex:1;min-width:0}
+  .suffix-row span{color:var(--cream-dim);white-space:nowrap}
+  .derived{font-size:0.85rem;color:var(--cream-dim);margin:0.4rem 0 0}
+  .btn{font:inherit;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.8rem 1.4rem;min-height:44px;cursor:pointer;border:1px solid var(--gold);background:var(--gold);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+  .btn.ghost{background:none;color:var(--gold-light);border-color:var(--border-strong)}
+  .btn.ghost:hover{background:var(--bg3)}
+  .btn.danger{background:none;color:var(--error);border-color:var(--error)}
+  .btn.danger.solid{background:var(--error);color:#fff}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .btn.small{padding:0.5rem 0.9rem;font-size:0.68rem;min-height:40px}
+  .actions{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:1.6rem}
+  .storage-note{font-size:0.82rem;color:var(--cream-dim);line-height:1.6;margin:1.2rem 0 0;padding:0.8rem 1rem;background:var(--bg3);border-left:3px solid var(--gold-dim)}
+  .status{margin-top:1rem;font-size:0.88rem;color:var(--gold-light);font-weight:400;min-height:1.4em}
+  .log-head{display:flex;flex-wrap:wrap;gap:1rem;align-items:end;justify-content:space-between;margin:3rem 0 1rem}
+  .log-head h2{margin:0}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin:0 0 1.2rem}
+  .stat{background:var(--card);border:1px solid var(--border);padding:0.9rem 1rem}
+  .stat dt{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim)}
+  .stat dd{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--cream);line-height:1.2}
+  .log-tools{display:grid;gap:0.8rem;margin-bottom:1.2rem}
+  .log-tools input,.log-tools select{width:100%;font:inherit;font-size:1rem;color:var(--cream);background:var(--card);border:1px solid var(--border-strong);border-radius:0;padding:0.65rem 0.85rem;min-height:46px}
+  .log-tools input:focus-visible,.log-tools select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .batch-list{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+  .batch{background:var(--card);border:1px solid var(--border);padding:1.2rem 1.3rem}
+  .batch-top{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;align-items:baseline;justify-content:space-between}
+  .batch h3{margin:0;font-size:1.45rem}
+  .batch-code{font-size:0.75rem;letter-spacing:0.12em;color:var(--text-dim);text-transform:uppercase}
+  .chip{display:inline-block;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border:1px solid var(--gold-dim);color:var(--gold-light);margin-top:0.4rem}
+  .chip.curing{border-color:var(--warn);color:var(--warn)}
+  .batch dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.5rem 1rem;margin:0.9rem 0 0}
+  .batch dl dt{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim)}
+  .batch dl dd{font-size:0.92rem;color:var(--cream);overflow-wrap:anywhere}
+  .batch .notes{font-size:0.88rem;margin:0.8rem 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+  .batch-actions{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;align-items:center}
+  .confirm-text{font-size:0.85rem;color:var(--error);font-weight:400}
+  .empty{background:var(--bg3);border:1px dashed var(--border-strong);padding:2rem;text-align:center;color:var(--cream-dim)}
+  .backup{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:1.5rem}
+  .file-label{position:relative;overflow:hidden}
+  .file-label input{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0}
+  .file-label:focus-within{outline:2px solid var(--gold);outline-offset:2px}
+  @media(min-width:600px){.log-tools{grid-template-columns:2fr 1fr}.batch dl{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media print{
+    nav,.page-hero,.breadcrumb,.lead,#bl-form,.log-tools,.batch-actions,.backup,.after-log,footer,.storage-note,#bl-print{display:none!important}
+    body{background:#fff}
+    body::before{display:none}
+    .article-wrap,.article-wrap.wide{max-width:none;padding:0}
+    .batch{break-inside:avoid;border-color:#999}
+    .log-head{margin-top:0}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.thewaxbiz.co.uk/wax-melt-batch-log.html#app",
+  "name": "Wax Melt Batch Log & Recipe Tracker",
+  "description": "Free batch log for wax melt makers. Record each batch's wax, fragrance, load, temperatures and cure date, then search, reuse and export your recipes.",
+  "url": "https://www.thewaxbiz.co.uk/wax-melt-batch-log.html",
+  "image": "https://www.thewaxbiz.co.uk/og-image.png",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": "en-GB",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Wax Biz",
+    "url": "https://www.thewaxbiz.co.uk/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where is my batch log saved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In your browser on this device only. Nothing is sent to The Wax Biz or anyone else. That also means clearing your browser data, or switching to another phone or computer, will not bring it with you, so download a backup regularly and restore it on the new device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should a wax melt batch code look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anything short and unique that you can print on the label. This log suggests one based on the date, such as B261007-1 for the first batch made on 7 October 2026. Put the same code on every label from that batch so you can trace any problem back to it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should wax melts cure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most makers cure soy and coconut blends for at least 48 hours and often one to two weeks for the best scent throw. Paraffin needs less. The log uses 7 days by default and shows when each batch is ready, but test your own wax and oils."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thewaxbiz.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Batch Log", "item": "https://www.thewaxbiz.co.uk/wax-melt-batch-log.html" }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Biz</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li class="nav-sub-wrap">
+      <button type="button" class="nav-sub-toggle active" aria-expanded="false" aria-controls="tools-menu">Tools</button>
+      <div class="nav-sub" id="tools-menu"><ul>
+        <li><a href="wax-melts-per-kg-calculator.html">Melts Per Kg Calculator</a></li>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
+        <li><a href="wax-melt-pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="wax-melt-batch-log.html" aria-current="page">Batch Log</a></li>
+      </ul></div>
+    </li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Free Tool ✦</span>
+  <h1 class="page-title">Wax Melt <em>Batch Log</em></h1>
+  <p class="page-sub">Record every batch, find your best recipes again, and trace any problem back to its batch.</p>
+  <div class="divider"></div>
+</div>
+<main class="article-wrap wide">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span>Tools</span>
+    <span>/</span>
+    <span>Batch Log</span>
+  </div>
+
+<p class="lead">Log what went into each batch: wax, fragrance, load, temperatures and how many you made. You can search past batches, reuse a recipe in one click and export everything to a spreadsheet. Your log is saved in this browser and never leaves your device.</p>
+
+<form class="calc" id="bl-form" novalidate aria-labelledby="bl-form-heading">
+  <h2 id="bl-form-heading" class="sr-only">Add a batch</h2>
+
+  <fieldset class="group">
+    <legend id="bl-legend">Add a batch</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="bl-date">Date made</label>
+        <input type="date" id="bl-date" aria-describedby="bl-date-error">
+        <p class="field-error" id="bl-date-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-code">Batch code</label>
+        <input type="text" id="bl-code" maxlength="40" autocomplete="off" aria-describedby="bl-code-hint">
+        <p class="field-hint" id="bl-code-hint">Suggested from the date. Put it on every label from this batch.</p>
+      </div>
+      <div class="field span-2">
+        <label for="bl-name">Product or scent name</label>
+        <input type="text" id="bl-name" maxlength="120" autocomplete="off" placeholder="e.g. Cherry Bakewell clamshell" aria-describedby="bl-name-error">
+        <p class="field-error" id="bl-name-error"></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Recipe</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="bl-wax">Wax <span class="opt">(type and brand)</span></label>
+        <input type="text" id="bl-wax" maxlength="120" autocomplete="off" placeholder="e.g. Golden Wax 464 soy">
+      </div>
+      <div class="field">
+        <label for="bl-wax-g">Wax used (g)</label>
+        <input type="number" id="bl-wax-g" inputmode="decimal" min="0" step="any" aria-describedby="bl-wax-g-error">
+        <p class="field-error" id="bl-wax-g-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-oil">Fragrance oil <span class="opt">(name and supplier)</span></label>
+        <input type="text" id="bl-oil" maxlength="160" autocomplete="off" placeholder="e.g. Cherry Bakewell, Candle Shack">
+      </div>
+      <div class="field">
+        <label for="bl-load">Fragrance load (%)</label>
+        <input type="number" id="bl-load" inputmode="decimal" min="0" max="12" step="0.1" value="8" aria-describedby="bl-load-error bl-oil-g">
+        <p class="derived" id="bl-oil-g"></p>
+        <p class="field-error" id="bl-load-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-dye">Colour or dye <span class="opt">(optional)</span></label>
+        <input type="text" id="bl-dye" maxlength="120" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="bl-mould">Mould or pack <span class="opt">(optional)</span></label>
+        <input type="text" id="bl-mould" maxlength="120" autocomplete="off" placeholder="e.g. 6-cavity clamshell">
+      </div>
+      <div class="field">
+        <label for="bl-add-temp">Fragrance added at <span class="opt">(optional)</span></label>
+        <div class="suffix-row"><input type="number" id="bl-add-temp" inputmode="decimal" min="0" max="150" step="any" aria-describedby="bl-add-temp-error"><span aria-hidden="true">°C</span></div>
+        <p class="field-error" id="bl-add-temp-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-pour-temp">Pour temperature <span class="opt">(optional)</span></label>
+        <div class="suffix-row"><input type="number" id="bl-pour-temp" inputmode="decimal" min="0" max="150" step="any" aria-describedby="bl-pour-temp-error"><span aria-hidden="true">°C</span></div>
+        <p class="field-error" id="bl-pour-temp-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-units">Units made</label>
+        <input type="number" id="bl-units" inputmode="numeric" min="1" step="1" aria-describedby="bl-units-error">
+        <p class="field-error" id="bl-units-error"></p>
+      </div>
+      <div class="field">
+        <label for="bl-cure">Cure time</label>
+        <div class="suffix-row"><input type="number" id="bl-cure" inputmode="numeric" min="0" max="90" step="1" value="7" aria-describedby="bl-cure-error bl-ready"><span aria-hidden="true">days</span></div>
+        <p class="derived" id="bl-ready"></p>
+        <p class="field-error" id="bl-cure-error"></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Results <span class="opt" style="font-family:'Jost',sans-serif;font-size:0.8rem">(fill in after testing)</span></legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="bl-cold">Cold throw</label>
+        <select id="bl-cold"><option value="">Not tested</option><option value="1">1 – Very weak</option><option value="2">2 – Weak</option><option value="3">3 – Good</option><option value="4">4 – Strong</option><option value="5">5 – Excellent</option></select>
+      </div>
+      <div class="field">
+        <label for="bl-hot">Hot throw</label>
+        <select id="bl-hot"><option value="">Not tested</option><option value="1">1 – Very weak</option><option value="2">2 – Weak</option><option value="3">3 – Good</option><option value="4">4 – Strong</option><option value="5">5 – Excellent</option></select>
+      </div>
+      <div class="field span-2">
+        <label for="bl-notes">Notes <span class="opt">(optional)</span></label>
+        <textarea id="bl-notes" maxlength="2000" placeholder="Frosting, sinkholes, colour, customer feedback…"></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit" class="btn" id="bl-save">Save batch</button>
+    <button type="button" class="btn ghost" id="bl-cancel" hidden>Cancel edit</button>
+    <button type="button" class="btn ghost" id="bl-clear">Clear form</button>
+  </div>
+  <p class="status" id="bl-status" role="status"></p>
+  <p class="storage-note"><strong>Saved in this browser only.</strong> Nothing is sent to us. Clearing your browser data deletes your log, and it won't appear on other devices, so download a backup now and then.</p>
+</form>
+
+<div class="log-head">
+  <h2>Your <em>batches</em></h2>
+  <button type="button" class="btn ghost small" id="bl-print">Print log</button>
+</div>
+<dl class="stats">
+  <div class="stat"><dt>Batches</dt><dd id="bl-stat-batches">0</dd></div>
+  <div class="stat"><dt>Units made</dt><dd id="bl-stat-units">0</dd></div>
+  <div class="stat"><dt>Wax used</dt><dd id="bl-stat-wax">0 g</dd></div>
+</dl>
+<div class="log-tools">
+  <div>
+    <label for="bl-search" class="sr-only">Search batches</label>
+    <input type="search" id="bl-search" placeholder="Search by scent, wax, oil, code or notes" autocomplete="off">
+  </div>
+  <div>
+    <label for="bl-sort" class="sr-only">Sort batches</label>
+    <select id="bl-sort">
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+      <option value="name">Name A–Z</option>
+      <option value="hot">Best hot throw</option>
+    </select>
+  </div>
+</div>
+<p class="sr-only" id="bl-count" aria-live="polite"></p>
+<ul class="batch-list" id="bl-list"></ul>
+
+<div class="backup">
+  <button type="button" class="btn ghost small" id="bl-csv">Export CSV</button>
+  <button type="button" class="btn ghost small" id="bl-backup">Download backup</button>
+  <label class="btn ghost small file-label" for="bl-restore">Restore backup<input type="file" id="bl-restore" accept="application/json,.json"></label>
+</div>
+<noscript><p class="field-hint">The batch log needs JavaScript.</p></noscript>
+
+<div class="after-log">
+<h2>Why keep a <em>batch log</em></h2>
+<p>If a customer reports a problem, such as a reaction, a weak scent or oil on the surface, a batch code on the label tells you exactly which wax, oil and load went into that melt, and which supplier's Safety Data Sheet applies. Without one, you are guessing which batch it came from.</p>
+<p>A log also makes your good results repeatable. When a scent throws well, you can see the load, temperatures and cure time that produced it, and use "Make again" to start the next batch with the same recipe. When something goes wrong, the notes help you spot the pattern, whether it's frosting at a certain pour temperature or sinkholes in one mould.</p>
+
+<h3>What to record</h3>
+<ul>
+  <li><strong>Batch code and date</strong>: the code goes on every label from the batch.</li>
+  <li><strong>Wax and fragrance oil</strong>: include the brand and supplier, as the same scent name differs between suppliers.</li>
+  <li><strong>Fragrance load and temperatures</strong>: the main causes of differences between batches.</li>
+  <li><strong>Units made and cure time</strong>: so you know what's ready to sell and when.</li>
+  <li><strong>Throw ratings and notes</strong>: fill these in after testing, so the next batch is better.</li>
+</ul>
+
+<h2>Frequently asked <em>questions</em></h2>
+<dl class="faq">
+  <dt>Where is my batch log saved?</dt>
+  <dd><p>In your browser on this device only. Nothing is sent to The Wax Biz or anyone else. That also means clearing your browser data, or switching to another phone or computer, will not bring it with you, so download a backup regularly and restore it on the new device.</p></dd>
+  <dt>What should a wax melt batch code look like?</dt>
+  <dd><p>Anything short and unique that you can print on the label. This log suggests one based on the date, such as B261007-1 for the first batch made on 7 October 2026. Put the same code on every label from that batch so you can trace any problem back to it.</p></dd>
+  <dt>How long should wax melts cure?</dt>
+  <dd><p>Most makers cure soy and coconut blends for at least 48 hours and often one to two weeks for the best scent throw. Paraffin needs less. The log uses 7 days by default and shows when each batch is ready, but test your own wax and oils.</p></dd>
+</dl>
+
+<h2>Next <em>steps</em></h2>
+<div class="guide-nav">
+  <a href="wax-melts-per-kg-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Melts Per Kg Calculator</div><p class="guide-nav-text">Plan how much wax you need for your next batch.</p></a>
+  <a href="wax-melt-pricing-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Wax Melt Pricing Calculator</div><p class="guide-nav-text">Turn a batch into a cost per melt and a selling price.</p></a>
+  <a href="guide-troubleshooting.html"><div class="guide-nav-label">Guide →</div><div class="guide-nav-title">Troubleshooting</div><p class="guide-nav-text">Fix frosting, sinkholes, sweating and weak throw.</p></a>
+</div>
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Biz</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="fragrance-load-calculator.html">Tools</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 The Wax Biz · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Batch log helpers (pure, no DOM) ──
+  var BL_KEY = 'thewaxbiz-batch-log-v1';
+  var BL_FIELDS = ['date', 'code', 'name', 'wax', 'waxG', 'oil', 'load', 'dye', 'mould', 'addTemp', 'pourTemp', 'units', 'cureDays', 'cold', 'hot', 'notes'];
+  var BL_HEADERS = ['Date', 'Batch code', 'Product', 'Wax', 'Wax (g)', 'Fragrance oil', 'Load (%)', 'Oil (g)', 'Colour', 'Mould', 'Fragrance added (°C)', 'Pour (°C)', 'Units', 'Cure (days)', 'Ready from', 'Cold throw', 'Hot throw', 'Notes'];
+
+  function isoToday() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  // B + yymmdd + -n, where n is one more than the highest code already used that day.
+  function suggestCode(dateIso, batches, ignoreId) {
+    var stem = 'B' + dateIso.slice(2).replace(/-/g, '') + '-';
+    var max = 0;
+    batches.forEach(function (b) {
+      if (b.id === ignoreId || typeof b.code !== 'string' || b.code.indexOf(stem) !== 0) return;
+      var n = parseInt(b.code.slice(stem.length), 10);
+      if (n > max) max = n;
+    });
+    return stem + (max + 1);
+  }
+
+  function readyDate(dateIso, days) {
+    var p = dateIso.split('-').map(Number);
+    var d = new Date(Date.UTC(p[0], p[1] - 1, p[2] + (days || 0)));
+    return d.toISOString().slice(0, 10);
+  }
+
+  function oilGrams(waxG, load) { return waxG && load ? waxG * load / 100 : 0; }
+
+  function csvCell(v) {
+    var s = v === null || v === undefined ? '' : String(v);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; // stop spreadsheets running it as a formula
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  function toCSV(batches) {
+    var rows = [BL_HEADERS];
+    batches.forEach(function (b) {
+      rows.push([b.date, b.code, b.name, b.wax, b.waxG, b.oil, b.load, b.waxG && b.load ? Math.round(oilGrams(b.waxG, b.load) * 10) / 10 : '',
+        b.dye, b.mould, b.addTemp, b.pourTemp, b.units, b.cureDays, b.date ? readyDate(b.date, b.cureDays) : '', b.cold, b.hot, b.notes]);
+    });
+    return rows.map(function (r) { return r.map(csvCell).join(','); }).join('\r\n');
+  }
+
+  // Keep only known fields with the right types, so a bad backup file can't break the page.
+  function cleanBatch(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+    var b = { id: typeof raw.id === 'string' && raw.id ? raw.id.slice(0, 40) : 'b' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7) };
+    var nums = { waxG: 1, load: 1, addTemp: 1, pourTemp: 1, units: 1, cureDays: 1 };
+    BL_FIELDS.forEach(function (f) {
+      var v = raw[f];
+      if (nums[f]) b[f] = typeof v === 'number' && isFinite(v) && v >= 0 ? v : (v === '' || v === null || v === undefined ? null : (isFinite(Number(v)) && Number(v) >= 0 ? Number(v) : null));
+      else b[f] = typeof v === 'string' ? v.slice(0, 2000) : (v === null || v === undefined ? '' : String(v).slice(0, 2000));
+    });
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(b.date) || !b.name) return null;
+    return b;
+  }
+
+  // ── Batch log UI ──
+  (function () {
+    if (typeof document === 'undefined') return;
+    var form = document.getElementById('bl-form');
+    if (!form) return;
+    var $ = function (id) { return document.getElementById(id); };
+    var batches = load();
+    var editingId = null;
+    var codeTouched = false;
+    var pendingDelete = null;
+
+    var INPUTS = { date: 'bl-date', code: 'bl-code', name: 'bl-name', wax: 'bl-wax', waxG: 'bl-wax-g', oil: 'bl-oil', load: 'bl-load', dye: 'bl-dye',
+      mould: 'bl-mould', addTemp: 'bl-add-temp', pourTemp: 'bl-pour-temp', units: 'bl-units', cureDays: 'bl-cure', cold: 'bl-cold', hot: 'bl-hot', notes: 'bl-notes' };
+    var NUM_RULES = {
+      waxG: { name: 'the wax used', gt0: true, optional: true },
+      load: { name: 'the fragrance load', max: 12, optional: true },
+      addTemp: { name: 'the temperature', max: 150, optional: true },
+      pourTemp: { name: 'the temperature', max: 150, optional: true },
+      units: { name: 'the units made', gt0: true, integer: true, optional: true },
+      cureDays: { name: 'the cure time', max: 90, integer: true, optional: true }
+    };
+
+    function load() {
+      try {
+        var data = JSON.parse(localStorage.getItem(BL_KEY) || '[]');
+        return Array.isArray(data) ? data.map(cleanBatch).filter(Boolean) : [];
+      } catch (e) { return []; }
+    }
+    function persist() {
+      try { localStorage.setItem(BL_KEY, JSON.stringify(batches)); return true; }
+      catch (e) { status('Couldn’t save: your browser blocked storage. Download a backup to keep this batch.'); return false; }
+    }
+    function status(msg) { $('bl-status').textContent = msg; }
+
+    var dateFmt = function (iso) {
+      var p = iso.split('-').map(Number);
+      return new Date(Date.UTC(p[0], p[1] - 1, p[2])).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    };
+
+    function setError(id, msg) {
+      var el = $(id), err = $(id + '-error');
+      if (err) err.textContent = msg || '';
+      if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+    }
+
+    function readNum(key) {
+      var id = INPUTS[key], el = $(id), r = NUM_RULES[key], raw = el.value.trim();
+      if (el.validity && el.validity.badInput) { setError(id, 'Enter ' + r.name + ' as a number.'); return undefined; }
+      if (raw === '') { setError(id, ''); return null; }
+      var n = Number(raw);
+      if (!isFinite(n)) { setError(id, 'Enter ' + r.name + ' as a number.'); return undefined; }
+      if (n < 0) { setError(id, 'This can’t be negative.'); return undefined; }
+      if (r.gt0 && n === 0) { setError(id, 'This must be more than zero.'); return undefined; }
+      if (r.max !== undefined && n > r.max) { setError(id, 'Enter a value no higher than ' + r.max + '.'); return undefined; }
+      if (r.integer && Math.floor(n) !== n) { setError(id, 'Use a whole number.'); return undefined; }
+      setError(id, '');
+      return n;
+    }
+
+    function readForm() {
+      var b = {}, ok = true, firstBad = null;
+      Object.keys(INPUTS).forEach(function (k) {
+        if (NUM_RULES[k]) {
+          var n = readNum(k);
+          if (n === undefined) { ok = false; firstBad = firstBad || INPUTS[k]; }
+          b[k] = n === undefined ? null : n;
+        } else {
+          b[k] = $(INPUTS[k]).value.trim();
+        }
+      });
+      if (!b.name) { setError('bl-name', 'Enter a product or scent name.'); ok = false; firstBad = 'bl-name'; }
+      else setError('bl-name', '');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(b.date)) { setError('bl-date', 'Choose the date you made this batch.'); ok = false; firstBad = 'bl-date'; }
+      else setError('bl-date', '');
+      return { batch: b, ok: ok, firstBad: firstBad };
+    }
+
+    function refreshDerived() {
+      var w = Number($('bl-wax-g').value), l = Number($('bl-load').value);
+      $('bl-oil-g').textContent = w > 0 && l > 0 ? 'That’s ' + (Math.round(oilGrams(w, l) * 10) / 10).toLocaleString('en-GB') + ' g of fragrance oil.' : '';
+      var d = $('bl-date').value, c = $('bl-cure').value;
+      $('bl-ready').textContent = /^\d{4}-\d{2}-\d{2}$/.test(d) && c !== '' && Number(c) >= 0 ? 'Ready from ' + dateFmt(readyDate(d, Number(c))) + '.' : '';
+    }
+
+    function suggest() {
+      if (!codeTouched && /^\d{4}-\d{2}-\d{2}$/.test($('bl-date').value)) $('bl-code').value = suggestCode($('bl-date').value, batches, editingId);
+    }
+
+    function fillForm(b) {
+      Object.keys(INPUTS).forEach(function (k) {
+        var v = b[k];
+        $(INPUTS[k]).value = v === null || v === undefined ? '' : v;
+      });
+      Object.keys(INPUTS).forEach(function (k) { setError(INPUTS[k], ''); });
+      refreshDerived();
+    }
+
+    function resetForm() {
+      editingId = null;
+      codeTouched = false;
+      form.reset();
+      $('bl-date').value = isoToday();
+      Object.keys(INPUTS).forEach(function (k) { if ($(INPUTS[k] + '-error')) setError(INPUTS[k], ''); });
+      $('bl-legend').textContent = 'Add a batch';
+      $('bl-save').textContent = 'Save batch';
+      $('bl-cancel').hidden = true;
+      suggest();
+      refreshDerived();
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var r = readForm();
+      if (!r.ok) { status('Check the highlighted fields.'); $(r.firstBad).focus(); return; }
+      var code = r.batch.code;
+      if (code && batches.some(function (b) { return b.code === code && b.id !== editingId; })) {
+        status('Another batch already uses the code ' + code + '. Change it so each batch can be traced.');
+        $('bl-code').focus();
+        return;
+      }
+      var wasEditing = !!editingId;
+      if (editingId) {
+        r.batch.id = editingId;
+        batches = batches.map(function (b) { return b.id === editingId ? cleanBatch(r.batch) : b; });
+      } else {
+        r.batch.id = 'b' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        batches.push(cleanBatch(r.batch));
+      }
+      if (!persist()) return;
+      render();
+      resetForm();
+      status((wasEditing ? 'Updated ' : 'Saved ') + r.batch.name + (code ? ' (' + code + ')' : '') + '.');
+    });
+
+    $('bl-cancel').addEventListener('click', function () { resetForm(); status('Edit cancelled.'); });
+    $('bl-clear').addEventListener('click', function () { resetForm(); status(''); $('bl-name').focus(); });
+    $('bl-code').addEventListener('input', function () { codeTouched = this.value.trim() !== ''; });
+    $('bl-date').addEventListener('change', function () { suggest(); refreshDerived(); });
+    ['bl-wax-g', 'bl-load', 'bl-cure', 'bl-date'].forEach(function (id) { $(id).addEventListener('input', refreshDerived); });
+
+    function startEdit(id, copy) {
+      var b = batches.filter(function (x) { return x.id === id; })[0];
+      if (!b) return;
+      fillForm(b);
+      if (copy) {
+        editingId = null;
+        codeTouched = false;
+        $('bl-date').value = isoToday();
+        ['cold', 'hot', 'notes', 'units'].forEach(function (k) { $(INPUTS[k]).value = ''; });
+        suggest();
+        refreshDerived();
+        $('bl-legend').textContent = 'New batch from ' + b.name;
+        $('bl-save').textContent = 'Save batch';
+        $('bl-cancel').hidden = true;
+        status('Recipe copied. Check the details, then save.');
+      } else {
+        editingId = id;
+        codeTouched = true;
+        $('bl-legend').textContent = 'Edit ' + b.name;
+        $('bl-save').textContent = 'Update batch';
+        $('bl-cancel').hidden = false;
+        status('Editing ' + b.name + '.');
+      }
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('bl-name').focus({ preventScroll: true });
+    }
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text !== undefined) n.textContent = text;
+      return n;
+    }
+
+    function stars(v) { return v ? v + '/5' : '—'; }
+
+    function render() {
+      var q = $('bl-search').value.trim().toLowerCase();
+      var sort = $('bl-sort').value;
+      var list = batches.filter(function (b) {
+        if (!q) return true;
+        return [b.name, b.code, b.wax, b.oil, b.dye, b.mould, b.notes].join(' ').toLowerCase().indexOf(q) !== -1;
+      });
+      list.sort(function (a, b) {
+        if (sort === 'oldest') return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        if (sort === 'name') return a.name.localeCompare(b.name, 'en-GB');
+        if (sort === 'hot') return (Number(b.hot) || 0) - (Number(a.hot) || 0) || (a.date < b.date ? 1 : -1);
+        return a.date < b.date ? 1 : a.date > b.date ? -1 : (a.code < b.code ? 1 : -1);
+      });
+
+      var units = 0, wax = 0;
+      batches.forEach(function (b) { units += b.units || 0; wax += b.waxG || 0; });
+      $('bl-stat-batches').textContent = batches.length.toLocaleString('en-GB');
+      $('bl-stat-units').textContent = units.toLocaleString('en-GB');
+      $('bl-stat-wax').textContent = wax >= 1000 ? (wax / 1000).toLocaleString('en-GB', { maximumFractionDigits: 1 }) + ' kg' : wax.toLocaleString('en-GB') + ' g';
+
+      var ul = $('bl-list');
+      ul.innerHTML = '';
+      if (!batches.length) {
+        var e = el('li', 'empty', 'No batches yet. Fill in the form above and press Save batch.');
+        ul.appendChild(e);
+      } else if (!list.length) {
+        ul.appendChild(el('li', 'empty', 'No batches match “' + $('bl-search').value.trim() + '”.'));
+      }
+      var today = isoToday();
+      list.forEach(function (b) {
+        var li = el('li', 'batch');
+        var top = el('div', 'batch-top');
+        var left = el('div');
+        left.appendChild(el('h3', '', b.name));
+        left.appendChild(el('div', 'batch-code', (b.code ? b.code + ' · ' : '') + dateFmt(b.date)));
+        top.appendChild(left);
+        if (b.cureDays !== null && b.cureDays !== undefined) {
+          var ready = readyDate(b.date, b.cureDays);
+          top.appendChild(el('span', ready > today ? 'chip curing' : 'chip', ready > today ? 'Curing until ' + dateFmt(ready) : 'Ready'));
+        }
+        li.appendChild(top);
+
+        var dl = el('dl');
+        var loadText = b.load !== null && b.load !== undefined
+          ? b.load + '%' + (b.waxG ? ' (' + (Math.round(oilGrams(b.waxG, b.load) * 10) / 10).toLocaleString('en-GB') + ' g)' : '') : '';
+        var oilText = [b.oil, loadText].filter(Boolean).join(' at ') || '—';
+        var waxText = [b.wax, b.waxG ? b.waxG.toLocaleString('en-GB') + ' g' : ''].filter(Boolean).join(', ') || '—';
+        var temps = [b.addTemp !== null ? 'oil ' + b.addTemp + '°C' : '', b.pourTemp !== null ? 'pour ' + b.pourTemp + '°C' : ''].filter(Boolean).join(', ') || '—';
+        [['Wax', waxText], ['Fragrance', oilText],
+         ['Made', (b.units ? b.units + ' units' : '—') + (b.mould ? ', ' + b.mould : '')], ['Temperatures', temps],
+         ['Colour', b.dye || '—'], ['Cold throw', stars(b.cold)], ['Hot throw', stars(b.hot)]].forEach(function (pair) {
+          var d = el('div'); d.appendChild(el('dt', '', pair[0])); d.appendChild(el('dd', '', pair[1])); dl.appendChild(d);
+        });
+        li.appendChild(dl);
+        if (b.notes) li.appendChild(el('p', 'notes', b.notes));
+
+        var act = el('div', 'batch-actions');
+        if (pendingDelete === b.id) {
+          act.appendChild(el('span', 'confirm-text', 'Delete this batch for good?'));
+          var yes = el('button', 'btn danger solid small', 'Delete');
+          yes.type = 'button';
+          yes.addEventListener('click', function () {
+            batches = batches.filter(function (x) { return x.id !== b.id; });
+            pendingDelete = null;
+            if (editingId === b.id) resetForm();
+            persist(); render(); status('Deleted ' + b.name + '.'); $('bl-search').focus();
+          });
+          var no = el('button', 'btn ghost small', 'Keep');
+          no.type = 'button';
+          no.addEventListener('click', function () { pendingDelete = null; render(); });
+          act.appendChild(yes); act.appendChild(no);
+          setTimeout(function () { no.focus(); }, 0);
+        } else {
+          [['Edit', function () { startEdit(b.id, false); }], ['Make again', function () { startEdit(b.id, true); }], ['Delete', function () { pendingDelete = b.id; render(); }]].forEach(function (a, i) {
+            var btn = el('button', i === 2 ? 'btn danger small' : 'btn ghost small', a[0]);
+            btn.type = 'button';
+            btn.setAttribute('aria-label', a[0] + ' ' + b.name + (b.code ? ' ' + b.code : ''));
+            btn.addEventListener('click', a[1]);
+            act.appendChild(btn);
+          });
+        }
+        li.appendChild(act);
+        ul.appendChild(li);
+      });
+      $('bl-count').textContent = q ? list.length + ' of ' + batches.length + ' batches shown.' : '';
+    }
+
+    $('bl-search').addEventListener('input', render);
+    $('bl-sort').addEventListener('change', render);
+    $('bl-print').addEventListener('click', function () { window.print(); });
+
+    function download(name, type, text) {
+      var blob = new Blob([text], { type: type });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+    }
+
+    $('bl-csv').addEventListener('click', function () {
+      if (!batches.length) return status('There are no batches to export yet.');
+      var sorted = batches.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      download('wax-melt-batch-log-' + isoToday() + '.csv', 'text/csv;charset=utf-8', '﻿' + toCSV(sorted));
+      status('Exported ' + batches.length + ' batches as CSV.');
+    });
+    $('bl-backup').addEventListener('click', function () {
+      if (!batches.length) return status('There are no batches to back up yet.');
+      download('wax-melt-batch-log-backup-' + isoToday() + '.json', 'application/json',
+        JSON.stringify({ app: 'thewaxbiz-batch-log', version: 1, exported: new Date().toISOString(), batches: batches }, null, 2));
+      status('Backup downloaded. Keep it somewhere safe, such as your email or cloud storage.');
+    });
+    $('bl-restore').addEventListener('change', function () {
+      var file = this.files && this.files[0];
+      this.value = '';
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) return status('That file is too large to be a batch log backup.');
+      var reader = new FileReader();
+      reader.onload = function () {
+        var data;
+        try { data = JSON.parse(reader.result); } catch (e) { return status('That file isn’t a batch log backup.'); }
+        var incoming = Array.isArray(data) ? data : (data && Array.isArray(data.batches) ? data.batches : null);
+        if (!incoming) return status('That file isn’t a batch log backup.');
+        var clean = incoming.map(cleanBatch).filter(Boolean);
+        if (!clean.length) return status('No batches found in that file.');
+        var byId = {};
+        batches.forEach(function (b) { byId[b.id] = b; });
+        var added = 0, updated = 0;
+        clean.forEach(function (b) { if (byId[b.id]) updated++; else added++; byId[b.id] = b; });
+        batches = Object.keys(byId).map(function (k) { return byId[k]; });
+        if (persist()) { render(); suggest(); status('Restored ' + added + ' new and ' + updated + ' existing batches.'); }
+      };
+      reader.readAsText(file);
+    });
+
+    resetForm();
+    render();
+  })();
+</script>
+<script>
+  // ── Mobile menu + Tools dropdown ──
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    var sub = nav.querySelector('.nav-sub-wrap');
+    var subBtn = sub && sub.querySelector('.nav-sub-toggle');
+    function setSub(open) {
+      if (!sub) return;
+      sub.classList.toggle('open', open);
+      subBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function setOpen(open) {
+      nav.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) setSub(false);
+    }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    if (subBtn) {
+      subBtn.addEventListener('click', function () { setSub(!sub.classList.contains('open')); });
+      sub.addEventListener('focusout', function (e) {
+        if (!nav.classList.contains('nav-open') && !sub.contains(e.relatedTarget)) setSub(false);
+      });
+    }
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (sub && sub.classList.contains('open')) { setSub(false); subBtn.focus(); }
+      else if (nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+      else if (sub && !sub.contains(e.target)) setSub(false);
+    });
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  })();
+</script>
+</body>
+</html>
