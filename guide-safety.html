@@ -106,40 +106,8 @@
   .page-hero>*:nth-child(3){animation-delay:0.4s}
   .page-hero>*:nth-child(4){animation-delay:0.5s}
   @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
-  /* ── Tools dropdown ── */
-  .nav-sub-wrap{position:relative}
-  .nav-sub-toggle{font:inherit;background:none;border:none;padding:0;cursor:pointer;color:var(--cream-dim);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.5rem;line-height:inherit}
-  .nav-sub-toggle::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 0.3s}
-  .nav-sub-wrap.open .nav-sub-toggle::after{transform:translateY(1px) rotate(-135deg)}
-  .nav-sub-toggle:hover,.nav-sub-toggle.active,.nav-sub-wrap.open .nav-sub-toggle{color:var(--gold-light)}
-  .nav-sub-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-  .nav-sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:1.4rem;z-index:101}
-  .nav-sub ul{list-style:none;background:var(--bg);border:1px solid var(--border);box-shadow:0 12px 24px rgba(42,34,24,0.08);min-width:240px;padding:0.4rem 0}
-  .nav-sub a{display:block;padding:0.6rem 1.2rem;white-space:nowrap}
-  .nav-sub a[aria-current=page]{color:var(--gold-light)}
-  .nav-sub-wrap.open .nav-sub{display:block}
-  @media(hover:hover) and (min-width:769px){.nav-sub-wrap:hover .nav-sub{display:block}}
-  @media(max-width:768px){
-    .nav-sub-toggle{display:flex;width:100%;justify-content:space-between;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
-    .nav-sub{position:static;transform:none;padding:0}
-    .nav-sub ul{border:none;box-shadow:none;min-width:0;padding:0 0 0 1rem;background:none}
-    nav .nav-links .nav-sub a,nav .nav-links .nav-sub li:last-child a{padding:0.75rem 0;border-bottom:1px solid var(--border)}
-  }
-  /* ── Mobile menu ── */
-  .nav-toggle{display:none}
-  @media(max-width:768px){
-    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
-    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
-    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
-    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
-    nav.nav-open .nav-links{display:flex}
-    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
-    nav .nav-links li:last-child a{border-bottom:none}
-  }
 </style>
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -389,46 +357,6 @@
     <p class="footer-copy">© 2026 The Wax Biz · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
   </div>
 </footer>
-<script>
-  // ── Mobile menu + Tools dropdown ──
-  (function () {
-    var nav = document.querySelector('nav');
-    var btn = nav && nav.querySelector('.nav-toggle');
-    if (!btn) return;
-    var sub = nav.querySelector('.nav-sub-wrap');
-    var subBtn = sub && sub.querySelector('.nav-sub-toggle');
-    function setSub(open) {
-      if (!sub) return;
-      sub.classList.toggle('open', open);
-      subBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    function setOpen(open) {
-      nav.classList.toggle('nav-open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      if (!open) setSub(false);
-    }
-    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
-    if (subBtn) {
-      subBtn.addEventListener('click', function () { setSub(!sub.classList.contains('open')); });
-      sub.addEventListener('focusout', function (e) {
-        if (!nav.classList.contains('nav-open') && !sub.contains(e.relatedTarget)) setSub(false);
-      });
-    }
-    nav.querySelectorAll('.nav-links a').forEach(function (a) {
-      a.addEventListener('click', function () { setOpen(false); });
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      if (sub && sub.classList.contains('open')) { setSub(false); subBtn.focus(); }
-      else if (nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
-    });
-    document.addEventListener('click', function (e) {
-      if (!nav.contains(e.target)) setOpen(false);
-      else if (sub && !sub.contains(e.target)) setSub(false);
-    });
-    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
-  })();
-</script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
