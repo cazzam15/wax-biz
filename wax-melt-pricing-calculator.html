@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<title>Wax Melt Pricing Calculator (UK) — The Wax Biz</title>
+<meta name="description" content="Free UK wax melt pricing calculator. Add wax, fragrance, packaging and Etsy or website fees to see cost per unit, profit, margin and the price to charge.">
+<link rel="canonical" href="https://www.thewaxbiz.co.uk/wax-melt-pricing-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wax Melt Pricing Calculator (UK) — The Wax Biz">
+<meta property="og:description" content="Free UK wax melt pricing calculator. Add wax, fragrance, packaging and Etsy or website fees to see cost per unit, profit, margin and the price to charge.">
+<meta property="og:url" content="https://www.thewaxbiz.co.uk/wax-melt-pricing-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="The Wax Biz">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Wax Biz — UK candle &amp; wax melt supplies directory">
+<meta name="twitter:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf6ef;--bg2:#f4ede0;--bg3:#efe6d6;
+    --card:#ffffff;--card-hover:#fbf6ee;
+    --gold:#b8943a;--gold-light:#9a7a2c;--gold-dim:#c2a45a;
+    --cream:#2a2218;--cream-dim:#6b5f4d;
+    --text:#3a3027;--text-dim:#756954;
+    --border:rgba(184,148,58,0.4);--border-strong:rgba(184,148,58,0.6);
+    --warn:#9a4a1c;--warn-bg:#fbeee2;--error:#a3301f;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(250,246,239,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  p a,li a{color:var(--gold-light)}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .table-wrap{overflow-x:auto;margin:2rem 0}
+  .comparison-table{width:100%;border-collapse:collapse;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .guide-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover,.guide-nav a:focus-visible{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav-text{font-size:0.8rem;color:var(--cream-dim);line-height:1.6;margin-top:0.3rem}
+
+  /* ── Calculator ── */
+  .calc{background:var(--card);border:1px solid var(--border);padding:1.5rem;margin:0 0 3rem}
+  .calc-grid{display:grid;gap:1.4rem}
+  .field label,.field legend{display:block;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);font-weight:500;margin-bottom:0.5rem}
+  .field fieldset{border:none}
+  .field-hint{font-size:0.78rem;color:var(--text-dim);margin:0.4rem 0 0;line-height:1.5}
+  .field-error{font-size:0.8rem;color:var(--error);margin:0.4rem 0 0;line-height:1.5;font-weight:400}
+  .field-error:empty{display:none}
+  .calc input[type=number],.calc select{width:100%;font:inherit;font-size:1.1rem;font-weight:400;color:var(--cream);background:var(--bg);border:1px solid var(--border-strong);border-radius:0;padding:0.7rem 0.85rem;min-height:48px}
+  .calc select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 1.2rem) 55%,calc(100% - 0.85rem) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:2.5rem}
+  .calc input:focus-visible,.calc select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .calc input[aria-invalid=true]{border-color:var(--error)}
+  .input-row{display:flex;gap:0.6rem;align-items:stretch}
+  .input-row input[type=number]{flex:1;min-width:0}
+  .unit-toggle{display:flex;border:1px solid var(--border-strong);position:relative}
+  .unit-toggle input{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0,0,0,0);pointer-events:none}
+  .unit-toggle label{margin:0;display:flex;align-items:center;justify-content:center;min-width:3.2rem;padding:0 0.8rem;font-size:0.85rem;letter-spacing:0.08em;text-transform:none;color:var(--cream-dim);cursor:pointer;font-weight:400}
+  .unit-toggle input:checked+label{background:var(--gold);color:#fff}
+  .unit-toggle input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+  .load-row{display:flex;gap:0.8rem;align-items:center}
+  .load-row input[type=range]{flex:1;min-width:0;accent-color:var(--gold);height:48px}
+  .load-row .load-num{display:flex;align-items:center;gap:0.3rem;width:7rem;flex-shrink:0}
+  .load-row .load-num span{color:var(--cream-dim)}
+  .results{margin-top:1.8rem;background:var(--bg3);border:1px solid var(--border-strong);border-top:3px solid var(--gold);padding:1.5rem}
+  .results-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);display:block}
+  .results-main{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,12vw,4.5rem);font-weight:500;color:var(--cream);line-height:1.05;margin:0.3rem 0 0.2rem}
+  .results-main small{font-size:0.45em;color:var(--cream-dim);font-weight:400}
+  .results-sub{font-size:1rem;color:var(--cream-dim);margin:0}
+  .results-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--border)}
+  .results-grid dt{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim)}
+  .results-grid dd{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--cream);line-height:1.2}
+  .results-grid dd small{display:block;font-family:'Jost',sans-serif;font-size:0.8rem;color:var(--cream-dim);line-height:1.5}
+  .warning{margin-top:1.2rem;background:var(--warn-bg);border:1px solid var(--warn);border-left:3px solid var(--warn);padding:0.9rem 1.1rem;font-size:0.88rem;color:var(--warn);line-height:1.6;font-weight:400}
+  .warning[hidden]{display:none}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .faq dt{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--cream);margin:1.6rem 0 0.4rem;line-height:1.3}
+  .faq dd p{margin-bottom:0}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(prefers-reduced-motion:reduce){.page-hero>*{animation:none;opacity:1}html{scroll-behavior:auto}}
+  @media(min-width:600px){.calc{padding:2.2rem}.calc-grid{grid-template-columns:1fr 1fr}.calc-grid .span-2{grid-column:1/-1}.results{padding:2rem}.results-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}.page-hero{padding:7rem 1rem 3rem}.article-wrap{padding:2rem 1rem 4rem}}
+  /* ── Tools dropdown ── */
+  .nav-sub-wrap{position:relative}
+  .nav-sub-toggle{font:inherit;background:none;border:none;padding:0;cursor:pointer;color:var(--cream-dim);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.5rem;line-height:inherit}
+  .nav-sub-toggle::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 0.3s}
+  .nav-sub-wrap.open .nav-sub-toggle::after{transform:translateY(1px) rotate(-135deg)}
+  .nav-sub-toggle:hover,.nav-sub-toggle.active,.nav-sub-wrap.open .nav-sub-toggle{color:var(--gold-light)}
+  .nav-sub-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+  .nav-sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:1.4rem;z-index:101}
+  .nav-sub ul{list-style:none;background:var(--bg);border:1px solid var(--border);box-shadow:0 12px 24px rgba(42,34,24,0.08);min-width:240px;padding:0.4rem 0}
+  .nav-sub a{display:block;padding:0.6rem 1.2rem;white-space:nowrap}
+  .nav-sub a[aria-current=page]{color:var(--gold-light)}
+  .nav-sub-wrap.open .nav-sub{display:block}
+  @media(hover:hover) and (min-width:769px){.nav-sub-wrap:hover .nav-sub{display:block}}
+  @media(max-width:768px){
+    .nav-sub-toggle{display:flex;width:100%;justify-content:space-between;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    .nav-sub{position:static;transform:none;padding:0}
+    .nav-sub ul{border:none;box-shadow:none;min-width:0;padding:0 0 0 1rem;background:none}
+    nav .nav-links .nav-sub a,nav .nav-links .nav-sub li:last-child a{padding:0.75rem 0;border-bottom:1px solid var(--border)}
+  }
+  /* ── Mobile menu ── */
+  .nav-toggle{display:none}
+  @media(max-width:768px){
+    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
+    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
+    nav.nav-open .nav-links{display:flex}
+    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    nav .nav-links li:last-child a{border-bottom:none}
+  }
+</style>
+<style>
+  /* ── Pricing calculator ── */
+  :root{--ok:#3f6b3a;--amber:#8a5a00;--amber-bg:#fbf1dc;--seg-wax:#b8943a;--seg-oil:#d6b56a;--seg-dye:#e6cf98;--seg-pack:#7a6545;--seg-other:#a8957a;--seg-fees:#4a3d2c;--seg-disc:#cfc3ae;--seg-profit:#3f6b3a}
+  .calc fieldset.group{border:none;border-top:1px solid var(--border);padding-top:1.4rem;margin-top:1.6rem}
+  .calc fieldset.group:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  .calc fieldset.group>legend{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;color:var(--cream);padding:0;margin-bottom:1rem;float:left;width:100%}
+  .calc fieldset.group>legend+*{clear:both}
+  .opt{text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-dim)}
+  .money{position:relative}
+  .money>span{position:absolute;left:0.85rem;top:0;bottom:0;display:flex;align-items:center;color:var(--cream-dim);font-size:1.1rem;pointer-events:none}
+  .calc .money input[type=number]{padding-left:1.8rem}
+  .suffix{display:flex;align-items:center;gap:0.4rem}
+  .suffix span{color:var(--cream-dim)}
+  .channel-fees{display:grid;gap:1.4rem}
+  .channel-fees[hidden]{display:none}
+  .fee-note{font-size:0.8rem;color:var(--text-dim);line-height:1.6;margin:1rem 0 0;padding:0.8rem 1rem;background:var(--bg3);border-left:3px solid var(--gold-dim)}
+  .calc-actions{display:flex;justify-content:flex-end;margin-top:1.4rem}
+  .btn-reset{font:inherit;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-light);background:none;border:1px solid var(--border-strong);padding:0.75rem 1.4rem;min-height:44px;cursor:pointer}
+  .btn-reset:hover{background:var(--bg3)}
+  .btn-reset:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .results-main.loss{color:var(--error)}
+  .results-grid dd.neg{color:var(--error)}
+  .warning.amber{background:var(--amber-bg);border-color:var(--amber);color:var(--amber)}
+  .breakdown{margin-top:1.5rem;padding-top:1.3rem;border-top:1px solid var(--border)}
+  .bar{display:flex;height:28px;width:100%;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin:0.6rem 0 1rem}
+  .bar span{display:block;height:100%;min-width:0;transition:width 0.3s}
+  .bd-table{width:100%;border-collapse:collapse;font-size:0.88rem}
+  .bd-table th,.bd-table td{text-align:left;padding:0.45rem 0.3rem;border-bottom:1px solid var(--border);color:var(--cream-dim);font-weight:300}
+  .bd-table th{font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);font-weight:500}
+  .bd-table td:nth-child(2),.bd-table td:nth-child(3),.bd-table th:nth-child(2),.bd-table th:nth-child(3){text-align:right;white-space:nowrap}
+  .bd-table td:first-child{color:var(--cream)}
+  .swatch{display:inline-block;width:0.8rem;height:0.8rem;margin-right:0.5rem;vertical-align:-0.05rem}
+  .example-table td:nth-child(2){text-align:right;white-space:nowrap}
+  @media(min-width:600px){.channel-fees{grid-template-columns:1fr 1fr}.results-grid.wide{grid-template-columns:repeat(3,1fr)}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.thewaxbiz.co.uk/wax-melt-pricing-calculator.html#app",
+  "name": "Wax Melt Pricing Calculator (UK)",
+  "description": "Free UK wax melt pricing calculator. Add wax, fragrance, packaging and Etsy or website fees to see cost per unit, profit, margin and the price to charge.",
+  "url": "https://www.thewaxbiz.co.uk/wax-melt-pricing-calculator.html",
+  "image": "https://www.thewaxbiz.co.uk/og-image.png",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": "en-GB",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Wax Biz",
+    "url": "https://www.thewaxbiz.co.uk/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much should I charge for wax melts in the UK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Work out your full cost per unit first, including packaging, labels and selling fees, then price for a margin of at least 50% on retail sales. For a typical soy clamshell costing around £1.40 to make, that puts the price somewhere around £4 to £5 on Etsy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between margin and markup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Margin is profit as a percentage of the selling price. Markup is profit as a percentage of cost. An item costing £2 and selling for £4 has a 50% margin but a 100% markup. This calculator uses margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to include Etsy fees in my price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Transaction, payment processing and listing fees together can take 15 to 20% of a low-priced item. Etsy also adds VAT to its seller fees for UK sellers, which you can only reclaim if you are VAT registered."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I price wax melts for wholesale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shops usually expect around 50% off your retail price so they can double it. Set your retail price first, then use the Wholesale channel to check you still make a profit at the discounted price. If you do not, your retail price is too low."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Biz</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li class="nav-sub-wrap">
+      <button type="button" class="nav-sub-toggle active" aria-expanded="false" aria-controls="tools-menu">Tools</button>
+      <div class="nav-sub" id="tools-menu"><ul>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
+        <li><a href="wax-melt-pricing-calculator.html" aria-current="page">Pricing Calculator</a></li>
+      </ul></div>
+    </li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Free Tool ✦</span>
+  <h1 class="page-title">Wax Melt <em>Pricing Calculator</em> (UK)</h1>
+  <p class="page-sub">See what each melt really costs you, what you keep after fees, and what to charge.</p>
+  <div class="divider"></div>
+</div>
+<main class="article-wrap">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span>Tools</span>
+    <span>/</span>
+    <span>Pricing Calculator</span>
+  </div>
+
+<p class="lead">Enter your material costs, packaging and selling price, and pick where you sell. The calculator shows your cost per unit, fees, profit and margin, plus the price you need for your target margin. Your figures are saved in this browser so they are there next time.</p>
+
+<form class="calc" id="pc-calc" novalidate aria-labelledby="pc-heading" onsubmit="return false">
+  <h2 id="pc-heading" class="sr-only">Pricing calculator</h2>
+
+  <fieldset class="group">
+    <legend>Batch materials</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="pc-wax-price">Wax price paid</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-wax-price" inputmode="decimal" min="0" step="0.01" value="20" aria-describedby="pc-wax-price-error"></div>
+        <p class="field-error" id="pc-wax-price-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-wax-kg">Wax weight bought (kg)</label>
+        <input type="number" id="pc-wax-kg" inputmode="decimal" min="0" step="any" value="5" aria-describedby="pc-wax-kg-error">
+        <p class="field-error" id="pc-wax-kg-error"></p>
+      </div>
+      <div class="field span-2">
+        <label for="pc-wax-used">Wax used per batch (g)</label>
+        <input type="number" id="pc-wax-used" inputmode="decimal" min="0" step="any" value="500" aria-describedby="pc-wax-used-error">
+        <p class="field-error" id="pc-wax-used-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-oil-price">Fragrance oil price paid</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-oil-price" inputmode="decimal" min="0" step="0.01" value="6" aria-describedby="pc-oil-price-error"></div>
+        <p class="field-error" id="pc-oil-price-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-oil-size">Bottle size</label>
+        <div class="input-row">
+          <input type="number" id="pc-oil-size" inputmode="decimal" min="0" step="any" value="100" aria-describedby="pc-oil-size-error">
+          <select id="pc-oil-unit" aria-label="Bottle size unit" style="width:5.5rem">
+            <option value="ml" selected>ml</option>
+            <option value="g">g</option>
+          </select>
+        </div>
+        <p class="field-error" id="pc-oil-size-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-load">Fragrance load (%)</label>
+        <input type="number" id="pc-load" inputmode="decimal" min="1" max="12" step="0.1" value="8" aria-describedby="pc-load-error pc-load-hint">
+        <p class="field-hint" id="pc-load-hint">Percentage of wax weight. Not sure? Use the <a href="fragrance-load-calculator.html">fragrance load calculator</a>.</p>
+        <p class="field-error" id="pc-load-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-dye">Colour or dye per batch <span class="opt">(optional)</span></label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-dye" inputmode="decimal" min="0" step="0.01" value="0.30" aria-describedby="pc-dye-error"></div>
+        <p class="field-error" id="pc-dye-error"></p>
+      </div>
+      <div class="field span-2">
+        <label for="pc-units">Melts or pots per batch</label>
+        <input type="number" id="pc-units" inputmode="numeric" min="1" step="1" value="6" aria-describedby="pc-units-error">
+        <p class="field-error" id="pc-units-error"></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Per-unit costs</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="pc-pack">Packaging per unit</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-pack" inputmode="decimal" min="0" step="0.01" value="0.35" aria-describedby="pc-pack-error"></div>
+        <p class="field-error" id="pc-pack-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-label">Label or sticker per unit</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-label" inputmode="decimal" min="0" step="0.01" value="0.10" aria-describedby="pc-label-error"></div>
+        <p class="field-error" id="pc-label-error"></p>
+      </div>
+      <div class="field span-2">
+        <label for="pc-other">Other costs per unit <span class="opt">(optional, e.g. shipping materials)</span></label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-other" inputmode="decimal" min="0" step="0.01" value="0.15" aria-describedby="pc-other-error"></div>
+        <p class="field-error" id="pc-other-error"></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Selling and fees</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="pc-price">Selling price per unit</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-price" inputmode="decimal" min="0" step="0.01" value="4.50" aria-describedby="pc-price-error"></div>
+        <p class="field-error" id="pc-price-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-channel">Sales channel</label>
+        <select id="pc-channel">
+          <option value="etsy" selected>Etsy</option>
+          <option value="website">Own website</option>
+          <option value="fair">Craft fair or in person</option>
+          <option value="wholesale">Wholesale</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="channel-fees" data-channel="etsy" style="margin-top:1.4rem">
+      <div class="field">
+        <label for="pc-etsy-trans">Transaction fee (%)</label>
+        <input type="number" id="pc-etsy-trans" inputmode="decimal" min="0" max="100" step="0.1" value="6.5" aria-describedby="pc-etsy-trans-error">
+        <p class="field-error" id="pc-etsy-trans-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-etsy-proc">Payment processing (%)</label>
+        <input type="number" id="pc-etsy-proc" inputmode="decimal" min="0" max="100" step="0.1" value="4" aria-describedby="pc-etsy-proc-error">
+        <p class="field-error" id="pc-etsy-proc-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-etsy-fixed">Payment fixed fee per sale</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-etsy-fixed" inputmode="decimal" min="0" step="0.01" value="0.20" aria-describedby="pc-etsy-fixed-error"></div>
+        <p class="field-error" id="pc-etsy-fixed-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-etsy-listing">Listing fee per sale</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-etsy-listing" inputmode="decimal" min="0" step="0.01" value="0.20" aria-describedby="pc-etsy-listing-error"></div>
+        <p class="field-error" id="pc-etsy-listing-error"></p>
+      </div>
+    </div>
+
+    <div class="channel-fees" data-channel="website" style="margin-top:1.4rem" hidden>
+      <div class="field">
+        <label for="pc-web-pct">Payment processing (%)</label>
+        <input type="number" id="pc-web-pct" inputmode="decimal" min="0" max="100" step="0.1" value="1.5" aria-describedby="pc-web-pct-error">
+        <p class="field-error" id="pc-web-pct-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-web-fixed">Fixed fee per sale</label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-web-fixed" inputmode="decimal" min="0" step="0.01" value="0.20" aria-describedby="pc-web-fixed-error"></div>
+        <p class="field-error" id="pc-web-fixed-error"></p>
+      </div>
+    </div>
+
+    <div class="channel-fees" data-channel="fair" style="margin-top:1.4rem" hidden>
+      <div class="field">
+        <label for="pc-fair-stall">Stall fee per event <span class="opt">(optional)</span></label>
+        <div class="money"><span aria-hidden="true">£</span><input type="number" id="pc-fair-stall" inputmode="decimal" min="0" step="0.01" value="" placeholder="0.00" aria-describedby="pc-fair-stall-error"></div>
+        <p class="field-error" id="pc-fair-stall-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-fair-units">Units you expect to sell per event</label>
+        <input type="number" id="pc-fair-units" inputmode="numeric" min="1" step="1" value="" placeholder="e.g. 40" aria-describedby="pc-fair-units-error pc-fair-units-hint">
+        <p class="field-hint" id="pc-fair-units-hint">Needed only if you pay a stall fee. The fee is spread across these sales.</p>
+        <p class="field-error" id="pc-fair-units-error"></p>
+      </div>
+    </div>
+
+    <div class="channel-fees" data-channel="wholesale" style="margin-top:1.4rem" hidden>
+      <div class="field">
+        <label for="pc-ws-discount">Wholesale discount off selling price (%)</label>
+        <input type="number" id="pc-ws-discount" inputmode="decimal" min="0" max="99" step="1" value="50" aria-describedby="pc-ws-discount-error">
+        <p class="field-error" id="pc-ws-discount-error"></p>
+      </div>
+    </div>
+
+    <p class="fee-note">Fee rates are defaults and change often. Check your platform's current rates and edit them here. Etsy adds VAT to its seller fees in the UK, which you can only reclaim if you are VAT registered.</p>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Targets</legend>
+    <div class="calc-grid">
+      <div class="field">
+        <label for="pc-target">Target margin (%)</label>
+        <input type="number" id="pc-target" inputmode="decimal" min="1" max="99" step="1" value="50" aria-describedby="pc-target-error">
+        <p class="field-error" id="pc-target-error"></p>
+      </div>
+      <div class="field">
+        <label for="pc-batches">Batches per month <span class="opt">(optional)</span></label>
+        <input type="number" id="pc-batches" inputmode="decimal" min="0" step="any" value="10" aria-describedby="pc-batches-error">
+        <p class="field-error" id="pc-batches-error"></p>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="calc-actions">
+    <button type="button" class="btn-reset" id="pc-reset">Reset to defaults</button>
+  </div>
+
+  <div class="results" id="pc-results">
+    <span class="results-label">Profit per unit</span>
+    <p class="results-main" id="pc-out-profit">£0.00</p>
+    <p class="results-sub" id="pc-out-margin">—</p>
+    <dl class="results-grid wide">
+      <div><dt>Total cost per unit</dt><dd id="pc-out-cost">—</dd></div>
+      <div><dt>Fees per unit</dt><dd id="pc-out-fees">—</dd></div>
+      <div><dt>Break-even price</dt><dd id="pc-out-breakeven">—</dd></div>
+      <div><dt>Price for <span id="pc-out-target-label">50</span>% margin</dt><dd id="pc-out-suggested">—</dd></div>
+      <div><dt>Profit per batch</dt><dd id="pc-out-batch">—</dd></div>
+      <div><dt>Profit per month</dt><dd id="pc-out-month">—</dd></div>
+    </dl>
+    <p class="warning" id="pc-warning" role="alert" hidden></p>
+
+    <div class="breakdown" id="pc-breakdown">
+      <span class="results-label">Where each sale goes</span>
+      <div class="bar" id="pc-bar" aria-hidden="true"></div>
+      <table class="bd-table">
+        <caption class="sr-only">Breakdown of the selling price per unit</caption>
+        <thead><tr><th scope="col">Item</th><th scope="col">Per unit</th><th scope="col">Of price</th></tr></thead>
+        <tbody id="pc-bd-body"></tbody>
+      </table>
+    </div>
+    <p class="sr-only" id="pc-summary" aria-live="polite"></p>
+  </div>
+  <noscript><p class="field-hint">This calculator needs JavaScript.</p></noscript>
+</form>
+
+<h2>How to price <em>wax melts</em></h2>
+<p>Start with cost-plus pricing: add up everything that goes into one unit, then add your profit on top. That means the wax and fragrance oil in it, its share of the dye, the clamshell or pot, the label and anything else that leaves with the order. Most new makers count the wax and oil and forget the rest, and packaging alone can cost more than the wax inside it.</p>
+<p>Margin and markup are not the same. Margin is profit as a share of the selling price; markup is profit as a share of cost. A melt that costs £2 and sells for £4 has a 50% margin but a 100% markup. Aim for a margin of at least 50% on retail sales, as it leaves room for discounts, wasted batches and your own time, none of which this calculator counts.</p>
+<p>Fees come off the price before you see any profit. On Etsy, transaction, payment and listing fees take around 15% of a £4.50 melt, and that rises as the price falls because the fixed 20p charges weigh more. A craft fair has no sales fees, but a £30 stall fee spread over 40 sales is still 75p a unit. Always compare channels on profit per unit, not on price.</p>
+<p>Wholesale buyers usually expect about 50% off your retail price so they can double it in their shop. Set your retail price first, then switch the channel to Wholesale and check you still make a profit. If you don't, the answer is to raise your retail price, not to offer a smaller discount.</p>
+
+<h2>Worked <em>example</em></h2>
+<p>These are the calculator's default figures: a 500 g batch of soy wax at 8% fragrance load, poured into six clamshells and sold on Etsy for £4.50 each.</p>
+<div class="table-wrap">
+<table class="comparison-table example-table">
+  <caption class="sr-only">Worked pricing example for one batch sold on Etsy</caption>
+  <thead><tr><th scope="col">Item</th><th scope="col">Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Wax: £20 for 5 kg, 500 g used</td><td>£2.00 per batch</td></tr>
+    <tr><td>Fragrance: £6 for 100 ml, 40 g used at 8%</td><td>£2.53 per batch</td></tr>
+    <tr><td>Dye</td><td>£0.30 per batch</td></tr>
+    <tr><td>Materials per clamshell (£4.83 ÷ 6)</td><td>£0.80</td></tr>
+    <tr><td>Packaging + label + other (35p + 10p + 15p)</td><td>£0.60</td></tr>
+    <tr><td><strong>Total cost per unit</strong></td><td><strong>£1.40</strong></td></tr>
+    <tr><td>Etsy fees (10.5% of £4.50 + 20p + 20p)</td><td>£0.87</td></tr>
+    <tr><td><strong>Profit per unit</strong></td><td><strong>£2.22 (49.4% margin)</strong></td></tr>
+    <tr><td>Break-even price</td><td>£2.02</td></tr>
+    <tr><td>Price for a 50% margin</td><td>£4.57</td></tr>
+    <tr><td>Profit per batch (× 6)</td><td>£13.34</td></tr>
+    <tr><td>Profit per month (10 batches)</td><td>£133.39</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The same melt sold at a craft fair for £4.00, with a £30 stall fee and 40 sales, makes £1.85 a unit (46.1% margin), so a lower price there can still earn close to the Etsy figure.</p>
+
+<h2>Frequently asked <em>questions</em></h2>
+<dl class="faq">
+  <dt>How much should I charge for wax melts in the UK?</dt>
+  <dd><p>Work out your full cost per unit first, including packaging, labels and selling fees, then price for a margin of at least 50% on retail sales. For a typical soy clamshell costing around £1.40 to make, that puts the price somewhere around £4 to £5 on Etsy.</p></dd>
+  <dt>What is the difference between margin and markup?</dt>
+  <dd><p>Margin is profit as a percentage of the selling price. Markup is profit as a percentage of cost. An item costing £2 and selling for £4 has a 50% margin but a 100% markup. This calculator uses margin.</p></dd>
+  <dt>Do I need to include Etsy fees in my price?</dt>
+  <dd><p>Yes. Transaction, payment processing and listing fees together can take 15 to 20% of a low-priced item. Etsy also adds VAT to its seller fees for UK sellers, which you can only reclaim if you are VAT registered.</p></dd>
+  <dt>How should I price wax melts for wholesale?</dt>
+  <dd><p>Shops usually expect around 50% off your retail price so they can double it. Set your retail price first, then use the Wholesale channel to check you still make a profit at the discounted price. If you do not, your retail price is too low.</p></dd>
+</dl>
+
+<h2>Next <em>steps</em></h2>
+<div class="guide-nav">
+  <a href="fragrance-load-calculator.html"><div class="guide-nav-label">Tool →</div><div class="guide-nav-title">Fragrance Load Calculator</div><p class="guide-nav-text">Work out the grams of fragrance oil for any batch size.</p></a>
+  <a href="guide-packaging.html"><div class="guide-nav-label">Guide →</div><div class="guide-nav-title">Packaging &amp; Clamshells</div><p class="guide-nav-text">Choose packaging that protects your melts and your margin.</p></a>
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Biz</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="fragrance-load-calculator.html">Tools</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Biz · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Pricing maths (pure, no DOM) ──
+  var OIL_DENSITY = 0.95; // g/ml, matches the fragrance load calculator
+
+  // fees: { pct: % of revenue, fixed: £ per unit, discountPct: % off listed price }
+  function calculatePricing(i) {
+    var waxBatch = i.waxPrice / (i.waxKg * 1000) * i.waxUsedG;
+    var oilG = i.waxUsedG * i.loadPct / 100;
+    var oilGramsInBottle = i.oilUnit === 'ml' ? i.oilSize * OIL_DENSITY : i.oilSize;
+    var oilBatch = oilG * i.oilPrice / oilGramsInBottle;
+    var dyeBatch = i.dyeBatch || 0;
+
+    var u = {
+      wax: waxBatch / i.units,
+      oil: oilBatch / i.units,
+      dye: dyeBatch / i.units,
+      packaging: i.packaging + i.label,
+      other: i.other || 0
+    };
+    var cost = u.wax + u.oil + u.dye + u.packaging + u.other;
+
+    var keep = 1 - (i.fees.discountPct || 0) / 100;   // share of listed price actually received
+    var pct = (i.fees.pct || 0) / 100;
+    var fixed = i.fees.fixed || 0;
+    var revenue = i.price * keep;
+    var fees = revenue * pct + fixed;
+    var profit = revenue - fees - cost;
+    var margin = revenue > 0 ? profit / revenue * 100 : null;
+
+    // Listed price P where P*keep*(1-pct) - fixed - cost = 0
+    var k = keep * (1 - pct);
+    var breakEven = k > 0 ? (cost + fixed) / k : null;
+    // Listed price where profit / revenue = target
+    var denom = 1 - pct - i.targetMarginPct / 100;
+    var suggested = denom > 0 && keep > 0 ? (cost + fixed) / denom / keep : null;
+
+    var batchProfit = profit * i.units;
+    return {
+      perUnit: u, cost: cost, revenue: revenue, discount: i.price - revenue,
+      fees: fees, profit: profit, margin: margin,
+      breakEven: breakEven, suggested: suggested,
+      batchProfit: batchProfit,
+      monthProfit: i.batchesPerMonth ? batchProfit * i.batchesPerMonth : null
+    };
+  }
+
+  // ── Calculator UI ──
+  (function () {
+    if (typeof document === 'undefined') return;
+    var form = document.getElementById('pc-calc');
+    if (!form) return;
+
+    var STORE_KEY = 'thewaxbiz-pricing-v1';
+    var $ = function (id) { return document.getElementById(id); };
+    var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
+    function money(n) { return gbp.format(Math.abs(n) < 0.005 ? 0 : n); }
+    function pct(n) { return n.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%'; }
+
+    // Validation rules: gt0 = must be more than zero, ge0 = zero allowed
+    var RULES = {
+      'pc-wax-price':  { name: 'the wax price', rule: 'gt0' },
+      'pc-wax-kg':     { name: 'the wax weight bought', rule: 'gt0' },
+      'pc-wax-used':   { name: 'the wax used per batch', rule: 'gt0' },
+      'pc-oil-price':  { name: 'the fragrance oil price', rule: 'gt0' },
+      'pc-oil-size':   { name: 'the bottle size', rule: 'gt0' },
+      'pc-load':       { name: 'the fragrance load', rule: 'gt0', min: 1, max: 12 },
+      'pc-dye':        { name: 'the dye cost', rule: 'ge0', optional: true },
+      'pc-units':      { name: 'the number of melts per batch', rule: 'gt0', integer: true },
+      'pc-pack':       { name: 'the packaging cost', rule: 'ge0' },
+      'pc-label':      { name: 'the label cost', rule: 'ge0' },
+      'pc-other':      { name: 'other costs', rule: 'ge0', optional: true },
+      'pc-price':      { name: 'a selling price', rule: 'gt0' },
+      'pc-etsy-trans': { name: 'the transaction fee', rule: 'ge0', max: 100, channel: 'etsy' },
+      'pc-etsy-proc':  { name: 'the processing fee', rule: 'ge0', max: 100, channel: 'etsy' },
+      'pc-etsy-fixed': { name: 'the fixed fee', rule: 'ge0', channel: 'etsy' },
+      'pc-etsy-listing': { name: 'the listing fee', rule: 'ge0', channel: 'etsy' },
+      'pc-web-pct':    { name: 'the processing fee', rule: 'ge0', max: 100, channel: 'website' },
+      'pc-web-fixed':  { name: 'the fixed fee', rule: 'ge0', channel: 'website' },
+      'pc-fair-stall': { name: 'the stall fee', rule: 'ge0', optional: true, channel: 'fair' },
+      'pc-fair-units': { name: 'the units sold per event', rule: 'gt0', integer: true, optional: true, channel: 'fair' },
+      'pc-ws-discount': { name: 'the discount', rule: 'ge0', max: 99, channel: 'wholesale' },
+      'pc-target':     { name: 'a target margin', rule: 'gt0', max: 99 },
+      'pc-batches':    { name: 'batches per month', rule: 'gt0', optional: true }
+    };
+    var FIELD_IDS = Object.keys(RULES).concat(['pc-oil-unit', 'pc-channel']);
+
+    function setError(el, msg) {
+      $(el.id + '-error').textContent = msg || '';
+      if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+    }
+
+    // Returns a number, 0 for a blank optional field, or undefined when invalid.
+    function check(id) {
+      var el = $(id), r = RULES[id], raw = el.value.trim();
+      if (el.validity && el.validity.badInput) return setError(el, 'Enter ' + r.name + ' as a number.');
+      if (raw === '') {
+        if (r.optional) { setError(el, ''); return 0; }
+        return setError(el, 'Enter ' + r.name + '.');
+      }
+      var n = Number(raw);
+      if (!isFinite(n)) return setError(el, 'Enter ' + r.name + ' as a number.');
+      if (n < 0) return setError(el, 'This can’t be negative.');
+      if (r.rule === 'gt0' && n === 0) return setError(el, 'This must be more than zero.');
+      if (r.min !== undefined && n < r.min) return setError(el, 'Enter a value of at least ' + r.min + '.');
+      if (r.max !== undefined && n > r.max) return setError(el, 'Enter a value no higher than ' + r.max + '.');
+      if (r.integer && Math.floor(n) !== n) return setError(el, 'Use a whole number.');
+      setError(el, '');
+      return n;
+    }
+
+    function channelFees(channel, v) {
+      if (channel === 'etsy') return { pct: v['pc-etsy-trans'] + v['pc-etsy-proc'], fixed: v['pc-etsy-fixed'] + v['pc-etsy-listing'] };
+      if (channel === 'website') return { pct: v['pc-web-pct'], fixed: v['pc-web-fixed'] };
+      if (channel === 'fair') return { pct: 0, fixed: v['pc-fair-stall'] ? v['pc-fair-stall'] / v['pc-fair-units'] : 0 };
+      return { pct: 0, fixed: 0, discountPct: v['pc-ws-discount'] };
+    }
+
+    function showChannel(channel) {
+      form.querySelectorAll('.channel-fees').forEach(function (g) { g.hidden = g.dataset.channel !== channel; });
+    }
+
+    var out = {
+      profit: $('pc-out-profit'), margin: $('pc-out-margin'), cost: $('pc-out-cost'), fees: $('pc-out-fees'),
+      breakeven: $('pc-out-breakeven'), suggested: $('pc-out-suggested'), targetLabel: $('pc-out-target-label'),
+      batch: $('pc-out-batch'), month: $('pc-out-month'), warning: $('pc-warning'),
+      bar: $('pc-bar'), bdBody: $('pc-bd-body'), breakdown: $('pc-breakdown'), summary: $('pc-summary')
+    };
+
+    function setDd(el, value) {
+      el.textContent = value === null ? '—' : money(value);
+      el.classList.toggle('neg', value !== null && value < 0);
+    }
+
+    function clearResults() {
+      out.profit.textContent = '—';
+      out.profit.classList.remove('loss');
+      out.margin.textContent = 'Fix the highlighted fields to see your result.';
+      [out.cost, out.fees, out.breakeven, out.suggested, out.batch, out.month].forEach(function (el) { setDd(el, null); });
+      out.warning.hidden = true;
+      out.breakdown.hidden = true;
+      out.summary.textContent = '';
+    }
+
+    function renderBreakdown(r, channel) {
+      var rows = [
+        ['Wax', r.perUnit.wax, 'var(--seg-wax)'],
+        ['Fragrance oil', r.perUnit.oil, 'var(--seg-oil)'],
+        ['Colour', r.perUnit.dye, 'var(--seg-dye)'],
+        ['Packaging & labels', r.perUnit.packaging, 'var(--seg-pack)'],
+        ['Other', r.perUnit.other, 'var(--seg-other)'],
+        ['Fees', r.fees, 'var(--seg-fees)']
+      ];
+      if (channel === 'wholesale') rows.push(['Wholesale discount', r.discount, 'var(--seg-disc)']);
+      rows.push([r.profit < 0 ? 'Loss' : 'Profit', r.profit, 'var(--seg-profit)']);
+      rows = rows.filter(function (row) { return row[0] === 'Profit' || row[0] === 'Loss' || row[1] > 0.0049; });
+
+      var price = r.revenue + r.discount;
+      // When selling at a loss the costs exceed the price, so scale the bar to total costs instead.
+      var base = r.profit < 0 ? price - r.profit : price;
+      out.bar.innerHTML = '';
+      out.bdBody.innerHTML = '';
+      rows.forEach(function (row) {
+        var isProfit = row[0] === 'Profit' || row[0] === 'Loss';
+        if (!(isProfit && row[1] <= 0)) {
+          var seg = document.createElement('span');
+          seg.style.width = (row[1] / base * 100) + '%';
+          seg.style.background = row[2];
+          out.bar.appendChild(seg);
+        }
+        var tr = document.createElement('tr');
+        var share = price > 0 ? pct(row[1] / price * 100) : '—';
+        tr.innerHTML = '<td><span class="swatch" style="background:' + row[2] + '"></span></td><td></td><td></td>';
+        tr.children[0].appendChild(document.createTextNode(row[0]));
+        tr.children[1].textContent = money(row[1]);
+        tr.children[2].textContent = share;
+        out.bdBody.appendChild(tr);
+      });
+      out.breakdown.hidden = false;
+    }
+
+    function update() {
+      var channel = $('pc-channel').value;
+      showChannel(channel);
+      var v = {}, ok = true;
+      Object.keys(RULES).forEach(function (id) {
+        var r = RULES[id];
+        if (r.channel && r.channel !== channel) { setError($(id), ''); return; }
+        v[id] = check(id);
+        if (v[id] === undefined) ok = false;
+      });
+      if (ok && channel === 'fair' && v['pc-fair-stall'] > 0 && !v['pc-fair-units']) {
+        setError($('pc-fair-units'), 'Enter how many you expect to sell, so the stall fee can be spread.');
+        ok = false;
+      }
+      save();
+      if (!ok) return clearResults();
+
+      var r = calculatePricing({
+        waxPrice: v['pc-wax-price'], waxKg: v['pc-wax-kg'], waxUsedG: v['pc-wax-used'],
+        oilPrice: v['pc-oil-price'], oilSize: v['pc-oil-size'], oilUnit: $('pc-oil-unit').value,
+        loadPct: v['pc-load'], dyeBatch: v['pc-dye'], units: v['pc-units'],
+        packaging: v['pc-pack'], label: v['pc-label'], other: v['pc-other'],
+        price: v['pc-price'], fees: channelFees(channel, v),
+        targetMarginPct: v['pc-target'], batchesPerMonth: v['pc-batches']
+      });
+
+      out.profit.textContent = money(r.profit);
+      out.profit.classList.toggle('loss', r.profit < 0);
+      out.margin.textContent = r.margin === null ? '—' : pct(r.margin) + ' margin' +
+        (channel === 'wholesale' ? ' on a wholesale price of ' + money(r.revenue) : '');
+      setDd(out.cost, r.cost);
+      setDd(out.fees, r.fees);
+      setDd(out.breakeven, r.breakEven);
+      out.targetLabel.textContent = v['pc-target'];
+      if (r.suggested === null) {
+        out.suggested.textContent = 'Not reachable';
+        out.suggested.classList.remove('neg');
+      } else {
+        setDd(out.suggested, r.suggested);
+      }
+      setDd(out.batch, r.batchProfit);
+      setDd(out.month, r.monthProfit);
+
+      if (r.profit < 0) {
+        out.warning.className = 'warning';
+        out.warning.textContent = 'You lose ' + money(-r.profit) + ' on every sale. ' + (r.breakEven === null
+          ? 'Your fees take the whole price, so no price can make a profit. Check the fee rates.'
+          : 'Raise your price to at least ' + money(r.breakEven) + ' to break even.');
+        out.warning.hidden = false;
+      } else if (r.margin < 20) {
+        out.warning.className = 'warning amber';
+        out.warning.textContent = 'Your margin is under 20%. There is little room for discounts, breakages or your time.';
+        out.warning.hidden = false;
+      } else {
+        out.warning.hidden = true;
+      }
+
+      renderBreakdown(r, channel);
+      out.summary.textContent = 'Profit ' + money(r.profit) + ' per unit, ' + (r.margin === null ? '' : pct(r.margin) + ' margin. ') +
+        'Cost ' + money(r.cost) + ', fees ' + money(r.fees) + '.';
+    }
+
+    // ── Saving ──
+    function save() {
+      var data = {};
+      FIELD_IDS.forEach(function (id) { data[id] = $(id).value; });
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function restore() {
+      var data;
+      try { data = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); } catch (e) {}
+      if (!data) return;
+      FIELD_IDS.forEach(function (id) { if (typeof data[id] === 'string') $(id).value = data[id]; });
+    }
+    function reset() {
+      try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+      FIELD_IDS.forEach(function (id) {
+        var el = $(id);
+        if (el.tagName === 'SELECT') {
+          Array.prototype.forEach.call(el.options, function (o) { o.selected = o.defaultSelected; });
+        } else {
+          el.value = el.defaultValue;
+        }
+      });
+      update();
+      $('pc-wax-price').focus();
+    }
+
+    FIELD_IDS.forEach(function (id) {
+      $(id).addEventListener('input', update);
+      $(id).addEventListener('change', update);
+    });
+    $('pc-reset').addEventListener('click', reset);
+
+    restore();
+    update();
+  })();
+</script>
+<script>
+  // ── Mobile menu + Tools dropdown ──
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    var sub = nav.querySelector('.nav-sub-wrap');
+    var subBtn = sub && sub.querySelector('.nav-sub-toggle');
+    function setSub(open) {
+      if (!sub) return;
+      sub.classList.toggle('open', open);
+      subBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function setOpen(open) {
+      nav.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) setSub(false);
+    }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    if (subBtn) {
+      subBtn.addEventListener('click', function () { setSub(!sub.classList.contains('open')); });
+      sub.addEventListener('focusout', function (e) {
+        if (!nav.classList.contains('nav-open') && !sub.contains(e.relatedTarget)) setSub(false);
+      });
+    }
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (sub && sub.classList.contains('open')) { setSub(false); subBtn.focus(); }
+      else if (nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+      else if (sub && !sub.contains(e.target)) setSub(false);
+    });
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  })();
+</script>
+</body>
+</html>

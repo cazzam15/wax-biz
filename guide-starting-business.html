@@ -102,6 +102,25 @@
   .page-hero>*:nth-child(3){animation-delay:0.4s}
   .page-hero>*:nth-child(4){animation-delay:0.5s}
   @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
+  /* ── Tools dropdown ── */
+  .nav-sub-wrap{position:relative}
+  .nav-sub-toggle{font:inherit;background:none;border:none;padding:0;cursor:pointer;color:var(--cream-dim);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;display:inline-flex;align-items:center;gap:0.5rem;line-height:inherit}
+  .nav-sub-toggle::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 0.3s}
+  .nav-sub-wrap.open .nav-sub-toggle::after{transform:translateY(1px) rotate(-135deg)}
+  .nav-sub-toggle:hover,.nav-sub-toggle.active,.nav-sub-wrap.open .nav-sub-toggle{color:var(--gold-light)}
+  .nav-sub-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+  .nav-sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:1.4rem;z-index:101}
+  .nav-sub ul{list-style:none;background:var(--bg);border:1px solid var(--border);box-shadow:0 12px 24px rgba(42,34,24,0.08);min-width:240px;padding:0.4rem 0}
+  .nav-sub a{display:block;padding:0.6rem 1.2rem;white-space:nowrap}
+  .nav-sub a[aria-current=page]{color:var(--gold-light)}
+  .nav-sub-wrap.open .nav-sub{display:block}
+  @media(hover:hover) and (min-width:769px){.nav-sub-wrap:hover .nav-sub{display:block}}
+  @media(max-width:768px){
+    .nav-sub-toggle{display:flex;width:100%;justify-content:space-between;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    .nav-sub{position:static;transform:none;padding:0}
+    .nav-sub ul{border:none;box-shadow:none;min-width:0;padding:0 0 0 1rem;background:none}
+    nav .nav-links .nav-sub a,nav .nav-links .nav-sub li:last-child a{padding:0.75rem 0;border-bottom:1px solid var(--border)}
+  }
   /* ── Mobile menu ── */
   .nav-toggle{display:none}
   @media(max-width:768px){
@@ -158,7 +177,13 @@
   <ul class="nav-links" id="site-nav">
     <li><a href="index.html#retailers">Retailers</a></li>
     <li><a href="index.html#guides">Buying Guides</a></li>
-    <li><a href="fragrance-load-calculator.html">Tools</a></li>
+    <li class="nav-sub-wrap">
+      <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="tools-menu">Tools</button>
+      <div class="nav-sub" id="tools-menu"><ul>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
+        <li><a href="wax-melt-pricing-calculator.html">Pricing Calculator</a></li>
+      </ul></div>
+    </li>
     <li><a href="amazon-picks.html">Amazon Picks</a></li>
   </ul>
 </nav>
@@ -299,25 +324,42 @@
   </div>
 </footer>
 <script>
-  // ── Mobile menu ──
+  // ── Mobile menu + Tools dropdown ──
   (function () {
     var nav = document.querySelector('nav');
     var btn = nav && nav.querySelector('.nav-toggle');
     if (!btn) return;
+    var sub = nav.querySelector('.nav-sub-wrap');
+    var subBtn = sub && sub.querySelector('.nav-sub-toggle');
+    function setSub(open) {
+      if (!sub) return;
+      sub.classList.toggle('open', open);
+      subBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
     function setOpen(open) {
       nav.classList.toggle('nav-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) setSub(false);
     }
     btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    if (subBtn) {
+      subBtn.addEventListener('click', function () { setSub(!sub.classList.contains('open')); });
+      sub.addEventListener('focusout', function (e) {
+        if (!nav.classList.contains('nav-open') && !sub.contains(e.relatedTarget)) setSub(false);
+      });
+    }
     nav.querySelectorAll('.nav-links a').forEach(function (a) {
       a.addEventListener('click', function () { setOpen(false); });
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+      if (e.key !== 'Escape') return;
+      if (sub && sub.classList.contains('open')) { setSub(false); subBtn.focus(); }
+      else if (nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
     });
     document.addEventListener('click', function (e) {
       if (!nav.contains(e.target)) setOpen(false);
+      else if (sub && !sub.contains(e.target)) setSub(false);
     });
     window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
   })();
