@@ -32,3 +32,7 @@
   nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
   nav .nav-links li:last-child a{border-bottom:none}
 }
+/* Wide tables scroll sideways on small screens instead of being clipped */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* Footer links wrap onto a second line on narrow screens */
+.footer-nav{flex-wrap:wrap}
