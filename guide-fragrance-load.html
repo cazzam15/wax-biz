@@ -96,6 +96,20 @@
   .page-hero>*:nth-child(3){animation-delay:0.4s}
   .page-hero>*:nth-child(4){animation-delay:0.5s}
   @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}}
+  /* ── Mobile menu ── */
+  .nav-toggle{display:none}
+  @media(max-width:768px){
+    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
+    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
+    nav.nav-open .nav-links{display:flex}
+    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    nav .nav-links li:last-child a{border-bottom:none}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -134,9 +148,11 @@
 <body>
 <nav>
   <a href="index.html" class="nav-logo">The Wax Biz</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
     <li><a href="index.html#retailers">Retailers</a></li>
     <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="fragrance-load-calculator.html">Tools</a></li>
     <li><a href="amazon-picks.html">Amazon Picks</a></li>
   </ul>
 </nav>
@@ -161,7 +177,7 @@
 <p>Fragrance load (or fragrance percentage) refers to the weight of fragrance oil added relative to the weight of wax. It's always expressed as a percentage. For example, a 10% fragrance load means 10g of fragrance oil per 100g of wax.</p>
 
 <div class="callout">
-  <p><strong>Standard UK guideline for wax melts:</strong> 6–10% fragrance load. Most makers start at 8% and adjust based on testing. Going above 10% rarely improves throw and can cause fragrance oil to "pool" and separate from the wax.</p>
+  <p><strong>Standard UK guideline for wax melts:</strong> 6–10% fragrance load. Most makers start at 8% and adjust based on testing. Going above 10% rarely improves throw and can cause fragrance oil to "pool" and separate from the wax. Use our <a href="fragrance-load-calculator.html" style="color:var(--gold-light)">fragrance load calculator</a> to work out the grams for your batch.</p>
 </div>
 
 <h2>Cold Throw vs <em>Hot Throw</em></h2>
@@ -226,5 +242,29 @@
     <p class="footer-copy">© 2025 The Wax Biz · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
   </div>
 </footer>
+<script>
+  // ── Mobile menu ──
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    function setOpen(open) {
+      nav.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  })();
+</script>
 </body>
 </html>

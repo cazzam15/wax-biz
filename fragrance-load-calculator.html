@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<title>Wax Melt Fragrance Load Calculator — The Wax Biz</title>
+<meta name="description" content="Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.">
+<link rel="canonical" href="https://www.thewaxbiz.co.uk/fragrance-load-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wax Melt Fragrance Load Calculator — The Wax Biz">
+<meta property="og:description" content="Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.">
+<meta property="og:url" content="https://www.thewaxbiz.co.uk/fragrance-load-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="The Wax Biz">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Wax Biz — UK candle &amp; wax melt supplies directory">
+<meta name="twitter:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#faf6ef;--bg2:#f4ede0;--bg3:#efe6d6;
+    --card:#ffffff;--card-hover:#fbf6ee;
+    --gold:#b8943a;--gold-light:#9a7a2c;--gold-dim:#c2a45a;
+    --cream:#2a2218;--cream-dim:#6b5f4d;
+    --text:#3a3027;--text-dim:#756954;
+    --border:rgba(184,148,58,0.4);--border-strong:rgba(184,148,58,0.6);
+    --warn:#9a4a1c;--warn-bg:#fbeee2;--error:#a3301f;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.8;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(250,246,239,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--gold-light);letter-spacing:0.08em;text-decoration:none}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{color:var(--cream-dim);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+  .page-hero{padding:8rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 80%,rgba(201,168,76,0.07) 0%,transparent 70%)}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1}
+  .page-title em{font-style:italic;color:var(--gold-light)}
+  .page-sub{font-size:0.9rem;color:var(--cream-dim);max-width:560px;margin:1.2rem auto 0}
+  .divider{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0}
+  .article-wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 6rem}
+  .breadcrumb{font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:2.5rem;display:flex;gap:0.5rem;align-items:center}
+  .breadcrumb a{color:var(--gold-dim);text-decoration:none;transition:color 0.3s}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb span{color:var(--text-dim)}
+  h2{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem;line-height:1.2}
+  h2 em{font-style:italic;color:var(--gold-light)}
+  h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--cream);margin:1.8rem 0 0.6rem}
+  p{font-size:0.92rem;color:var(--cream-dim);margin-bottom:1.1rem;line-height:1.85}
+  p a,li a{color:var(--gold-light)}
+  .lead{font-size:1.05rem;color:var(--text);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+  .callout{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;border-radius:0}
+  .callout p{margin:0;font-size:0.87rem;line-height:1.75}
+  .callout strong{color:var(--gold)}
+  .table-wrap{overflow-x:auto;margin:2rem 0}
+  .comparison-table{width:100%;border-collapse:collapse;font-size:0.84rem}
+  .comparison-table th{background:var(--bg3);color:var(--gold);font-weight:500;font-family:'Jost',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;padding:0.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-strong)}
+  .comparison-table td{padding:0.85rem 1rem;color:var(--cream-dim);border-bottom:1px solid var(--border);vertical-align:top}
+  .comparison-table tr:last-child td{border-bottom:none}
+  .comparison-table td:first-child{color:var(--cream);font-weight:400}
+  .guide-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+  .guide-nav a{background:var(--bg3);border:1px solid var(--border);padding:1.2rem 1.5rem;text-decoration:none;transition:border-color 0.3s}
+  .guide-nav a:hover,.guide-nav a:focus-visible{border-color:var(--border-strong)}
+  .guide-nav-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem}
+  .guide-nav-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+  .guide-nav-text{font-size:0.8rem;color:var(--cream-dim);line-height:1.6;margin-top:0.3rem}
+
+  /* ── Calculator ── */
+  .calc{background:var(--card);border:1px solid var(--border);padding:1.5rem;margin:0 0 3rem}
+  .calc-grid{display:grid;gap:1.4rem}
+  .field label,.field legend{display:block;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream);font-weight:500;margin-bottom:0.5rem}
+  .field fieldset{border:none}
+  .field-hint{font-size:0.78rem;color:var(--text-dim);margin:0.4rem 0 0;line-height:1.5}
+  .field-error{font-size:0.8rem;color:var(--error);margin:0.4rem 0 0;line-height:1.5;font-weight:400}
+  .field-error:empty{display:none}
+  .calc input[type=number],.calc select{width:100%;font:inherit;font-size:1.1rem;font-weight:400;color:var(--cream);background:var(--bg);border:1px solid var(--border-strong);border-radius:0;padding:0.7rem 0.85rem;min-height:48px}
+  .calc select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 1.2rem) 55%,calc(100% - 0.85rem) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:2.5rem}
+  .calc input:focus-visible,.calc select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .calc input[aria-invalid=true]{border-color:var(--error)}
+  .input-row{display:flex;gap:0.6rem;align-items:stretch}
+  .input-row input[type=number]{flex:1;min-width:0}
+  .unit-toggle{display:flex;border:1px solid var(--border-strong);position:relative}
+  .unit-toggle input{position:absolute;opacity:0;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0,0,0,0);pointer-events:none}
+  .unit-toggle label{margin:0;display:flex;align-items:center;justify-content:center;min-width:3.2rem;padding:0 0.8rem;font-size:0.85rem;letter-spacing:0.08em;text-transform:none;color:var(--cream-dim);cursor:pointer;font-weight:400}
+  .unit-toggle input:checked+label{background:var(--gold);color:#fff}
+  .unit-toggle input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+  .load-row{display:flex;gap:0.8rem;align-items:center}
+  .load-row input[type=range]{flex:1;min-width:0;accent-color:var(--gold);height:48px}
+  .load-row .load-num{display:flex;align-items:center;gap:0.3rem;width:7rem;flex-shrink:0}
+  .load-row .load-num span{color:var(--cream-dim)}
+  .results{margin-top:1.8rem;background:var(--bg3);border:1px solid var(--border-strong);border-top:3px solid var(--gold);padding:1.5rem}
+  .results-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);display:block}
+  .results-main{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,12vw,4.5rem);font-weight:500;color:var(--cream);line-height:1.05;margin:0.3rem 0 0.2rem}
+  .results-main small{font-size:0.45em;color:var(--cream-dim);font-weight:400}
+  .results-sub{font-size:1rem;color:var(--cream-dim);margin:0}
+  .results-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--border)}
+  .results-grid dt{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim)}
+  .results-grid dd{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--cream);line-height:1.2}
+  .results-grid dd small{display:block;font-family:'Jost',sans-serif;font-size:0.8rem;color:var(--cream-dim);line-height:1.5}
+  .warning{margin-top:1.2rem;background:var(--warn-bg);border:1px solid var(--warn);border-left:3px solid var(--warn);padding:0.9rem 1.1rem;font-size:0.88rem;color:var(--warn);line-height:1.6;font-weight:400}
+  .warning[hidden]{display:none}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .faq dt{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--cream);margin:1.6rem 0 0.4rem;line-height:1.3}
+  .faq dd p{margin-bottom:0}
+
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem}
+  .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light)}
+  .footer-nav{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+  .footer-nav a{font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.3s}
+  .footer-nav a:hover{color:var(--gold-light)}
+  .footer-copy{font-size:0.7rem;color:var(--text-dim);width:100%;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .page-hero>*{opacity:0;animation:fadeUp 0.8s ease forwards}
+  .page-hero>*:nth-child(1){animation-delay:0.1s}
+  .page-hero>*:nth-child(2){animation-delay:0.25s}
+  .page-hero>*:nth-child(3){animation-delay:0.4s}
+  .page-hero>*:nth-child(4){animation-delay:0.5s}
+  @media(prefers-reduced-motion:reduce){.page-hero>*{animation:none;opacity:1}html{scroll-behavior:auto}}
+  @media(min-width:600px){.calc{padding:2.2rem}.calc-grid{grid-template-columns:1fr 1fr}.calc-grid .span-2{grid-column:1/-1}.results{padding:2rem}.results-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.guide-nav{grid-template-columns:1fr}.page-hero{padding:7rem 1rem 3rem}.article-wrap{padding:2rem 1rem 4rem}}
+  /* ── Mobile menu ── */
+  .nav-toggle{display:none}
+  @media(max-width:768px){
+    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
+    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
+    nav.nav-open .nav-links{display:flex}
+    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    nav .nav-links li:last-child a{border-bottom:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.thewaxbiz.co.uk/fragrance-load-calculator.html#app",
+  "name": "Wax Melt Fragrance Load Calculator",
+  "description": "Free fragrance load calculator for wax melts and candles. Enter your wax weight and percentage to get grams and ml of fragrance oil, plus per-pot amounts.",
+  "url": "https://www.thewaxbiz.co.uk/fragrance-load-calculator.html",
+  "image": "https://www.thewaxbiz.co.uk/og-image.png",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": "en-GB",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Wax Biz",
+    "url": "https://www.thewaxbiz.co.uk/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What fragrance load should I use for wax melts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most UK makers start at 8% and test from there. Soy and coconut blends usually sit between 6% and 10%, paraffin up to 12% and palm up to 8%. Never go above the maximum on your fragrance oil's IFRA certificate, even if your wax will hold more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is fragrance load a percentage of the wax or the total batch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This calculator uses the most common UK method: a percentage of the wax weight. 500 g of wax at 8% needs 40 g of fragrance oil, giving a 540 g batch. Some suppliers quote load as a percentage of the total batch instead, which works out slightly lower, so check which method your supplier means."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are my wax melts sweating oil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beads of oil on the surface usually mean the load is higher than the wax can hold, or the oil was added at the wrong temperature and did not bind. Drop the load by 1 to 2%, add the oil at the temperature your wax supplier recommends and stir for a full two minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert grams of fragrance oil to ml?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the grams by the oil's density. This calculator assumes 0.95 g/ml, which is typical, so 40 g is about 42 ml. Densities vary between oils, so weighing on digital scales is always more accurate than measuring by volume. Your oil's Safety Data Sheet lists its exact density."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Biz</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="fragrance-load-calculator.html" class="active" aria-current="page">Tools</a></li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <span class="section-label">✦ Free Tool ✦</span>
+  <h1 class="page-title">Wax Melt <em>Fragrance Load Calculator</em></h1>
+  <p class="page-sub">Work out exactly how much fragrance oil to add to your wax, in grams and ml.</p>
+  <div class="divider"></div>
+</div>
+<main class="article-wrap">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span>Tools</span>
+    <span>/</span>
+    <span>Fragrance Load Calculator</span>
+  </div>
+
+<p class="lead">Enter your wax weight and fragrance load, and this calculator tells you how much fragrance oil to weigh out, in grams and ml. Add a pot count to get the amount per melt or candle. Results update as you type.</p>
+
+<form class="calc" id="fl-calc" novalidate aria-labelledby="calc-heading" onsubmit="return false">
+  <h2 id="calc-heading" class="sr-only">Calculator</h2>
+  <div class="calc-grid">
+
+    <div class="field span-2">
+      <label for="fl-weight">Wax weight</label>
+      <div class="input-row">
+        <input type="number" id="fl-weight" inputmode="decimal" min="0" step="any" value="500" aria-describedby="fl-weight-error" required>
+        <fieldset class="unit-toggle">
+          <legend class="sr-only">Weight unit</legend>
+          <input type="radio" name="fl-unit" id="fl-unit-g" value="g" checked><label for="fl-unit-g">g</label>
+          <input type="radio" name="fl-unit" id="fl-unit-oz" value="oz"><label for="fl-unit-oz">oz</label>
+        </fieldset>
+      </div>
+      <p class="field-error" id="fl-weight-error"></p>
+    </div>
+
+    <div class="field span-2">
+      <label for="fl-load-num" id="fl-load-label">Fragrance load (%)</label>
+      <div class="load-row">
+        <input type="range" id="fl-load-range" min="1" max="12" step="0.5" value="8" aria-labelledby="fl-load-label" aria-valuetext="8%">
+        <div class="load-num">
+          <input type="number" id="fl-load-num" inputmode="decimal" min="1" max="12" step="0.1" value="8" aria-describedby="fl-load-num-error fl-load-hint" required>
+          <span aria-hidden="true">%</span>
+        </div>
+      </div>
+      <p class="field-hint" id="fl-load-hint">Between 1% and 12%. Calculated as a percentage of wax weight.</p>
+      <p class="field-error" id="fl-load-num-error"></p>
+    </div>
+
+    <div class="field">
+      <label for="fl-wax">Wax type</label>
+      <select id="fl-wax">
+        <option value="soy">Soy (up to 10%)</option>
+        <option value="coconut">Coconut blend (up to 10%)</option>
+        <option value="paraffin">Paraffin (up to 12%)</option>
+        <option value="palm">Palm (up to 8%)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="fl-pots">Number of melts or pots <span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-dim)">(optional)</span></label>
+      <input type="number" id="fl-pots" inputmode="numeric" min="1" step="1" placeholder="e.g. 20" aria-describedby="fl-pots-error">
+      <p class="field-error" id="fl-pots-error"></p>
+    </div>
+
+  </div>
+
+  <div class="results" id="fl-results">
+    <span class="results-label">Fragrance oil needed</span>
+    <p class="results-main"><span id="fl-out-oil">40.0</span><small id="fl-out-oil-unit"> g</small></p>
+    <p class="results-sub" id="fl-out-oil-ml">about 42.1 ml</p>
+    <dl class="results-grid">
+      <div>
+        <dt>Total batch weight</dt>
+        <dd id="fl-out-total">540.0 g<small>wax + fragrance oil</small></dd>
+      </div>
+      <div>
+        <dt>Fragrance per pot</dt>
+        <dd id="fl-out-perpot">—<small>enter a pot count</small></dd>
+      </div>
+      <div>
+        <dt>Wax used</dt>
+        <dd id="fl-out-wax">500.0 g<small>at 8% load</small></dd>
+      </div>
+    </dl>
+    <p class="warning" id="fl-warning" role="alert" hidden></p>
+    <p class="sr-only" id="fl-summary" aria-live="polite"></p>
+  </div>
+  <noscript><p class="field-hint">This calculator needs JavaScript. To work it out by hand: wax weight × load ÷ 100 = fragrance oil in grams.</p></noscript>
+</form>
+
+<h2>How fragrance load <em>works</em></h2>
+<p>Fragrance load is the weight of fragrance oil as a percentage of the weight of your wax. At 8%, every 100 g of wax takes 8 g of oil, so 500 g of wax needs 40 g. Always weigh fragrance oil on digital scales rather than measuring by volume, as oils vary in density.</p>
+<p>Each wax can only hold so much oil. Paraffin has a tighter, more uniform structure that binds fragrance well, so it tolerates loads up to around 12% and gives a strong hot throw. Soy is softer and more crystalline, so it usually tops out at about 10% and can take longer to cure before the scent peaks. Coconut blends sit close to soy, and palm holds less again.</p>
+<p>More oil does not mean more scent. Past the wax's limit, oil the wax cannot hold seeps out as beads on the surface, known as sweating. You may also see a soft or greasy set, poor release from clamshells, frosting and a weaker throw. Overloaded wax is a safety risk too: loose oil can raise the risk of fire on a warmer and may take you over the safe limit on your fragrance's IFRA certificate, which also changes the CLP label you need. Your oil's maximum usage rate always takes priority over the wax's.</p>
+<p>For more on oils and scent throw, read our <a href="guide-fragrance-load.html">fragrance oil load guide</a>.</p>
+
+<h2>Typical loads <em>by wax</em></h2>
+<div class="table-wrap">
+<table class="comparison-table">
+  <caption class="sr-only">Typical and maximum fragrance loads by wax type</caption>
+  <thead>
+    <tr><th scope="col">Wax</th><th scope="col">Typical load</th><th scope="col">Usual maximum</th><th scope="col">Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Soy</td><td>6–10%</td><td>10%</td><td>Cure for 1–2 weeks for best throw</td></tr>
+    <tr><td>Coconut blend</td><td>6–10%</td><td>10%</td><td>Creamy finish, good for clamshells</td></tr>
+    <tr><td>Paraffin</td><td>8–12%</td><td>12%</td><td>Strongest hot throw, fast cure</td></tr>
+    <tr><td>Palm</td><td>5–8%</td><td>8%</td><td>Prone to sweating when overloaded</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout">
+  <p><strong>Check your supplier's figures:</strong> blends vary, so the maximum on your wax's spec sheet and on your fragrance oil's IFRA certificate both override this table. Use whichever is lower.</p>
+</div>
+
+<h2>Frequently asked <em>questions</em></h2>
+<dl class="faq">
+  <dt>What fragrance load should I use for wax melts?</dt>
+  <dd><p>Most UK makers start at 8% and test from there. Soy and coconut blends usually sit between 6% and 10%, paraffin up to 12% and palm up to 8%. Never go above the maximum on your fragrance oil's IFRA certificate, even if your wax will hold more.</p></dd>
+  <dt>Is fragrance load a percentage of the wax or the total batch?</dt>
+  <dd><p>This calculator uses the most common UK method: a percentage of the wax weight. 500 g of wax at 8% needs 40 g of fragrance oil, giving a 540 g batch. Some suppliers quote load as a percentage of the total batch instead, which works out slightly lower, so check which method your supplier means.</p></dd>
+  <dt>Why are my wax melts sweating oil?</dt>
+  <dd><p>Beads of oil on the surface usually mean the load is higher than the wax can hold, or the oil was added at the wrong temperature and did not bind. Drop the load by 1 to 2%, add the oil at the temperature your wax supplier recommends and stir for a full two minutes.</p></dd>
+  <dt>How do I convert grams of fragrance oil to ml?</dt>
+  <dd><p>Divide the grams by the oil's density. This calculator assumes 0.95 g/ml, which is typical, so 40 g is about 42 ml. Densities vary between oils, so weighing on digital scales is always more accurate than measuring by volume. Your oil's Safety Data Sheet lists its exact density.</p></dd>
+</dl>
+
+<h2>Next <em>steps</em></h2>
+<div class="guide-nav">
+  <a href="guide-packaging.html"><div class="guide-nav-label">Guide →</div><div class="guide-nav-title">Packaging &amp; Clamshells</div><p class="guide-nav-text">Choose clamshells, snap bars and labels for your finished melts.</p></a>
+  <a href="amazon-picks.html"><div class="guide-nav-label">Kit →</div><div class="guide-nav-title">Amazon Picks</div><p class="guide-nav-text">Scales, jugs, wax and oils we recommend for accurate batches.</p></a>
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Biz</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">All Guides</a></li>
+      <li><a href="fragrance-load-calculator.html">Tools</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 The Wax Biz · Amazon links are affiliate links. As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Fragrance load maths (pure, no DOM) ──
+  var GRAMS_PER_OZ = 28.349523125;
+  var OIL_DENSITY = 0.95; // g/ml
+  var WAX_TYPES = {
+    soy:      { name: 'soy wax', max: 10 },
+    coconut:  { name: 'coconut blend', max: 10 },
+    paraffin: { name: 'paraffin', max: 12 },
+    palm:     { name: 'palm wax', max: 8 }
+  };
+
+  function calculateFragrance(waxGrams, loadPct, pots) {
+    var oilG = waxGrams * loadPct / 100;
+    var result = {
+      oilG: oilG,
+      oilMl: oilG / OIL_DENSITY,
+      totalG: waxGrams + oilG,
+      perPotOilG: null,
+      perPotTotalG: null
+    };
+    if (pots) {
+      result.perPotOilG = oilG / pots;
+      result.perPotTotalG = (waxGrams + oilG) / pots;
+    }
+    return result;
+  }
+
+  // ── Calculator UI ──
+  (function () {
+    if (typeof document === 'undefined') return;
+    var form = document.getElementById('fl-calc');
+    if (!form) return;
+
+    var weightEl = document.getElementById('fl-weight');
+    var rangeEl = document.getElementById('fl-load-range');
+    var loadEl = document.getElementById('fl-load-num');
+    var waxEl = document.getElementById('fl-wax');
+    var potsEl = document.getElementById('fl-pots');
+    var unitEls = form.querySelectorAll('input[name="fl-unit"]');
+    var out = {
+      oil: document.getElementById('fl-out-oil'),
+      oilUnit: document.getElementById('fl-out-oil-unit'),
+      oilMl: document.getElementById('fl-out-oil-ml'),
+      total: document.getElementById('fl-out-total'),
+      perPot: document.getElementById('fl-out-perpot'),
+      wax: document.getElementById('fl-out-wax'),
+      warning: document.getElementById('fl-warning'),
+      summary: document.getElementById('fl-summary')
+    };
+    var unit = 'g';
+
+    function fmt(n) {
+      return n.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    }
+
+    function setError(input, msg) {
+      var el = document.getElementById(input.id + '-error');
+      el.textContent = msg || '';
+      if (msg) input.setAttribute('aria-invalid', 'true');
+      else input.removeAttribute('aria-invalid');
+    }
+
+    function readNumber(input) {
+      if (input.validity && input.validity.badInput) return { bad: true };
+      var raw = input.value.trim();
+      if (raw === '') return { empty: true };
+      var n = Number(raw);
+      return isFinite(n) ? { value: n } : { bad: true };
+    }
+
+    function validateWeight() {
+      var r = readNumber(weightEl);
+      if (r.empty) return setError(weightEl, 'Enter your wax weight.');
+      if (r.bad) return setError(weightEl, 'Enter the weight as a number.');
+      if (r.value <= 0) return setError(weightEl, 'Wax weight must be more than zero.');
+      setError(weightEl, '');
+      return unit === 'oz' ? r.value * GRAMS_PER_OZ : r.value;
+    }
+
+    function validateLoad() {
+      var r = readNumber(loadEl);
+      if (r.empty) return setError(loadEl, 'Enter a fragrance load.');
+      if (r.bad) return setError(loadEl, 'Enter the load as a number.');
+      if (r.value <= 0) return setError(loadEl, 'Fragrance load must be more than zero.');
+      if (r.value < 1 || r.value > 12) return setError(loadEl, 'Enter a load between 1% and 12%.');
+      setError(loadEl, '');
+      return r.value;
+    }
+
+    // Returns 0 when left blank (optional), undefined when invalid.
+    function validatePots() {
+      var r = readNumber(potsEl);
+      if (r.empty) { setError(potsEl, ''); return 0; }
+      if (r.bad) return setError(potsEl, 'Enter the number of pots as a number.');
+      if (r.value <= 0) return setError(potsEl, 'Number of pots must be at least 1.');
+      if (Math.floor(r.value) !== r.value) return setError(potsEl, 'Use a whole number of pots.');
+      setError(potsEl, '');
+      return r.value;
+    }
+
+    function clearResults() {
+      out.oil.textContent = '—';
+      out.oilUnit.hidden = true;
+      out.oilMl.textContent = 'Fix the highlighted fields to see your result.';
+      out.total.innerHTML = '—<small>wax + fragrance oil</small>';
+      out.perPot.innerHTML = '—<small>enter a pot count</small>';
+      out.wax.innerHTML = '—<small>&nbsp;</small>';
+      out.warning.hidden = true;
+      out.summary.textContent = '';
+    }
+
+    function update() {
+      var waxG = validateWeight();
+      var load = validateLoad();
+      var pots = validatePots();
+      if (waxG === undefined || load === undefined || pots === undefined) return clearResults();
+
+      var r = calculateFragrance(waxG, load, pots);
+      var wax = WAX_TYPES[waxEl.value];
+      var ozNote = unit === 'oz' ? ' (' + (r.oilG / GRAMS_PER_OZ).toFixed(2) + ' oz)' : '';
+
+      out.oil.textContent = fmt(r.oilG);
+      out.oilUnit.hidden = false;
+      out.oilMl.textContent = 'about ' + fmt(r.oilMl) + ' ml' + ozNote;
+      out.total.innerHTML = fmt(r.totalG) + ' g<small>wax + fragrance oil</small>';
+      out.wax.innerHTML = fmt(waxG) + ' g<small>at ' + load + '% load</small>';
+      out.perPot.innerHTML = pots
+        ? fmt(r.perPotOilG) + ' g<small>' + fmt(r.perPotTotalG) + ' g filled weight per pot</small>'
+        : '—<small>enter a pot count</small>';
+
+      if (load > wax.max) {
+        out.warning.textContent = load + '% is above the usual maximum of ' + wax.max + '% for ' + wax.name +
+          '. Expect sweating or a soft set, and check your fragrance oil’s IFRA certificate before using this load.';
+        out.warning.hidden = false;
+      } else {
+        out.warning.hidden = true;
+      }
+
+      out.summary.textContent = 'Add ' + fmt(r.oilG) + ' grams of fragrance oil, about ' + fmt(r.oilMl) +
+        ' ml. Total batch ' + fmt(r.totalG) + ' grams' +
+        (pots ? ', ' + fmt(r.perPotOilG) + ' grams of oil per pot.' : '.');
+    }
+
+    // Slider and number field stay in sync; the number field holds the exact value.
+    rangeEl.addEventListener('input', function () {
+      loadEl.value = rangeEl.value;
+      rangeEl.setAttribute('aria-valuetext', rangeEl.value + '%');
+      update();
+    });
+    loadEl.addEventListener('input', function () {
+      var n = Number(loadEl.value);
+      if (loadEl.value !== '' && isFinite(n)) {
+        rangeEl.value = Math.min(12, Math.max(1, n));
+        rangeEl.setAttribute('aria-valuetext', loadEl.value + '%');
+      }
+      update();
+    });
+
+    // Converting the entered weight keeps the batch the same when switching units.
+    // If the value is untouched since the last switch, restore the exact original
+    // rather than compounding rounding (500 g -> 17.64 oz -> 500 g, not 500.08 g).
+    var lastSwitch = null;
+    Array.prototype.forEach.call(unitEls, function (el) {
+      el.addEventListener('change', function () {
+        var next = el.value;
+        var r = readNumber(weightEl);
+        if (r.value !== undefined && r.value > 0 && next !== unit) {
+          var shown;
+          if (lastSwitch && lastSwitch.shown === weightEl.value && lastSwitch.to === unit) {
+            shown = lastSwitch.from;
+          } else {
+            var converted = next === 'oz' ? r.value / GRAMS_PER_OZ : r.value * GRAMS_PER_OZ;
+            shown = String(next === 'oz' ? Number(converted.toFixed(2)) : Math.round(converted * 10) / 10);
+          }
+          lastSwitch = { from: weightEl.value, to: next, shown: shown };
+          weightEl.value = shown;
+        }
+        unit = next;
+        update();
+      });
+    });
+
+    [weightEl, waxEl, potsEl].forEach(function (el) {
+      el.addEventListener('input', update);
+      el.addEventListener('change', update);
+    });
+
+    update();
+  })();
+</script>
+<script>
+  // ── Mobile menu ──
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    function setOpen(open) {
+      nav.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  })();
+</script>
+</body>
+</html>

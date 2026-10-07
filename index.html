@@ -768,6 +768,20 @@
     .tips-strip { grid-template-columns: 1fr 1fr; }
     .tip-item { border-bottom: 1px solid var(--border); }
   }
+  /* ── Mobile menu ── */
+  .nav-toggle{display:none}
+  @media(max-width:768px){
+    .nav-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:1px solid var(--border);color:var(--gold-light);cursor:pointer;padding:0}
+    .nav-toggle span{display:block;width:20px;height:1.5px;background:currentColor;transition:transform 0.3s,opacity 0.3s}
+    .nav-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    nav.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    nav.nav-open .nav-toggle span:nth-child(2){opacity:0}
+    nav.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:0.5rem 1.5rem 1rem;box-shadow:0 12px 24px rgba(42,34,24,0.08)}
+    nav.nav-open .nav-links{display:flex}
+    nav .nav-links a{display:block;padding:0.85rem 0;font-size:0.82rem;border-bottom:1px solid var(--border)}
+    nav .nav-links li:last-child a{border-bottom:none}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -807,11 +821,13 @@
 <!-- ── NAV ── -->
 <nav>
   <a href="index.html" class="nav-logo">The Wax Biz</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
     <li><a href="#retailers">Retailers</a></li>
     <li><a href="#guides">Buying Guides</a></li>
     <li><a href="bath-body.html">Bath &amp; Body</a></li>
     <li><a href="guide-safety.html#regulations">Regulations</a></li>
+    <li><a href="fragrance-load-calculator.html">Tools</a></li>
     <li><a href="amazon-picks.html">Amazon Picks</a></li>
   </ul>
 </nav>
@@ -1161,6 +1177,13 @@
       </div>
 
       <div class="guide-card">
+        <span class="guide-icon">⚖️</span>
+        <h3 class="guide-title">Fragrance Load Calculator</h3>
+        <p class="guide-text">Enter your wax weight and load percentage to get exactly how many grams and ml of fragrance oil to add, with per-pot amounts and a warning if you go over your wax's maximum.</p>
+        <a href="fragrance-load-calculator.html" class="guide-read">Open Calculator →</a>
+      </div>
+
+      <div class="guide-card">
         <span class="guide-icon">🎨</span>
         <h3 class="guide-title">Colouring Your Wax Melts</h3>
         <p class="guide-text">Liquid dyes, dye chips and mica powders each create different effects. Liquid dyes give vivid, consistent colour; micas create shimmer but can affect skin-safe ratings — always check your supplier's specifications.</p>
@@ -1287,6 +1310,7 @@
       <div class="footer-col-title">Resources</div>
       <ul class="footer-links">
         <li><a href="#guides">Buying Guides</a></li>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
         <li><a href="#tips">Maker Tips</a></li>
         <li><a href="amazon-picks.html">Amazon Picks</a></li>
         <li><a href="#">Submit a Retailer</a></li>
@@ -1344,5 +1368,29 @@
   });
 </script>
 
+<script>
+  // ── Mobile menu ──
+  (function () {
+    var nav = document.querySelector('nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    function setOpen(open) {
+      nav.classList.toggle('nav-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('nav-open')); });
+    nav.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('nav-open')) { setOpen(false); btn.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) setOpen(false); });
+  })();
+</script>
 </body>
 </html>
