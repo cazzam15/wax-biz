@@ -86,4 +86,7 @@
 .wb-demo-bar{height:6px;background:var(--bg3);margin:.6rem 0 1.1rem}
 .wb-demo-bar i{display:block;height:100%;background:var(--gold)}
 .wb-demo-tip{font-size:.8rem;color:var(--cream-dim);line-height:1.6;margin:.25rem 0}
+/* Seven nav items: tighten spacing on mid-size screens so the menu stays on one line */
+@media(min-width:769px) and (max-width:1240px){nav .nav-links{gap:1.3rem}nav .nav-links a,nav .nav-sub-toggle{font-size:.7rem;letter-spacing:.1em}}
+@media(min-width:769px) and (max-width:960px){nav{padding-left:1.5rem!important;padding-right:1.5rem!important}nav .nav-links{gap:.9rem}.nav-logo{font-size:1.25rem!important}}
 @media(max-width:860px){.wb-clutvi-inner{grid-template-columns:1fr;gap:2.2rem;padding:4rem 1.5rem}}
