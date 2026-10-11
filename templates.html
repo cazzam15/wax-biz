@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<title>Wax Melt Business Templates for UK Makers — The Wax Biz</title>
+<meta name="description" content="Spreadsheets, guides and label templates made for UK wax melt makers: pricing, batch logs, stock, tax, CLP labels, Etsy, wholesale and craft fairs. Instant download.">
+<link rel="canonical" href="https://www.thewaxbiz.co.uk/templates.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wax Melt Business Templates for UK Makers — The Wax Biz">
+<meta property="og:description" content="Spreadsheets, guides and label templates made for UK wax melt makers: pricing, batch logs, stock, tax, CLP labels, Etsy, wholesale and craft fairs. Instant download.">
+<meta property="og:url" content="https://www.thewaxbiz.co.uk/templates.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="The Wax Biz">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Wax Biz — UK candle &amp; wax melt supplies directory">
+<meta name="twitter:image" content="https://www.thewaxbiz.co.uk/og-image.png">
+<link rel="preload" href="assets/fonts/Jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/CormorantGaramond-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #faf6ef; --bg2: #f4ede0; --bg3: #efe6d6;
+    --card: #ffffff; --card-hover: #fbf6ee;
+    --gold: #b8943a; --gold-light: #9a7a2c; --gold-dim: #c2a45a;
+    --cream: #2a2218; --cream-dim: #6b5f4d;
+    --text: #3a3027; --text-dim: #756954;
+    --border: rgba(184,148,58,0.4); --border-strong: rgba(184,148,58,0.6);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(250,246,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); letter-spacing: 0.08em; text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+
+  .page-hero { padding: 8rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(201,168,76,0.07) 0%, transparent 70%); }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; color: var(--cream); line-height: 1.1; }
+  .page-title em { font-style: italic; color: var(--gold-light); }
+  .page-sub { font-size: 0.9rem; color: var(--cream-dim); max-width: 500px; margin: 1.2rem auto 0; }
+  .section-divider { width: 60px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto 0; }
+
+  .main-wrap { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  .affiliate-notice { background: rgba(201,168,76,0.07); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1rem 1.5rem; margin-bottom: 3rem; font-size: 0.8rem; color: var(--cream-dim); display: flex; gap: 0.75rem; align-items: flex-start; line-height: 1.65; }
+  .affiliate-notice strong { color: var(--gold); }
+
+  /* Category tabs */
+  .cat-tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .cat-tab { background: transparent; color: var(--cream-dim); border: 1px solid var(--border); padding: 0.5rem 1.4rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+  .cat-tab:hover, .cat-tab.active { background: var(--gold); color:#2a2218; border-color: var(--gold); }
+
+  /* Category section */
+  .cat-section { margin-bottom: 4rem; }
+  .cat-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .cat-icon { font-size: 1.4rem; }
+  .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--cream); }
+  .cat-title em { font-style: italic; color: var(--gold-light); }
+
+  .amazon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.4rem; }
+
+  .amazon-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s, transform 0.3s; text-decoration: none; display: block; position: relative; }
+  .amazon-card:hover { border-color: var(--border-strong); transform: translateY(-4px); }
+  .amazon-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.4s; }
+  .amazon-card:hover::before { opacity: 1; }
+
+  .amazon-img-wrap { background: var(--bg3); height: 160px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .amazon-img-wrap .emoji { font-size: 2.8rem; opacity: 0.45; }
+
+  .amazon-card-body { padding: 1.4rem; }
+  .amazon-card-type { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .amazon-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: 0.5rem; font-weight: 400; line-height: 1.3; }
+  .amazon-card-desc { font-size: 0.78rem; color: var(--cream-dim); line-height: 1.65; margin-bottom: 1rem; }
+  .amazon-cta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; transition: gap 0.3s; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .amazon-card:hover .amazon-cta { gap: 0.8rem; }
+  .amazon-badge { position: absolute; top: 0.9rem; right: 0.9rem; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(201,168,76,0.15); color: var(--gold); padding: 0.2rem 0.5rem; border: 1px solid var(--gold-dim); }
+
+  /* hidden for filter */
+  .cat-section.hidden { display: none; }
+
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3rem 2rem; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); }
+  .footer-nav { display: flex; gap: 2rem; list-style: none; }
+  .footer-nav a { font-size: 0.75rem; color: var(--text-dim); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+  .footer-nav a:hover { color: var(--gold-light); }
+  .footer-copy { font-size: 0.7rem; color: var(--text-dim); width: 100%; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .page-hero > * { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+  .page-hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .page-hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .page-hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .page-hero > *:nth-child(4) { animation-delay: 0.5s; }
+
+  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } }
+</style>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">The Wax Biz</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="site-nav">
+    <li><a href="index.html#retailers">Retailers</a></li>
+    <li><a href="index.html#guides">Buying Guides</a></li>
+    <li><a href="guide-choosing-wax.html">Guides</a></li>
+    <li class="nav-sub-wrap">
+      <button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="tools-menu">Tools</button>
+      <div class="nav-sub" id="tools-menu"><ul>
+        <li><a href="wax-melts-per-kg-calculator.html">Melts Per Kg Calculator</a></li>
+        <li><a href="fragrance-load-calculator.html">Fragrance Load Calculator</a></li>
+        <li><a href="wax-melt-pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="wax-melt-batch-log.html">Batch Log</a></li>
+        <li><a href="wax-melt-clp-label-checklist.html">CLP Label Checklist</a></li>
+      </ul></div>
+    </li>
+    <li><a href="templates.html" class="active" aria-current="page">Templates</a></li>
+    <li><a href="amazon-picks.html">Amazon Picks</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <span class="section-label">✦ Maker Templates ✦</span>
+  <h1 class="page-title">Run your wax melt business <em>properly</em></h1>
+  <p class="page-sub">Spreadsheets, guides and label templates made for UK wax melt makers. Instant download, from £5.</p>
+  <div class="section-divider"></div>
+</div>
+
+<div class="main-wrap">
+  <div class="wb-grid">
+      <a href="https://payhip.com/b/rIXjG" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/pricing-planner.jpg" alt="Costing &amp; Pricing Planner cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Costing &amp; Pricing Planner</div>
+          <p class="wb-prod-desc">Your true cost per melt, fees for Etsy, website and craft fairs, and the price that hits your target margin.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.99</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/VfzlO" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/batch-log-recipe-book.jpg" alt="Batch Log &amp; Recipe Book cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Batch Log &amp; Recipe Book</div>
+          <p class="wb-prod-desc">Recipe cards that scale to any batch, cure-until dates, throw scores and SDS/CLP traceability for every pour.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£6.00</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/RJdNs" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/stock-supplies-tracker.jpg" alt="Stock &amp; Supplies Tracker cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Stock &amp; Supplies Tracker</div>
+          <p class="wb-prod-desc">Red and amber reorder alerts, average cost per gram and a best-selling-scent dashboard.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£6.00</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/tBwbN" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/income-expenses-tracker.jpg" alt="Income &amp; Expenses Tracker 2026/27 cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Income &amp; Expenses Tracker 2026/27</div>
+          <p class="wb-prod-desc">Sales and costs across the UK tax year, the trading allowance check and an estimated tax pot, Scottish bands included.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.99</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/sO6SG" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/uk-tax-guide.jpg" alt="UK Tax Guide 2026/27 cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">PDF guide</div>
+          <div class="wb-prod-name">UK Tax Guide 2026/27</div>
+          <p class="wb-prod-desc">Plain-English HMRC rules for melt and candle sellers, checked against gov.uk for 2026/27.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.99</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/EyAWI" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/business-plan-template.jpg" alt="Business Plan Template cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Word template</div>
+          <div class="wb-prod-name">Business Plan Template</div>
+          <p class="wb-prod-desc">A fill-in plan written for UK wax melt makers: range, customers, channels, start-up costs, pricing and compliance.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.00</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/vM3dh" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/wholesale-kit.jpg" alt="Wholesale Kit cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel + Word</div>
+          <div class="wb-prod-name">Wholesale Kit</div>
+          <p class="wb-prod-desc">Line sheet, order form and an invoice that fills itself in, ready for your first stockist.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£6.50</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/g1e8H" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/content-planner.jpg" alt="Content Planner cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Content Planner</div>
+          <p class="wb-prod-desc">A 12-month social plan with every UK scent moment and when to start teasing it.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.50</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/jT2sX" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/etsy-listing-kit.jpg" alt="Etsy Listing Kit cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel + PDF guide</div>
+          <div class="wb-prod-name">Etsy Listing Kit</div>
+          <p class="wb-prod-desc">Title builder, 13-tag planner with live counters, photo shot list and a listing guide.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£6.50</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/MIU9X" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/clp-label-templates.jpg" alt="CLP Label Templates cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Word templates</div>
+          <div class="wb-prod-name">CLP Label Templates</div>
+          <p class="wb-prod-desc">Editable clamshell labels for Avery L7165 and L7173 sheets, plus a front label and how-to guide.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£6.00</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+      <a href="https://payhip.com/b/zlbH5" target="_blank" rel="noopener" class="wb-prod">
+        <div class="wb-prod-img"><img src="assets/shop/craft-fair-planner.jpg" alt="Craft Fair Planner cover" width="800" height="600" loading="lazy"></div>
+        <div class="wb-prod-body">
+          <div class="wb-prod-type">Excel spreadsheet</div>
+          <div class="wb-prod-name">Craft Fair Planner</div>
+          <p class="wb-prod-desc">Event shortlist, stall checklist, stock to bring, on-the-day sales and whether the fair really paid.</p>
+          <div class="wb-prod-foot"><span class="wb-prod-price">£5.00</span><span class="wb-prod-cta">Buy on Payhip →</span></div>
+        </div>
+      </a>
+  </div>
+  <div class="wb-shop-more"><a href="https://payhip.com/WaxBiz" target="_blank" rel="noopener" class="btn-outline">Visit the full shop on Payhip →</a></div>
+  <p class="wb-note">Sold and delivered by Payhip. Spreadsheets work in Excel, Google Sheets and Numbers. Prices in GBP.</p>
+</div>
+
+<section class="wb-clutvi" id="clutvi" aria-labelledby="clutvi-title">
+  <div class="wb-clutvi-inner">
+    <div class="wb-clutvi-copy">
+      <span class="section-label">✦ Our sister app for makers on social ✦</span>
+      <h2 class="wb-clutvi-title" id="clutvi-title">Selling your melts on <em>TikTok or Reels?</em></h2>
+      <p class="wb-clutvi-text"><strong>Clutvi</strong> scores your video idea out of 100 before you film, then writes the caption, hooks and hashtags. Its new conversion tools turn views into DMs and sales: calls to action with a comment-to-DM trigger word, a post series that leads to your offer, and a free PDF lead magnet that points to your shop.</p>
+      <ul class="wb-clutvi-list">
+        <li>Algo Score and Caption Writer, tuned for UK TikTok and Instagram</li>
+        <li>CTA Builder, Offer-to-Content and Lead Magnets</li>
+        <li>Brain Dump to a 30-day content calendar</li>
+      </ul>
+      <a href="https://clutvi.com/?utm_source=thewaxbiz&utm_medium=referral&utm_campaign=site" target="_blank" rel="noopener" class="btn-primary wb-clutvi-btn">Try Clutvi free for 3 days →</a>
+      <p class="wb-clutvi-small">Then £9.99 a month or £79 a year. Cancel any time.</p>
+    </div>
+    <div class="wb-clutvi-demo" aria-hidden="true">
+      <div class="wb-demo-head"><span>Algo Score</span><span class="wb-demo-live">● Live</span></div>
+      <div class="wb-demo-idea">“POV: pouring 200 snap bars for the Christmas fair”</div>
+      <div class="wb-demo-score"><span>84</span>/100</div>
+      <div class="wb-demo-bar"><i style="width:84%"></i></div>
+      <p class="wb-demo-tip">→ Open on the finished stack, not the empty moulds</p>
+      <p class="wb-demo-tip">→ Pin a comment: type SCENT for the restock link</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Wax Biz</div>
+    <ul class="footer-nav">
+      <li><a href="index.html#retailers">Retailers</a></li>
+      <li><a href="index.html#guides">Guides</a></li>
+      <li><a href="templates.html">Templates Shop</a></li>
+      <li><a href="amazon-picks.html">Amazon Picks</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 The Wax Biz · Templates are sold and delivered through Payhip · As an Amazon Associate we earn from qualifying purchases</p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
